@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Building a Simple Compiler - CS Teaching Slides</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            overflow: hidden;
+        }
+
+        .slideshow-container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+        }
+
+        .slide {
+            display: none;
+            padding: 60px;
+            text-align: center;
+            height: 100vh;
+            flex-direction: column;
+            justify-content: center;
+            animation: slideIn 0.5s ease-in-out;
+        }
+
+        .slide.active {
+            display: flex;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        h1 {
+            font-size: 3.5em;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            background: linear-gradient(45deg, #ffd700, #ff6b6b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        h2 {
+            font-size: 2.5em;
+            margin-bottom: 40px;
+            color: #ffd700;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+
+        h3 {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            color: #87ceeb;
+        }
+
+        p, li {
+            font-size: 1.3em;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        ul {
+            text-align: left;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        li {
+            margin-bottom: 15px;
+            padding-left: 10px;
+        }
+
+        .code-block {
+            background: rgba(0,0,0,0.4);
+            border-radius: 10px;
+            padding: 25px;
+            margin: 25px auto;
+            max-width: 800px;
+            text-align: left;
+            font-family: 'Courier New', monospace;
+            font-size: 1.1em;
+            border-left: 4px solid #ffd700;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        .pipeline {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+
+        .pipeline-box {
+            background: rgba(255,255,255,0.1);
+            border: 2px solid #ffd700;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 10px;
+            min-width: 150px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .pipeline-box:hover {
+            transform: scale(1.05);
+        }
+
+        .arrow {
+            font-size: 2em;
+            color: #ffd700;
+            margin: 0 20px;
+        }
+
+        .controls {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 20px;
+        }
+
+        button {
+            background: rgba(255,255,255,0.2);
+            border: 2px solid #ffd700;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        button:hover {
+            background: rgba(255,215,0,0.3);
+            transform: translateY(-2px);
+        }
+
+        button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .slide-counter {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            background: rgba(0,0,0,0.3);
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 1.1em;
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .highlight {
+            background: rgba(255,215,0,0.2);
+            padding: 5px 10px;
+            border-radius: 5px;
+            color: #ffd700;
+            font-weight: bold;
+        }
+
+        .example-box {
+            background: rgba(0,0,0,0.3);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 4px solid #87ceeb;
+        }
+    </style>
+</head>
+<body>
+    <div class="slideshow-container">
+        <!-- Slide 1: Title -->
+        <div class="slide active">
+            <h1>Building a Simple Compiler</h1>
+            <h3>From Source Code to Execution</h3>
+            <p style="font-size: 1.5em; margin-top: 40px;">A hands-on approach to understanding compilation</p>
+            <p style="font-size: 1.1em; opacity: 0.8;">CS Undergraduate Course</p>
+        </div>
+
+        <!-- Slide 2: Learning Objectives -->
+        <div class="slide">
+            <h2>Learning Objectives</h2>
+            <ul>
+                <li>Understand the <span class="highlight">compilation pipeline</span></li>
+                <li>Build a <span class="highlight">recursive descent parser</span></li>
+                <li>Generate <span class="highlight">intermediate bytecode</span></li>
+                <li>Implement a <span class="highlight">stack-based virtual machine</span></li>
+                <li>Handle <span class="highlight">function calls and recursion</span></li>
+                <li>See how <span class="highlight">mutual recursion</span> works</li>
+            </ul>
+        </div>
+
+        <!-- Slide 3: The Big Picture -->
+        <div class="slide">
+            <h2>The Compilation Pipeline</h2>
+            <div class="pipeline">
+                <div class="pipeline-box">
+                    <h3>Source Code</h3>
+                    <p>Human-readable text</p>
+                </div>
+                <div class="arrow">→</div>
+                <div class="pipeline-box">
+                    <h3>Parser</h3>
+                    <p>Creates AST</p>
+                </div>
+                <div class="arrow">→</div>
+                <div class="pipeline-box">
+                    <h3>Compiler</h3>
+                    <p>Generates bytecode</p>
+                </div>
+                <div class="arrow">→</div>
+                <div class="pipeline-box">
+                    <h3>VM</h3>
+                    <p>Executes code</p>
+                </div>
+            </div>
+            <p>Each stage transforms the program into a different representation</p>
+        </div>
+
+        <!-- Slide 4: Our Simple Language -->
+        <div class="slide">
+            <h2>Our Simple Language</h2>
+<pre>
+            <div class="code-block">
+def fib n
+  if n < 2
+    return n
+  end
+  a = fib n - 1
+  b = fib n - 2
+  return a + b
+end
+
+main = fib 9
+print main
+            </div>
+</pre>
+            <p>Features: functions, conditionals, arithmetic, recursion</p>
+        </div>
+
+        <!-- Slide 5: Step 1 - Parsing -->
+        <div class="slide">
+            <h2>Step 1: Parsing</h2>
+            <p>Convert source code into an <span class="highlight">Abstract Syntax Tree (AST)</span></p>
+            <div class="two-column">
+                <div>
+                    <h3>Source:</h3>
+                    <div class="code-block">
+def fib n
+  return n
+end
+                    </div>
+                </div>
+                <div>
+                    <h3>AST:</h3>
+<pre>
+                    <div class="code-block">
+{
+  "type": "def",
+  "name": "fib",
+  "arg": "n", 
+  "body": [
+    {
+      "type": "return",
+      "expr": "n"
+    }
+  ]
+}
+                    </div>
+</pre>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 6: Parser Implementation -->
+        <div class="slide">
+            <h2>Parser Implementation</h2>
+<pre>
+            <div class="code-block">
+def parse(lines):
+    ast = []
+    stack = [ast]  # Stack for nested structures
+    
+    for line in lines:
+        if re.match(r"^def (\w+) (\w+)$", line):
+            # Create function node
+            func = {"type": "def", "name": name, "arg": arg, "body": []}
+            stack[-1].append(func)
+            stack.append(func["body"])  # Enter function body
+        elif line == "end":
+            stack.pop()  # Exit current scope
+        # ... handle other constructs
+            </div>
+</pre>
+            <p>Uses a <span class="highlight">stack</span> to track nested scopes</p>
+        </div>
+
+        <!-- Slide 7: Step 2 - Compilation -->
+        <div class="slide">
+            <h2>Step 2: Compilation</h2>
+            <p>Transform AST into <span class="highlight">bytecode instructions</span></p>
+            <div class="example-box">
+                <h3>Expression: "fib n - 1"</h3>
+                <p>Becomes:</p>
+<pre>
+                <div class="code-block">
+SUB n 1 tmp2        # tmp2 = n - 1
+PUSH tmp2           # Push argument
+CALL fib            # Call function
+MOV _retval tmp3    # Store result
+                </div>
+</pre>
+            </div>
+        </div>
+
+        <!-- Slide 8: Function Call Handling -->
+        <div class="slide">
+            <h2>Function Call Recognition</h2>
+<pre>
+            <div class="code-block">
+# Global set to track all defined functions
+function_names = set()
+
+# During parsing, collect function names
+if re.match(r"^def (\w+) (\w+)$", line):
+    function_names.add(function_name)
+
+# During compilation, recognize calls
+words = expr.split()
+if words[0] in function_names:
+    # This is a function call!
+    compile_function_call(words[0], words[1:])
+            </div>
+</pre>
+            <p>Key insight: <span class="highlight">Collect all function names first</span>, then recognize calls</p>
+        </div>
+
+        <!-- Slide 9: Step 3 - Virtual Machine -->
+        <div class="slide">
+            <h2>Step 3: Virtual Machine</h2>
+            <p>A <span class="highlight">stack-based VM</span> executes our bytecode</p>
+            <div class="two-column">
+                <div>
+                    <h3>Key Components:</h3>
+                    <ul>
+                        <li>Program Counter (PC)</li>
+                        <li>Call Stack</li>
+                        <li>Environment Stack</li>
+                        <li>Label Map</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Instructions:</h3>
+                    <ul>
+                        <li>MOV, ADD, SUB</li>
+                        <li>CALL, RET</li>
+                        <li>JMP, JGE</li>
+                        <li>PUSH, PRINT</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 10: Function Call Mechanism -->
+        <div class="slide">
+            <h2>Function Call Mechanism</h2>
+<pre>
+            <div class="code-block">
+PUSH arg           # 1. Push argument
+CALL function      # 2. Jump to function
+  PARAM arg        # 3. Bind parameter
+  ... function body ...
+  RET value        # 4. Return with value
+# 5. Resume here with result in _retval
+            </div>
+</pre>
+            <p>Uses <span class="highlight">environment stack</span> for local variables</p>
+            <p>Each function call gets its own <span class="highlight">scope</span></p>
+        </div>
+
+        <!-- Slide 11: Mutual Recursion -->
+        <div class="slide">
+            <h2>Mutual Recursion Example</h2>
+<pre>
+            <div class="code-block">
+def is_even n
+  if n < 1
+    return 1
+  end
+  return is_odd n - 1
+end
+
+def is_odd n  
+  if n < 1
+    return 0
+  end
+  return is_even n - 1
+end
+            </div>
+</pre>
+            <p><span class="highlight">is_even</span> calls <span class="highlight">is_odd</span>, and vice versa!</p>
+            <p>Works because we collect all function names during parsing</p>
+        </div>
+
+        <!-- Slide 12: Execution Trace -->
+        <div class="slide">
+            <h2>Execution Trace: is_even(2)</h2>
+<pre>
+            <div class="code-block">
+[PC=15] PUSH 2           → push argument => 2
+[PC=16] CALL is_even     → pop arg => 2, jump to is_even
+[PC=01] PARAM n          → PARAM n = 2  
+[PC=02] JGE n 1 tmp1_end → JGE 2 >= 1, jumping to tmp1_end
+[PC=05] PUSH 1           → push argument => 1
+[PC=06] CALL is_odd      → pop arg => 1, jump to is_odd
+[PC=09] PARAM n          → PARAM n = 1
+[PC=10] JGE n 1 tmp2_end → JGE 1 >= 1, jumping to tmp2_end  
+[PC=13] PUSH 0           → push argument => 0
+[PC=14] CALL is_even     → pop arg => 0, jump to is_even
+            </div>
+</pre>
+            <p>Deep recursion with multiple function calls!</p>
+        </div>
+
+        <!-- Slide 13: Key Insights -->
+        <div class="slide">
+            <h2>Key Insights</h2>
+            <ul>
+                <li><span class="highlight">Two-pass approach:</span> Parse first, then compile</li>
+                <li><span class="highlight">Symbol collection:</span> Gather function names early</li>
+                <li><span class="highlight">Stack-based execution:</span> Simple but powerful</li>
+                <li><span class="highlight">Environment stacking:</span> Handles scope naturally</li>
+                <li><span class="highlight">Mutual recursion:</span> Falls out naturally from design</li>
+            </ul>
+            <p style="margin-top: 40px;">This architecture scales to much more complex languages!</p>
+        </div>
+
+        <!-- Slide 14: Extensions -->
+        <div class="slide">
+            <h2>Possible Extensions</h2>
+            <div class="two-column">
+                <div>
+                    <h3>Language Features:</h3>
+                    <ul>
+                        <li>Multiple parameters</li>
+                        <li>Local variables</li>
+                        <li>Loops (while, for)</li>
+                        <li>Arrays/data structures</li>
+                        <li>String handling</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Compiler Features:</h3>
+                    <ul>
+                        <li>Type checking</li>
+                        <li>Optimization passes</li>
+                        <li>Error reporting</li>
+                        <li>Debugging info</li>
+                        <li>Target native code</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 15: Questions -->
+        <div class="slide">
+            <h2>Questions & Discussion</h2>
+            <div style="font-size: 2em; margin: 40px 0;">🤔</div>
+            <ul>
+                <li>What happens if we have infinite recursion?</li>
+                <li>How would you add support for multiple parameters?</li>
+                <li>What's the difference between this VM and real processors?</li>
+                <li>How could we optimize tail recursion?</li>
+                <li>What would change if we compiled to x86 instead?</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="slide-counter">
+        <span id="slide-number">1</span> / <span id="total-slides">15</span>
+    </div>
+
+    <div class="controls">
+        <button id="prev-btn" onclick="changeSlide(-1)">← Previous</button>
+        <button id="next-btn" onclick="changeSlide(1)">Next →</button>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        
+        document.getElementById('total-slides').textContent = totalSlides;
+
+        function showSlide(n) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (n + totalSlides) % totalSlides;
+            slides[currentSlide].classList.add('active');
+            
+            document.getElementById('slide-number').textContent = currentSlide + 1;
+            
+            // Update button states
+            document.getElementById('prev-btn').disabled = currentSlide === 0;
+            document.getElementById('next-btn').disabled = currentSlide === totalSlides - 1;
+        }
+
+        function changeSlide(direction) {
+            if (direction === 1 && currentSlide < totalSlides - 1) {
+                showSlide(currentSlide + 1);
+            } else if (direction === -1 && currentSlide > 0) {
+                showSlide(currentSlide - 1);
+            }
+        }
+
+        // Keyboard controls
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                changeSlide(1);
+            } else if (e.key === 'ArrowLeft') {
+                changeSlide(-1);
+            }
+        });
+
+        // Initialize
+        showSlide(0);
+    </script>
+</body>
+</html>

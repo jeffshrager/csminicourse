@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual Hardware - CS Teaching Slides</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #2E8B57 0%, #4682B4 100%);
+            color: white;
+            overflow: hidden;
+        }
+
+        .slideshow-container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+        }
+
+        .slide {
+            display: none;
+            padding: 60px;
+            text-align: center;
+            height: 100vh;
+            flex-direction: column;
+            justify-content: center;
+            animation: slideIn 0.5s ease-in-out;
+        }
+
+        .slide.active {
+            display: flex;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        h1 {
+            font-size: 3.5em;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            background: linear-gradient(45deg, #FFD700, #32CD32);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        h2 {
+            font-size: 2.5em;
+            margin-bottom: 40px;
+            color: #98FB98;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+
+        h3 {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            color: #87CEEB;
+        }
+
+        p, li {
+            font-size: 1.3em;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        ul {
+            text-align: left;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        li {
+            margin-bottom: 15px;
+            padding-left: 10px;
+        }
+
+        .code-block {
+            background: rgba(0,0,0,0.4);
+            border-radius: 10px;
+            padding: 25px;
+            margin: 25px auto;
+            max-width: 900px;
+            text-align: left;
+            font-family: 'Courier New', monospace;
+            font-size: 1.1em;
+            border-left: 4px solid #98FB98;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        .hardware-diagram {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin: 40px auto;
+            max-width: 1000px;
+        }
+
+        .component {
+            background: rgba(255,255,255,0.1);
+            border: 2px solid #98FB98;
+            border-radius: 15px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .component:hover {
+            transform: scale(1.05);
+        }
+
+        .memory-visualization {
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            gap: 5px;
+            margin: 20px auto;
+            max-width: 600px;
+        }
+
+        .memory-cell {
+            background: rgba(255,255,255,0.2);
+            border: 1px solid #98FB98;
+            padding: 10px;
+            text-align: center;
+            font-family: monospace;
+            font-size: 0.9em;
+            border-radius: 5px;
+        }
+
+        .memory-cell.used {
+            background: rgba(152,251,152,0.3);
+            border-color: #FFD700;
+        }
+
+        .register-bank {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin: 20px auto;
+            max-width: 400px;
+        }
+
+        .register {
+            background: rgba(255,255,255,0.2);
+            border: 1px solid #87CEEB;
+            padding: 8px;
+            text-align: center;
+            font-family: monospace;
+            font-size: 0.9em;
+            border-radius: 5px;
+        }
+
+        .register.active {
+            background: rgba(135,206,235,0.4);
+            border-color: #FFD700;
+        }
+
+        .stack-visualization {
+            margin: 20px auto;
+            max-width: 200px;
+        }
+
+        .stack-item {
+            background: rgba(255,255,255,0.2);
+            border: 1px solid #98FB98;
+            padding: 10px;
+            text-align: center;
+            font-family: monospace;
+            margin-bottom: 2px;
+        }
+
+        .stack-item.sp {
+            background: rgba(255,215,0,0.3);
+            border-color: #FFD700;
+        }
+
+        .controls {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 20px;
+        }
+
+        button {
+            background: rgba(255,255,255,0.2);
+            border: 2px solid #98FB98;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        button:hover {
+            background: rgba(152,251,152,0.3);
+            transform: translateY(-2px);
+        }
+
+        button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .slide-counter {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            background: rgba(0,0,0,0.3);
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 1.1em;
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .highlight {
+            background: rgba(152,251,152,0.2);
+            padding: 5px 10px;
+            border-radius: 5px;
+            color: #98FB98;
+            font-weight: bold;
+        }
+
+        .example-box {
+            background: rgba(0,0,0,0.3);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 4px solid #87CEEB;
+        }
+
+        .execution-trace {
+            background: rgba(0,0,0,0.5);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            font-family: monospace;
+            font-size: 1em;
+            text-align: left;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .trace-line {
+            margin: 5px 0;
+            padding: 2px 5px;
+        }
+
+        .trace-line.pc {
+            color: #FFD700;
+        }
+
+        .trace-line.action {
+            color: #98FB98;
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="slideshow-container">
+        <!-- Slide 1: Title -->
+        <div class="slide active">
+            <h1>Virtual Hardware</h1>
+            <h3>Simulating Computer Architecture</h3>
+            <p style="font-size: 1.5em; margin-top: 40px;">From bytecode to silicon simulation</p>
+            <p style="font-size: 1.1em; opacity: 0.8;">Building on our compiler foundation</p>
+        </div>
+
+        <!-- Slide 2: Why Virtual Hardware? -->
+        <div class="slide">
+            <h2>Why Virtual Hardware?</h2>
+            <ul>
+                <li>Bridge the gap between <span class="highlight">high-level code</span> and <span class="highlight">actual hardware</span></li>
+                <li>Understand how <span class="highlight">registers, memory, and stacks</span> really work</li>
+                <li>See the <span class="highlight">performance implications</span> of our design choices</li>
+                <li>Learn <span class="highlight">computer architecture</span> concepts hands-on</li>
+                <li>Prepare for <span class="highlight">real assembly language</span> programming</li>
+            </ul>
+            <p style="margin-top: 40px;">Our VM becomes a <span class="highlight">teaching computer</span>!</p>
+        </div>
+
+        <!-- Slide 3: Hardware Components -->
+        <div class="slide">
+            <h2>Virtual Hardware Components</h2>
+            <div class="hardware-diagram">
+                <div class="component">
+                    <h3>CPU</h3>
+                    <p>• 16 Registers (R0-R15)</p>
+                    <p>• Program Counter (PC)</p>
+                    <p>• Stack Pointer (SP)</p>
+                    <p>• Base Pointer (BP)</p>
+                </div>
+                <div class="component">
+                    <h3>Memory</h3>
+                    <p>• 512 words</p>
+                    <p>• Variable storage</p>
+                    <p>• Dynamic allocation</p>
+                    <p>• Scope management</p>
+                </div>
+                <div class="component">
+                    <h3>Hardware Stack</h3>
+                    <p>• 16 slots deep</p>
+                    <p>• Function calls</p>
+                    <p>• Return addresses</p>
+                    <p>• Arguments</p>
+                </div>
+            </div>
+            <p>Each component simulates <span class="highlight">real computer hardware</span></p>
+        </div>
+
+        <!-- Slide 4: Memory Layout -->
+        <div class="slide">
+            <h2>Memory Organization</h2>
+            <div class="two-column">
+                <div>
+                    <h3>Memory Layout:</h3>
+                    <div class="memory-visualization">
+                        <div class="memory-cell used">n=9</div>
+                        <div class="memory-cell used">a=21</div>
+                        <div class="memory-cell used">b=13</div>
+                        <div class="memory-cell used">main=34</div>
+                        <div class="memory-cell">0</div>
+                        <div class="memory-cell">0</div>
+                        <div class="memory-cell">0</div>
+                        <div class="memory-cell">0</div>
+                        <div class="memory-cell">0</div>
+                        <div class="memory-cell">0</div>
+                        <div class="memory-cell">...</div>
+                        <div class="memory-cell">512</div>
+                    </div>
+                    <p>Variables get <span class="highlight">memory addresses</span></p>
+                </div>
+                <div>
+                    <h3>Register Bank:</h3>
+                    <div class="register-bank">
+                        <div class="register">R0: 0</div>
+                        <div class="register active">R1: 8</div>
+                        <div class="register active">R2: 1</div>
+                        <div class="register active">R3: 21</div>
+                        <div class="register">R4: 0</div>
+                        <div class="register">R5: 0</div>
+                        <div class="register">R6: 0</div>
+                        <div class="register">R7: 0</div>
+                        <div class="register">R8: 0</div>
+                        <div class="register">R9: 0</div>
+                        <div class="register">R10: 0</div>
+                        <div class="register">R11: 0</div>
+                        <div class="register">R12: 0</div>
+                        <div class="register">R13: 0</div>
+                        <div class="register">R14: 0</div>
+                        <div class="register">R15: 0</div>
+                    </div>
+                    <p>Temporaries use <span class="highlight">fast registers</span></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5: Key Innovation: temp variables -->
+        <div class="slide">
+            <h2>Smart Variable Allocation</h2>
+	    <pre>
+            <div class="code-block">
+def is_temp_var(self, var_name):
+    """Check if variable is a temporary (tmp1, tmp2, etc.)"""
+    return var_name.startswith('tmp') and var_name[3:].isdigit()
+
+def get_temp_register(self, var_name):
+    """Get register number for temp variable (tmp1 -> R1, tmp2 -> R2, etc.)"""
+    if self.is_temp_var(var_name):
+        temp_num = int(var_name[3:])
+        return temp_num % 16  # Wrap around if we have more than 16 temps
+    return None
+            </div>
+	    </pre>
+            <p><span class="highlight">Temporary variables</span> → Fast registers</p>
+            <p><span class="highlight">Named variables</span> → Memory addresses</p>
+            <p>Just like real compilers optimize!</p>
+        </div>
+
+        <!-- Slide 6: Scoping System -->
+        <div class="slide">
+            <h2>Dynamic Scoping with Hardware</h2>
+<pre>
+            <div class="code-block">
+# Scoping stack for function calls
+self.scope_stack = [{}]  # Stack of variable scopes
+
+def get_var_addr(self, var_name):
+    """Get memory address for variable in current scope"""
+    current_scope = self.scope_stack[-1]
+    if var_name in current_scope:
+        return current_scope[var_name]
+    
+    # Allocate new address for this scope
+    addr = self.next_mem_addr
+    self.next_mem_addr += 1
+    current_scope[var_name] = addr
+    return addr
+            </div>
+</pre>
+            <p>Each function call gets its own <span class="highlight">variable namespace</span></p>
+        </div>
+
+        <!-- Slide 7: Hardware Stack in Action -->
+        <div class="slide">
+            <h2>Hardware Stack Operations</h2>
+            <div class="two-column">
+                <div>
+                    <h3>Stack State:</h3>
+                    <div class="stack-visualization">
+                        <div class="stack-item sp">SP → 3</div>
+                        <div class="stack-item">ret_addr: 15</div>
+                        <div class="stack-item">arg: 7</div>
+                        <div class="stack-item">ret_addr: 8</div>
+                        <div class="stack-item">arg: 9</div>
+                        <div class="stack-item">0</div>
+                        <div class="stack-item">0</div>
+                    </div>
+                </div>
+                <div>
+                    <h3>Stack Operations:</h3>
+<pre>
+                    <div class="code-block">
+def push(self, value):
+    self.stack[self.sp] = value
+    self.sp += 1
+
+def pop(self):
+    self.sp -= 1
+    return self.stack[self.sp]
+                    </div>
+</pre>
+                    <p>Hardware stack grows <span class="highlight">upward</span></p>
+                    <p>Automatic <span class="highlight">overflow detection</span></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 8: Function Call Protocol -->
+        <div class="slide">
+            <h2>Hardware Function Call Protocol</h2>
+            <div class="example-box">
+                <h3>Calling fib(7):</h3>
+<pre>
+                <div class="code-block">
+PUSH 7           # 1. Push argument onto hardware stack
+CALL fib         # 2. CALL instruction:
+                 #    - Pop argument (7)
+                 #    - Push return address (PC+1)  
+                 #    - Push argument back for PARAM
+                 #    - Create new scope
+                 #    - Jump to function
+
+PARAM n          # 3. In function: pop arg, store in variable
+... function body ...
+RET result       # 4. Return: pop scope, jump back
+                </div>
+</pre>
+            </div>
+            <p>Hardware manages the <span class="highlight">calling convention</span> automatically</p>
+        </div>
+
+        <!-- Slide 9: Register vs Memory Access -->
+        <div class="slide">
+            <h2>Performance: Registers vs Memory</h2>
+            <div class="two-column">
+                <div>
+                    <h3>Register Access (Fast):</h3>
+<pre>
+                    <div class="code-block">
+# tmp2 = n - 1
+SUB n 1 tmp2
+
+# In hardware:
+reg_num = 2  # tmp2 -> R2
+self.registers[2] = n_val - 1
+                    </div>
+</pre>
+                    <p><span class="highlight">Direct access</span> to register</p>
+                    <p><span class="highlight">1 cycle</span> operation</p>
+                </div>
+                <div>
+                    <h3>Memory Access (Slower):</h3>
+<pre>
+                    <div class="code-block">
+# a = tmp2
+MOV tmp2 a
+
+# In hardware:
+addr = self.get_var_addr('a')
+val = self.registers[2]
+self.memory[addr] = val
+                    </div>
+</pre>
+                    <p><span class="highlight">Address lookup</span> required</p>
+                    <p><span class="highlight">Multiple cycles</span> simulated</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 10: Execution Trace Analysis -->
+        <div class="slide">
+            <h2>Hardware Execution Trace</h2>
+            <div class="execution-trace">
+                <div class="trace-line pc">[PC=15] [SP=01] PUSH 6</div>
+                <div class="trace-line action">  → PUSH 6 (hardware stack)</div>
+                <div class="trace-line pc">[PC=16] [SP=02] CALL is_even</div>
+                <div class="trace-line action">  → CALL is_even, arg=6, return addr = 17</div>
+                <div class="trace-line pc">[PC=01] [SP=02] PARAM n</div>
+                <div class="trace-line action">  → PARAM n = 6 (memory addr 0)</div>
+                <div class="trace-line pc">[PC=02] [SP=02] JGE n 2 tmp1_end</div>
+                <div class="trace-line action">  → JGE 6 >= 2, jumping to tmp1_end</div>
+                <div class="trace-line pc">[PC=05] [SP=02] SUB n 1 tmp2</div>
+                <div class="trace-line action">  → SUB 6 - 1 = 5 → tmp2 (register R2)</div>
+            </div>
+            <p>Watch <span class="highlight">PC, SP, registers, and memory</span> change in real-time!</p>
+        </div>
+
+        <!-- Slide 11: Mutual Recursion on Hardware -->
+        <div class="slide">
+            <h2>Mutual Recursion: Hardware View</h2>
+            <p>is_even(2) → is_odd(1) → is_even(0)</p>
+            <div class="example-box">
+                <h3>Stack Growth During Recursion:</h3>
+<pre>
+                <div class="code-block">
+Call is_even(2):  [ret_addr=17, arg=2]           SP=2
+Call is_odd(1):   [ret_addr=17, arg=2, ret_addr=9, arg=1]    SP=4  
+Call is_even(0):  [..., ret_addr=17, arg=0]     SP=6
+Return 1:         [..., ret_addr=9, arg=1]      SP=4
+Return 1:         [ret_addr=17, arg=2]           SP=2
+Return 1:         []                             SP=0
+                </div>
+</pre>
+            </div>
+            <p>Hardware stack automatically manages <span class="highlight">nested calls</span></p>
+        </div>
+
+        <!-- Slide 12: Memory Management -->
+        <div class="slide">
+            <h2>Automatic Memory Management</h2>
+<pre>
+            <div class="code-block">
+def CALL(self, function_name):
+    # ... setup call ...
+    self.scope_stack.append({})  # New scope = fresh namespace
+
+def RET(self, value):
+    # ... return value ...
+    self.scope_stack.pop()       # Pop scope = free variables
+            </div>
+            <p>Variables are <span class="highlight">automatically freed</span> when functions return</p>
+            <p>No manual memory management needed!</p>
+            <p>Simulates <span class="highlight">stack allocation</span> in real processors</p>
+        </div>
+</pre>
+        <!-- Slide 13: Hardware Debugging -->
+        <div class="slide">
+            <h2>Hardware-Level Debugging</h2>
+            <div class="execution-trace">
+                <div class="trace-line">=== Final Hardware State ===</div>
+                <div class="trace-line">PC: 25</div>
+                <div class="trace-line">SP: 0</div>
+                <div class="trace-line">Active scopes: 1</div>
+                <div class="trace-line">Memory variables in current scope:</div>
+                <div class="trace-line action">  result @ addr 0 = 1</div>
+                <div class="trace-line">Registers in use:</div>
+                <div class="trace-line action">  R7 = 1</div>
+                <div class="trace-line action">  R8 = 0</div>
+            </div>
+            <p>See exactly <span class="highlight">which registers</span> and <span class="highlight">memory locations</span> are active</p>
+        </div>
+
+        <!-- Slide 14: Real-World Connections -->
+        <div class="slide">
+            <h2>Connecting to Real Hardware</h2>
+            <div class="two-column">
+                <div>
+                    <h3>Our Virtual Hardware:</h3>
+                    <ul>
+                        <li>16 general-purpose registers</li>
+                        <li>Hardware call stack</li>
+                        <li>Memory-mapped variables</li>
+                        <li>Automatic scope management</li>
+                        <li>Register allocation for temps</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Real x86/ARM Processors:</h3>
+                    <ul>
+                        <li>16+ general-purpose registers</li>
+                        <li>Hardware call stack</li>
+                        <li>Memory management unit</li>
+                        <li>Stack frames for locals</li>
+                        <li>Register allocation optimization</li>
+                    </ul>
+                </div>
+            </div>
+            <p style="margin-top: 30px;">Our simulation teaches <span class="highlight">real computer architecture</span> concepts!</p>
+        </div>
+
+        <!-- Slide 15: Performance Insights -->
+        <div class="slide">
+            <h2>Performance Lessons</h2>
+            <ul>
+                <li><span class="highlight">Registers are fast</span> - compiler uses them for temporaries</li>
+                <li><span class="highlight">Memory access is slower</span> - variables need address lookup</li>
+                <li><span class="highlight">Function calls are expensive</span> - stack operations, scope changes</li>
+                <li><span class="highlight">Recursion depth matters</span> - limited stack space</li>
+                <li><span class="highlight">Variable lifetime</span> affects memory usage</li>
+            </ul>
+            <p style="margin-top: 40px;">Understanding hardware helps write <span class="highlight">better software</span>!</p>
+        </div>
+
+        <!-- Slide 16: Extensions -->
+        <div class="slide">
+            <h2>Hardware Extensions</h2>
+            <div class="two-column">
+                <div>
+                    <h3>More Realistic Features:</h3>
+                    <ul>
+                        <li>Cache simulation</li>
+                        <li>Memory hierarchy</li>
+                        <li>Pipeline simulation</li>
+                        <li>Branch prediction</li>
+                        <li>Instruction timing</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Advanced Optimizations:</h3>
+                    <ul>
+                        <li>Register allocation algorithms</li>
+                        <li>Dead code elimination</li>
+                        <li>Tail call optimization</li>
+                        <li>Instruction scheduling</li>
+                        <li>Memory coalescing</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 17: Questions -->
+        <div class="slide">
+            <h2>Questions & Discussion</h2>
+            <div style="font-size: 2em; margin: 40px 0;">⚙️</div>
+            <ul>
+                <li>How does our register allocation compare to real compilers?</li>
+                <li>What happens when we run out of registers?</li>
+                <li>How would you implement a cache in our virtual hardware?</li>
+                <li>Why do real processors have different instruction formats?</li>
+                <li>How does this help you understand assembly language?</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="slide-counter">
+        <span id="slide-number">1</span> / <span id="total-slides">17</span>
+    </div>
+
+    <div class="controls">
+        <button id="prev-btn" onclick="changeSlide(-1)">← Previous</button>
+        <button id="next-btn" onclick="changeSlide(1)">Next →</button>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        
+        document.getElementById('total-slides').textContent = totalSlides;
+
+        function showSlide(n) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (n + totalSlides) % totalSlides;
+            slides[currentSlide].classList.add('active');
+            
+            document.getElementById('slide-number').textContent = currentSlide + 1;
+            
+            // Update button states
+            document.getElementById('prev-btn').disabled = currentSlide === 0;
+            document.getElementById('next-btn').disabled = currentSlide === totalSlides - 1;
+        }
+
+        function changeSlide(direction) {
+            if (direction === 1 && currentSlide < totalSlides - 1) {
+                showSlide(currentSlide + 1);
+            } else if (direction === -1 && currentSlide > 0) {
+                showSlide(currentSlide - 1);
+            }
+        }
+
+        // Keyboard controls
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                changeSlide(1);
+            } else if (e.key === 'ArrowLeft') {
+                changeSlide(-1);
+            }
+        });
+
+        // Initialize
+        showSlide(0);
+    </script>
+</body>
+</html>
