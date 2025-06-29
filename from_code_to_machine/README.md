@@ -5,10 +5,10 @@ There's no lexer, so you need to put spaces between tokens. (I hate writing lexe
 The basic project has two parts: Code to Byte Code interpreter, 
 and then a separate part that emulates actual hardware.
 
-Finally, there's an exercise where the student is asked to add for loop capability. (Which, given the
-well-designed base, is extremely simple.)
+Finally, there's an exercise where the student is asked to add for loop capability. Given the
+well-designed base, this is extremely simple, but does require understanding each step of the stack.
 
-(You'd think that it ought be the other way round: start with for loops and add recursion, but 
+(You'd think that it ought be the other way round: Start with for loops and then ask the student to add recursion, but 
 it's much harder to add recursion than loops, so I put recursion into the base, and
 then ask the student to add for loops, which, being much simpler, is a plausible exercise,
 whereas adding recursion would be way too complex for a beginner.)
