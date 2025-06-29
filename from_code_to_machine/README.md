@@ -1,15 +1,14 @@
 This is a (highly) simplified code-to-bytecode-to-machine stack. It supports recursion, 
-including mutual recusion, but nothing fancy. 
-There's no lexer, so you need to put spaces between tokens. (I hate writing lexers!) 
+including mutual recursion, but nothing fancy. 
+There's no lexer, so you need to put spaces between tokens. (Being a native Lisper, I *hate* lexers!) 
 
 The basic project has two parts: Code to Byte Code interpreter, 
-and then a separate part that emulates actual hardware.
+and then a separate part that emulates actual hardware. These are "compiler.py" and "virtual_hardware.py". 
 
 Finally, there's an exercise where the student is asked to add for loop capability. Given the
-well-designed base, this is extremely simple, but does require understanding each step of the stack.
+well-designed base, this is extremely simple, but does require understanding each step of the stack. This is "compiler_for" and "virtual_hardware_for". (The idea, of course, is not to give the _for part to the student!)
 
-(You'd think that it ought be the other way round: Start with for loops and then ask the student to add recursion, but 
-it's much harder to add recursion than loops, so I put recursion into the base, and
+(You'd think that it ought be the other way round: Start with for loops and then ask the student to add recursion, but it's much harder to add recursion than loops, so I put recursion into the base, and
 then ask the student to add for loops, which, being much simpler, is a plausible exercise,
 whereas adding recursion would be way too complex for a beginner.)
 
