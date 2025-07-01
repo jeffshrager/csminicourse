@@ -3,7 +3,7 @@ including mutual recursion, but nothing fancy.
 There's no lexer, so you need to put spaces between tokens. (Being a native Lisper, I *hate* lexers!) 
 
 The basic project has two parts: Code to Byte Code interpreter, 
-and then a separate part that emulates actual hardware. These are "compiler.py" and "virtual_hardware.py". 
+and then a second part that emulates actual hardware. The hardware accepts the same byte code as interpreted by the byte-code interpreter, but treats it as assembly language, translates it to machine language, and executes on a hardware (emulated ... obviously). These are "compiler.py" and "virtual_hardware.py". 
 
 Finally, there's an exercise where the student is asked to add for loop capability. Given the
 well-designed base, this is extremely simple, but does require understanding each step of the stack. This is "compiler_for" and "virtual_hardware_for". (The idea, of course, is not to give the _for part to the student!)
