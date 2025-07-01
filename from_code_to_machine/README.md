@@ -28,8 +28,8 @@ goal is to create, edit, compile, and run programs written in
 Irony. ("irony.py" is a combined version of compiler.py and
 virtual_hardware.py, but leaves out the byte code interpreter.) The
 "comp" and "exec" commands in pathos compile (to byte code) and then
-execute the reuslting (on the emulated hardware). See
-"pathos_demo.log".
+execute the reuslting byte code (basically assembly) on the emulated hardware. (See
+"pathos_demo.log".)
 
 Everything here was written in about 5 total hours using a combination
 of claude and chatgpt. This wasn't as easy as I'd hoped. As many folks
