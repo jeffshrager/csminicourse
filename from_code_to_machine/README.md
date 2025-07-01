@@ -40,9 +40,8 @@ basically incapable of implementing recursion correctly, or
 generalizing to the correct level, and they kept losing their place in
 the series of steps. Eventually they would just seemingly lose track
 entirely and be unable to fix what turned out to be trivial errors, at
-which point I had to clear the decks entirely, nd reload the latest
-versions, and then re-explain what I wanted, and other annoying
-machinations. In the end I had to give them nearly step-by-step
+which point I had to clear the decks entirely, reload the latest
+versions of the code base we were working on, and then re-explain the project and what to do next. In the end I had to give them nearly step-by-step
 guidance to get it right, and the way I wanted it to be, to be
 understanable and teachable. That said, to their credit, once I had
 the compiler and hardware emulator the understandable and teachable
