@@ -23,12 +23,6 @@ then ask the student to add for loops, which, being much simpler, is a
 plausible exercise, whereas adding recursion would be way too complex
 for a beginner.)
 
-You'll see that I also asked the LLMs to make presentations. Those are
-here "as is" (actually, they didn't work, but for a stupid minor
-reason, so as-is plus a tiny bit of work), and you'll see that
-although these are a reasonable start, they definitely aren't complete
-teaching materials.
-
 The files "pathos.py" (which imports "irony.py") is a simple OS whose
 goal is to create, edit, compile, and run programs written in
 Irony. ("irony.py" is a combined version of compiler.py and
@@ -40,17 +34,36 @@ execute the reuslting (on the emulated hardware). See
 Everything here was written in about 5 total hours using a combination
 of claude and chatgpt. This wasn't as easy as I'd hoped. As many folks
 who use LLMs to assist in coding discover, they are bad at keeping
-track of even margianlly complex or large projects. They were
+track of even margianlly complex or large projects, and don't deal
+well with conceptually twisty programming concepts. They were
 basically incapable of implementing recursion correctly, or
-generalizing to the correct level, and they kept losing their place,
-so I had to clears the decks several times and reload the latest
+generalizing to the correct level, and they kept losing their place in
+the series of steps. Eventually they would just seemingly lose track
+entirely and be unable to fix what turned out to be trivial errors, at
+which point I had to clear the decks entirely, nd reload the latest
 versions, and then re-explain what I wanted, and other annoying
 machinations. In the end I had to give them nearly step-by-step
-guidance to get it right, and the way I wanted it to be understanable
-and teachable. That said, to their credit, once I had the compiler and
-hardware emulator the way I wanted it, I could feed those to the LLM
-and was able to understand it and make reasonable changes. For
-example, the entire FOR LOOP extension was done completely by
-Claude. (PATHOS was also mostly written by claude, with my detailed
-guidance, but it's much simpler than Irony.)
+guidance to get it right, and the way I wanted it to be, to be
+understanable and teachable. That said, to their credit, once I had
+the compiler and hardware emulator the understandable and teachable
+way I wanted it, I could feed those to the LLM and it was able to
+understand the code and make reasonable changes. For example, the
+entire FOR LOOP extension was done completely by Claude.
 
+Operating systems being conceptually simpler than programming
+languges, PATHOS was easier for the LLMs, and was almost entirely
+written by Claude, although based on several paragraph of detailed
+spec.  And Claude was able to plug Irony into PATHOS (that is, create
+comp and exec commands) first try!
+
+However, I then asked it to create a help command that simply listed
+all the other commands, which was nearly a trivail task, and it failed
+over and over, until I did one of those resets described above, and
+then it worked. (The attention model is the wrong model of working and
+short term memory!)
+
+You'll see that I also asked the LLMs to make presentations. Those
+are here "as is" (actually, they didn't work, but for a stupid minor
+reason, so as-is plus a tiny bit of work), and you'll see that
+although these are a reasonable start, they definitely aren't complete
+teaching materials.
