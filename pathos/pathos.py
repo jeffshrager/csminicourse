@@ -406,13 +406,35 @@ class Shell:
         return f"User created: {userid}"
     
     def cmd_logout(self, args: List[str]) -> str:
-        """Logout current user"""
+        """Log out current user"""
         if self.current_user:
             username = self.current_user.userid
             self.current_user = None
-            self.fs.current_dir = self.fs.root  # Reset to root directory
-            return f"LOGOUT:{username}"  # Special return code for logout
-        return "No user logged in"
+            # Reset to root directory
+            self.fs.current_dir = self.fs.root
+            return f"LOGOUT:{username}"
+        else:
+            return "No user currently logged in"
+    
+    def cmd_help(self, args: List[str]) -> str:
+        """Show available commands"""
+        help_text = [
+            "Available commands:",
+            "cd [dir]",
+            "listdir / ls",
+            "mkdir <dirname>",
+            "del <filename>",
+            "print <filename> / cat <filename>",
+            "create <filename>",
+            "change <filename>",
+            "comp <source_file> <assembly_file>",
+            "exec <assembly_file> [debug]",
+            "mkuser <userid> <password>",
+            "logout",
+            "help / ?",
+            "exit / quit"
+        ]
+        return "\n".join(help_text)
     
     def cmd_comp(self, args: List[str]) -> str:
         """Compile IRONY source file to assembly"""
@@ -485,15 +507,19 @@ class Shell:
         commands = {
             'cd': self.cmd_cd,
             'listdir': self.cmd_listdir,
+            'ls': self.cmd_listdir,  # Alternative command
             'mkdir': self.cmd_mkdir,
             'del': self.cmd_del,
             'print': self.cmd_print,
+            'cat': self.cmd_print,  # Alternative command
             'create': self.cmd_create,
             'change': self.cmd_change,
             'mkuser': self.cmd_mkuser,
             'logout': self.cmd_logout,
             'comp': self.cmd_comp,
             'exec': self.cmd_exec,
+            'help': self.cmd_help,
+            '?': self.cmd_help,  # Alternative command
         }
         
         if cmd in commands:

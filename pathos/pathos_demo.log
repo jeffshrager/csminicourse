@@ -1,0 +1,2119 @@
+jeffshrager@MacBook-Pro-5 pathos % python3 pathos.py 
+python3 pathos.py 
+python3 pathos.py 
+PATHOS Operating System
+======================
+Login: test
+test
+Password: test
+Welcome, test!
+test:/users/test$ help
+help
+Available commands:
+cd [dir]
+listdir / ls
+mkdir <dirname>
+del <filename>
+print <filename> / cat <filename>
+create <filename>
+change <filename>
+comp <source_file> <assembly_file>
+exec <assembly_file> [debug]
+mkuser <userid> <password>
+logout
+help / ?
+exit / quit
+test:/users/test$ ?
+?
+Available commands:
+cd [dir]
+listdir / ls
+mkdir <dirname>
+del <filename>
+print <filename> / cat <filename>
+create <filename>
+change <filename>
+comp <source_file> <assembly_file>
+exec <assembly_file> [debug]
+mkuser <userid> <password>
+logout
+help / ?
+exit / quit
+test:/users/test$ ls
+ls
+evenodd.s (disk: 14702)
+fibonacci.s (disk: 83327)
+loops.s (disk: 46183)
+test:/users/test$ cat fibonacci.s
+cat fibonacci.s
+ 10 def fib n
+ 20 if n < 2
+ 30 return n
+ 40 end
+ 50 a = fib n - 1
+ 60 b = fib n - 2
+ 70 return a + b
+ 80 end
+ 90 
+100 main = fib 9
+110 print main
+test:/users/test$ comp fibonacci.s fibonacci.a
+comp fibonacci.s fibonacci.a
+Compiled fibonacci.s -> fibonacci.a (disk: 77196)
+test:/users/test$ print fibonacci.a
+print fibonacci.a
+ 10 JMP main
+ 20 LABEL fib
+ 30 PARAM n
+ 40 JGE n 2 tmp1_end
+ 50 RET n
+ 60 LABEL tmp1_end
+ 70 SUB n 1 tmp2
+ 80 PUSH tmp2
+ 90 CALL fib
+100 MOV _retval tmp3
+110 MOV tmp3 a
+120 SUB n 2 tmp4
+130 PUSH tmp4
+140 CALL fib
+150 MOV _retval tmp5
+160 MOV tmp5 b
+170 ADD a b tmp6
+180 RET tmp6
+190 LABEL main
+200 PUSH 9
+210 CALL fib
+220 MOV _retval tmp7
+230 MOV tmp7 main
+240 PRINT main
+250 HALT
+test:/users/test$ exec fibonacci.a
+exec fibonacci.a
+Program output:
+34
+test:/users/test$ exec fibonacci.a debug
+exec fibonacci.a debug
+=== Starting execution with SP=0 ===
+[PC=00] [SP=00] JMP main
+  → JMP to main
+[PC=18] [SP=00] LABEL main
+[PC=19] [SP=00] PUSH 9
+  → PUSH 9
+[PC=20] [SP=01] CALL fib
+  → CALL fib, arg=9, return addr = 21
+[PC=01] [SP=02] LABEL fib
+[PC=02] [SP=02] PARAM n
+  → PARAM n = 9
+[PC=03] [SP=01] JGE n 2 tmp1_end
+  → JGE 9 >= 2, jumping to tmp1_end
+[PC=05] [SP=01] LABEL tmp1_end
+[PC=06] [SP=01] SUB n 1 tmp2
+  → SUB 9 - 1 = 8 → tmp2 (register)
+[PC=07] [SP=01] PUSH tmp2
+  → PUSH 8
+[PC=08] [SP=02] CALL fib
+  → CALL fib, arg=8, return addr = 9
+[PC=01] [SP=03] LABEL fib
+[PC=02] [SP=03] PARAM n
+  → PARAM n = 8
+[PC=03] [SP=02] JGE n 2 tmp1_end
+  → JGE 8 >= 2, jumping to tmp1_end
+[PC=05] [SP=02] LABEL tmp1_end
+[PC=06] [SP=02] SUB n 1 tmp2
+  → SUB 8 - 1 = 7 → tmp2 (register)
+[PC=07] [SP=02] PUSH tmp2
+  → PUSH 7
+[PC=08] [SP=03] CALL fib
+  → CALL fib, arg=7, return addr = 9
+[PC=01] [SP=04] LABEL fib
+[PC=02] [SP=04] PARAM n
+  → PARAM n = 7
+[PC=03] [SP=03] JGE n 2 tmp1_end
+  → JGE 7 >= 2, jumping to tmp1_end
+[PC=05] [SP=03] LABEL tmp1_end
+[PC=06] [SP=03] SUB n 1 tmp2
+  → SUB 7 - 1 = 6 → tmp2 (register)
+[PC=07] [SP=03] PUSH tmp2
+  → PUSH 6
+[PC=08] [SP=04] CALL fib
+  → CALL fib, arg=6, return addr = 9
+[PC=01] [SP=05] LABEL fib
+[PC=02] [SP=05] PARAM n
+  → PARAM n = 6
+[PC=03] [SP=04] JGE n 2 tmp1_end
+  → JGE 6 >= 2, jumping to tmp1_end
+[PC=05] [SP=04] LABEL tmp1_end
+[PC=06] [SP=04] SUB n 1 tmp2
+  → SUB 6 - 1 = 5 → tmp2 (register)
+[PC=07] [SP=04] PUSH tmp2
+  → PUSH 5
+[PC=08] [SP=05] CALL fib
+  → CALL fib, arg=5, return addr = 9
+[PC=01] [SP=06] LABEL fib
+[PC=02] [SP=06] PARAM n
+  → PARAM n = 5
+[PC=03] [SP=05] JGE n 2 tmp1_end
+  → JGE 5 >= 2, jumping to tmp1_end
+[PC=05] [SP=05] LABEL tmp1_end
+[PC=06] [SP=05] SUB n 1 tmp2
+  → SUB 5 - 1 = 4 → tmp2 (register)
+[PC=07] [SP=05] PUSH tmp2
+  → PUSH 4
+[PC=08] [SP=06] CALL fib
+  → CALL fib, arg=4, return addr = 9
+[PC=01] [SP=07] LABEL fib
+[PC=02] [SP=07] PARAM n
+  → PARAM n = 4
+[PC=03] [SP=06] JGE n 2 tmp1_end
+  → JGE 4 >= 2, jumping to tmp1_end
+[PC=05] [SP=06] LABEL tmp1_end
+[PC=06] [SP=06] SUB n 1 tmp2
+  → SUB 4 - 1 = 3 → tmp2 (register)
+[PC=07] [SP=06] PUSH tmp2
+  → PUSH 3
+[PC=08] [SP=07] CALL fib
+  → CALL fib, arg=3, return addr = 9
+[PC=01] [SP=08] LABEL fib
+[PC=02] [SP=08] PARAM n
+  → PARAM n = 3
+[PC=03] [SP=07] JGE n 2 tmp1_end
+  → JGE 3 >= 2, jumping to tmp1_end
+[PC=05] [SP=07] LABEL tmp1_end
+[PC=06] [SP=07] SUB n 1 tmp2
+  → SUB 3 - 1 = 2 → tmp2 (register)
+[PC=07] [SP=07] PUSH tmp2
+  → PUSH 2
+[PC=08] [SP=08] CALL fib
+  → CALL fib, arg=2, return addr = 9
+[PC=01] [SP=09] LABEL fib
+[PC=02] [SP=09] PARAM n
+  → PARAM n = 2
+[PC=03] [SP=08] JGE n 2 tmp1_end
+  → JGE 2 >= 2, jumping to tmp1_end
+[PC=05] [SP=08] LABEL tmp1_end
+[PC=06] [SP=08] SUB n 1 tmp2
+  → SUB 2 - 1 = 1 → tmp2 (register)
+[PC=07] [SP=08] PUSH tmp2
+  → PUSH 1
+[PC=08] [SP=09] CALL fib
+  → CALL fib, arg=1, return addr = 9
+[PC=01] [SP=10] LABEL fib
+[PC=02] [SP=10] PARAM n
+  → PARAM n = 1
+[PC=03] [SP=09] JGE n 2 tmp1_end
+  → JGE 1 < 2, not jumping
+[PC=04] [SP=09] RET n
+  → RET 1 → return to PC=9
+[PC=09] [SP=08] MOV _retval tmp3
+  → MOV tmp3 = 1 (register)
+[PC=10] [SP=08] MOV tmp3 a
+  → MOV a = 1 (memory)
+[PC=11] [SP=08] SUB n 2 tmp4
+  → SUB 2 - 2 = 0 → tmp4 (register)
+[PC=12] [SP=08] PUSH tmp4
+  → PUSH 0
+[PC=13] [SP=09] CALL fib
+  → CALL fib, arg=0, return addr = 14
+[PC=01] [SP=10] LABEL fib
+[PC=02] [SP=10] PARAM n
+  → PARAM n = 0
+[PC=03] [SP=09] JGE n 2 tmp1_end
+  → JGE 0 < 2, not jumping
+[PC=04] [SP=09] RET n
+  → RET 0 → return to PC=14
+[PC=14] [SP=08] MOV _retval tmp5
+  → MOV tmp5 = 0 (register)
+[PC=15] [SP=08] MOV tmp5 b
+  → MOV b = 0 (memory)
+[PC=16] [SP=08] ADD a b tmp6
+  → ADD 1 + 0 = 1 → tmp6 (register)
+[PC=17] [SP=08] RET tmp6
+  → RET 1 → return to PC=9
+[PC=09] [SP=07] MOV _retval tmp3
+  → MOV tmp3 = 1 (register)
+[PC=10] [SP=07] MOV tmp3 a
+  → MOV a = 1 (memory)
+[PC=11] [SP=07] SUB n 2 tmp4
+  → SUB 3 - 2 = 1 → tmp4 (register)
+[PC=12] [SP=07] PUSH tmp4
+  → PUSH 1
+[PC=13] [SP=08] CALL fib
+  → CALL fib, arg=1, return addr = 14
+[PC=01] [SP=09] LABEL fib
+[PC=02] [SP=09] PARAM n
+  → PARAM n = 1
+[PC=03] [SP=08] JGE n 2 tmp1_end
+  → JGE 1 < 2, not jumping
+[PC=04] [SP=08] RET n
+  → RET 1 → return to PC=14
+[PC=14] [SP=07] MOV _retval tmp5
+  → MOV tmp5 = 1 (register)
+[PC=15] [SP=07] MOV tmp5 b
+  → MOV b = 1 (memory)
+[PC=16] [SP=07] ADD a b tmp6
+  → ADD 1 + 1 = 2 → tmp6 (register)
+[PC=17] [SP=07] RET tmp6
+  → RET 2 → return to PC=9
+[PC=09] [SP=06] MOV _retval tmp3
+  → MOV tmp3 = 2 (register)
+[PC=10] [SP=06] MOV tmp3 a
+  → MOV a = 2 (memory)
+[PC=11] [SP=06] SUB n 2 tmp4
+  → SUB 4 - 2 = 2 → tmp4 (register)
+[PC=12] [SP=06] PUSH tmp4
+  → PUSH 2
+[PC=13] [SP=07] CALL fib
+  → CALL fib, arg=2, return addr = 14
+[PC=01] [SP=08] LABEL fib
+[PC=02] [SP=08] PARAM n
+  → PARAM n = 2
+[PC=03] [SP=07] JGE n 2 tmp1_end
+  → JGE 2 >= 2, jumping to tmp1_end
+[PC=05] [SP=07] LABEL tmp1_end
+[PC=06] [SP=07] SUB n 1 tmp2
+  → SUB 2 - 1 = 1 → tmp2 (register)
+[PC=07] [SP=07] PUSH tmp2
+  → PUSH 1
+[PC=08] [SP=08] CALL fib
+  → CALL fib, arg=1, return addr = 9
+[PC=01] [SP=09] LABEL fib
+[PC=02] [SP=09] PARAM n
+  → PARAM n = 1
+[PC=03] [SP=08] JGE n 2 tmp1_end
+  → JGE 1 < 2, not jumping
+[PC=04] [SP=08] RET n
+  → RET 1 → return to PC=9
+[PC=09] [SP=07] MOV _retval tmp3
+  → MOV tmp3 = 1 (register)
+[PC=10] [SP=07] MOV tmp3 a
+  → MOV a = 1 (memory)
+[PC=11] [SP=07] SUB n 2 tmp4
+  → SUB 2 - 2 = 0 → tmp4 (register)
+[PC=12] [SP=07] PUSH tmp4
+  → PUSH 0
+[PC=13] [SP=08] CALL fib
+  → CALL fib, arg=0, return addr = 14
+[PC=01] [SP=09] LABEL fib
+[PC=02] [SP=09] PARAM n
+  → PARAM n = 0
+[PC=03] [SP=08] JGE n 2 tmp1_end
+  → JGE 0 < 2, not jumping
+[PC=04] [SP=08] RET n
+  → RET 0 → return to PC=14
+[PC=14] [SP=07] MOV _retval tmp5
+  → MOV tmp5 = 0 (register)
+[PC=15] [SP=07] MOV tmp5 b
+  → MOV b = 0 (memory)
+[PC=16] [SP=07] ADD a b tmp6
+  → ADD 1 + 0 = 1 → tmp6 (register)
+[PC=17] [SP=07] RET tmp6
+  → RET 1 → return to PC=14
+[PC=14] [SP=06] MOV _retval tmp5
+  → MOV tmp5 = 1 (register)
+[PC=15] [SP=06] MOV tmp5 b
+  → MOV b = 1 (memory)
+[PC=16] [SP=06] ADD a b tmp6
+  → ADD 2 + 1 = 3 → tmp6 (register)
+[PC=17] [SP=06] RET tmp6
+  → RET 3 → return to PC=9
+[PC=09] [SP=05] MOV _retval tmp3
+  → MOV tmp3 = 3 (register)
+[PC=10] [SP=05] MOV tmp3 a
+  → MOV a = 3 (memory)
+[PC=11] [SP=05] SUB n 2 tmp4
+  → SUB 5 - 2 = 3 → tmp4 (register)
+[PC=12] [SP=05] PUSH tmp4
+  → PUSH 3
+[PC=13] [SP=06] CALL fib
+  → CALL fib, arg=3, return addr = 14
+[PC=01] [SP=07] LABEL fib
+[PC=02] [SP=07] PARAM n
+  → PARAM n = 3
+[PC=03] [SP=06] JGE n 2 tmp1_end
+  → JGE 3 >= 2, jumping to tmp1_end
+[PC=05] [SP=06] LABEL tmp1_end
+[PC=06] [SP=06] SUB n 1 tmp2
+  → SUB 3 - 1 = 2 → tmp2 (register)
+[PC=07] [SP=06] PUSH tmp2
+  → PUSH 2
+[PC=08] [SP=07] CALL fib
+  → CALL fib, arg=2, return addr = 9
+[PC=01] [SP=08] LABEL fib
+[PC=02] [SP=08] PARAM n
+  → PARAM n = 2
+[PC=03] [SP=07] JGE n 2 tmp1_end
+  → JGE 2 >= 2, jumping to tmp1_end
+[PC=05] [SP=07] LABEL tmp1_end
+[PC=06] [SP=07] SUB n 1 tmp2
+  → SUB 2 - 1 = 1 → tmp2 (register)
+[PC=07] [SP=07] PUSH tmp2
+  → PUSH 1
+[PC=08] [SP=08] CALL fib
+  → CALL fib, arg=1, return addr = 9
+[PC=01] [SP=09] LABEL fib
+[PC=02] [SP=09] PARAM n
+  → PARAM n = 1
+[PC=03] [SP=08] JGE n 2 tmp1_end
+  → JGE 1 < 2, not jumping
+[PC=04] [SP=08] RET n
+  → RET 1 → return to PC=9
+[PC=09] [SP=07] MOV _retval tmp3
+  → MOV tmp3 = 1 (register)
+[PC=10] [SP=07] MOV tmp3 a
+  → MOV a = 1 (memory)
+[PC=11] [SP=07] SUB n 2 tmp4
+  → SUB 2 - 2 = 0 → tmp4 (register)
+[PC=12] [SP=07] PUSH tmp4
+  → PUSH 0
+[PC=13] [SP=08] CALL fib
+  → CALL fib, arg=0, return addr = 14
+[PC=01] [SP=09] LABEL fib
+[PC=02] [SP=09] PARAM n
+  → PARAM n = 0
+[PC=03] [SP=08] JGE n 2 tmp1_end
+  → JGE 0 < 2, not jumping
+[PC=04] [SP=08] RET n
+  → RET 0 → return to PC=14
+[PC=14] [SP=07] MOV _retval tmp5
+  → MOV tmp5 = 0 (register)
+[PC=15] [SP=07] MOV tmp5 b
+  → MOV b = 0 (memory)
+[PC=16] [SP=07] ADD a b tmp6
+  → ADD 1 + 0 = 1 → tmp6 (register)
+[PC=17] [SP=07] RET tmp6
+  → RET 1 → return to PC=9
+[PC=09] [SP=06] MOV _retval tmp3
+  → MOV tmp3 = 1 (register)
+[PC=10] [SP=06] MOV tmp3 a
+  → MOV a = 1 (memory)
+[PC=11] [SP=06] SUB n 2 tmp4
+  → SUB 3 - 2 = 1 → tmp4 (register)
+[PC=12] [SP=06] PUSH tmp4
+  → PUSH 1
+[PC=13] [SP=07] CALL fib
+  → CALL fib, arg=1, return addr = 14
+[PC=01] [SP=08] LABEL fib
+[PC=02] [SP=08] PARAM n
+  → PARAM n = 1
+[PC=03] [SP=07] JGE n 2 tmp1_end
+  → JGE 1 < 2, not jumping
+[PC=04] [SP=07] RET n
+  → RET 1 → return to PC=14
+[PC=14] [SP=06] MOV _retval tmp5
+  → MOV tmp5 = 1 (register)
+[PC=15] [SP=06] MOV tmp5 b
+  → MOV b = 1 (memory)
+[PC=16] [SP=06] ADD a b tmp6
+  → ADD 1 + 1 = 2 → tmp6 (register)
+[PC=17] [SP=06] RET tmp6
+  → RET 2 → return to PC=14
+[PC=14] [SP=05] MOV _retval tmp5
+  → MOV tmp5 = 2 (register)
+[PC=15] [SP=05] MOV tmp5 b
+  → MOV b = 2 (memory)
+[PC=16] [SP=05] ADD a b tmp6
+  → ADD 3 + 2 = 5 → tmp6 (register)
+[PC=17] [SP=05] RET tmp6
+  → RET 5 → return to PC=9
+[PC=09] [SP=04] MOV _retval tmp3
+  → MOV tmp3 = 5 (register)
+[PC=10] [SP=04] MOV tmp3 a
+  → MOV a = 5 (memory)
+[PC=11] [SP=04] SUB n 2 tmp4
+  → SUB 6 - 2 = 4 → tmp4 (register)
+[PC=12] [SP=04] PUSH tmp4
+  → PUSH 4
+[PC=13] [SP=05] CALL fib
+  → CALL fib, arg=4, return addr = 14
+[PC=01] [SP=06] LABEL fib
+[PC=02] [SP=06] PARAM n
+  → PARAM n = 4
+[PC=03] [SP=05] JGE n 2 tmp1_end
+  → JGE 4 >= 2, jumping to tmp1_end
+[PC=05] [SP=05] LABEL tmp1_end
+[PC=06] [SP=05] SUB n 1 tmp2
+  → SUB 4 - 1 = 3 → tmp2 (register)
+[PC=07] [SP=05] PUSH tmp2
+  → PUSH 3
+[PC=08] [SP=06] CALL fib
+  → CALL fib, arg=3, return addr = 9
+[PC=01] [SP=07] LABEL fib
+[PC=02] [SP=07] PARAM n
+  → PARAM n = 3
+[PC=03] [SP=06] JGE n 2 tmp1_end
+  → JGE 3 >= 2, jumping to tmp1_end
+[PC=05] [SP=06] LABEL tmp1_end
+[PC=06] [SP=06] SUB n 1 tmp2
+  → SUB 3 - 1 = 2 → tmp2 (register)
+[PC=07] [SP=06] PUSH tmp2
+  → PUSH 2
+[PC=08] [SP=07] CALL fib
+  → CALL fib, arg=2, return addr = 9
+[PC=01] [SP=08] LABEL fib
+[PC=02] [SP=08] PARAM n
+  → PARAM n = 2
+[PC=03] [SP=07] JGE n 2 tmp1_end
+  → JGE 2 >= 2, jumping to tmp1_end
+[PC=05] [SP=07] LABEL tmp1_end
+[PC=06] [SP=07] SUB n 1 tmp2
+  → SUB 2 - 1 = 1 → tmp2 (register)
+[PC=07] [SP=07] PUSH tmp2
+  → PUSH 1
+[PC=08] [SP=08] CALL fib
+  → CALL fib, arg=1, return addr = 9
+[PC=01] [SP=09] LABEL fib
+[PC=02] [SP=09] PARAM n
+  → PARAM n = 1
+[PC=03] [SP=08] JGE n 2 tmp1_end
+  → JGE 1 < 2, not jumping
+[PC=04] [SP=08] RET n
+  → RET 1 → return to PC=9
+[PC=09] [SP=07] MOV _retval tmp3
+  → MOV tmp3 = 1 (register)
+[PC=10] [SP=07] MOV tmp3 a
+  → MOV a = 1 (memory)
+[PC=11] [SP=07] SUB n 2 tmp4
+  → SUB 2 - 2 = 0 → tmp4 (register)
+[PC=12] [SP=07] PUSH tmp4
+  → PUSH 0
+[PC=13] [SP=08] CALL fib
+  → CALL fib, arg=0, return addr = 14
+[PC=01] [SP=09] LABEL fib
+[PC=02] [SP=09] PARAM n
+  → PARAM n = 0
+[PC=03] [SP=08] JGE n 2 tmp1_end
+  → JGE 0 < 2, not jumping
+[PC=04] [SP=08] RET n
+  → RET 0 → return to PC=14
+[PC=14] [SP=07] MOV _retval tmp5
+  → MOV tmp5 = 0 (register)
+[PC=15] [SP=07] MOV tmp5 b
+  → MOV b = 0 (memory)
+[PC=16] [SP=07] ADD a b tmp6
+  → ADD 1 + 0 = 1 → tmp6 (register)
+[PC=17] [SP=07] RET tmp6
+  → RET 1 → return to PC=9
+[PC=09] [SP=06] MOV _retval tmp3
+  → MOV tmp3 = 1 (register)
+[PC=10] [SP=06] MOV tmp3 a
+  → MOV a = 1 (memory)
+[PC=11] [SP=06] SUB n 2 tmp4
+  → SUB 3 - 2 = 1 → tmp4 (register)
+[PC=12] [SP=06] PUSH tmp4
+  → PUSH 1
+[PC=13] [SP=07] CALL fib
+  → CALL fib, arg=1, return addr = 14
+[PC=01] [SP=08] LABEL fib
+[PC=02] [SP=08] PARAM n
+  → PARAM n = 1
+[PC=03] [SP=07] JGE n 2 tmp1_end
+  → JGE 1 < 2, not jumping
+[PC=04] [SP=07] RET n
+  → RET 1 → return to PC=14
+[PC=14] [SP=06] MOV _retval tmp5
+  → MOV tmp5 = 1 (register)
+[PC=15] [SP=06] MOV tmp5 b
+  → MOV b = 1 (memory)
+[PC=16] [SP=06] ADD a b tmp6
+  → ADD 1 + 1 = 2 → tmp6 (register)
+[PC=17] [SP=06] RET tmp6
+  → RET 2 → return to PC=9
+[PC=09] [SP=05] MOV _retval tmp3
+  → MOV tmp3 = 2 (register)
+[PC=10] [SP=05] MOV tmp3 a
+  → MOV a = 2 (memory)
+[PC=11] [SP=05] SUB n 2 tmp4
+  → SUB 4 - 2 = 2 → tmp4 (register)
+[PC=12] [SP=05] PUSH tmp4
+  → PUSH 2
+[PC=13] [SP=06] CALL fib
+  → CALL fib, arg=2, return addr = 14
+[PC=01] [SP=07] LABEL fib
+[PC=02] [SP=07] PARAM n
+  → PARAM n = 2
+[PC=03] [SP=06] JGE n 2 tmp1_end
+  → JGE 2 >= 2, jumping to tmp1_end
+[PC=05] [SP=06] LABEL tmp1_end
+[PC=06] [SP=06] SUB n 1 tmp2
+  → SUB 2 - 1 = 1 → tmp2 (register)
+[PC=07] [SP=06] PUSH tmp2
+  → PUSH 1
+[PC=08] [SP=07] CALL fib
+  → CALL fib, arg=1, return addr = 9
+[PC=01] [SP=08] LABEL fib
+[PC=02] [SP=08] PARAM n
+  → PARAM n = 1
+[PC=03] [SP=07] JGE n 2 tmp1_end
+  → JGE 1 < 2, not jumping
+[PC=04] [SP=07] RET n
+  → RET 1 → return to PC=9
+[PC=09] [SP=06] MOV _retval tmp3
+  → MOV tmp3 = 1 (register)
+[PC=10] [SP=06] MOV tmp3 a
+  → MOV a = 1 (memory)
+[PC=11] [SP=06] SUB n 2 tmp4
+  → SUB 2 - 2 = 0 → tmp4 (register)
+[PC=12] [SP=06] PUSH tmp4
+  → PUSH 0
+[PC=13] [SP=07] CALL fib
+  → CALL fib, arg=0, return addr = 14
+[PC=01] [SP=08] LABEL fib
+[PC=02] [SP=08] PARAM n
+  → PARAM n = 0
+[PC=03] [SP=07] JGE n 2 tmp1_end
+  → JGE 0 < 2, not jumping
+[PC=04] [SP=07] RET n
+  → RET 0 → return to PC=14
+[PC=14] [SP=06] MOV _retval tmp5
+  → MOV tmp5 = 0 (register)
+[PC=15] [SP=06] MOV tmp5 b
+  → MOV b = 0 (memory)
+[PC=16] [SP=06] ADD a b tmp6
+  → ADD 1 + 0 = 1 → tmp6 (register)
+[PC=17] [SP=06] RET tmp6
+  → RET 1 → return to PC=14
+[PC=14] [SP=05] MOV _retval tmp5
+  → MOV tmp5 = 1 (register)
+[PC=15] [SP=05] MOV tmp5 b
+  → MOV b = 1 (memory)
+[PC=16] [SP=05] ADD a b tmp6
+  → ADD 2 + 1 = 3 → tmp6 (register)
+[PC=17] [SP=05] RET tmp6
+  → RET 3 → return to PC=14
+[PC=14] [SP=04] MOV _retval tmp5
+  → MOV tmp5 = 3 (register)
+[PC=15] [SP=04] MOV tmp5 b
+  → MOV b = 3 (memory)
+[PC=16] [SP=04] ADD a b tmp6
+  → ADD 5 + 3 = 8 → tmp6 (register)
+[PC=17] [SP=04] RET tmp6
+  → RET 8 → return to PC=9
+[PC=09] [SP=03] MOV _retval tmp3
+  → MOV tmp3 = 8 (register)
+[PC=10] [SP=03] MOV tmp3 a
+  → MOV a = 8 (memory)
+[PC=11] [SP=03] SUB n 2 tmp4
+  → SUB 7 - 2 = 5 → tmp4 (register)
+[PC=12] [SP=03] PUSH tmp4
+  → PUSH 5
+[PC=13] [SP=04] CALL fib
+  → CALL fib, arg=5, return addr = 14
+[PC=01] [SP=05] LABEL fib
+[PC=02] [SP=05] PARAM n
+  → PARAM n = 5
+[PC=03] [SP=04] JGE n 2 tmp1_end
+  → JGE 5 >= 2, jumping to tmp1_end
+[PC=05] [SP=04] LABEL tmp1_end
+[PC=06] [SP=04] SUB n 1 tmp2
+  → SUB 5 - 1 = 4 → tmp2 (register)
+[PC=07] [SP=04] PUSH tmp2
+  → PUSH 4
+[PC=08] [SP=05] CALL fib
+  → CALL fib, arg=4, return addr = 9
+[PC=01] [SP=06] LABEL fib
+[PC=02] [SP=06] PARAM n
+  → PARAM n = 4
+[PC=03] [SP=05] JGE n 2 tmp1_end
+  → JGE 4 >= 2, jumping to tmp1_end
+[PC=05] [SP=05] LABEL tmp1_end
+[PC=06] [SP=05] SUB n 1 tmp2
+  → SUB 4 - 1 = 3 → tmp2 (register)
+[PC=07] [SP=05] PUSH tmp2
+  → PUSH 3
+[PC=08] [SP=06] CALL fib
+  → CALL fib, arg=3, return addr = 9
+[PC=01] [SP=07] LABEL fib
+[PC=02] [SP=07] PARAM n
+  → PARAM n = 3
+[PC=03] [SP=06] JGE n 2 tmp1_end
+  → JGE 3 >= 2, jumping to tmp1_end
+[PC=05] [SP=06] LABEL tmp1_end
+[PC=06] [SP=06] SUB n 1 tmp2
+  → SUB 3 - 1 = 2 → tmp2 (register)
+[PC=07] [SP=06] PUSH tmp2
+  → PUSH 2
+[PC=08] [SP=07] CALL fib
+  → CALL fib, arg=2, return addr = 9
+[PC=01] [SP=08] LABEL fib
+[PC=02] [SP=08] PARAM n
+  → PARAM n = 2
+[PC=03] [SP=07] JGE n 2 tmp1_end
+  → JGE 2 >= 2, jumping to tmp1_end
+[PC=05] [SP=07] LABEL tmp1_end
+[PC=06] [SP=07] SUB n 1 tmp2
+  → SUB 2 - 1 = 1 → tmp2 (register)
+[PC=07] [SP=07] PUSH tmp2
+  → PUSH 1
+[PC=08] [SP=08] CALL fib
+  → CALL fib, arg=1, return addr = 9
+[PC=01] [SP=09] LABEL fib
+[PC=02] [SP=09] PARAM n
+  → PARAM n = 1
+[PC=03] [SP=08] JGE n 2 tmp1_end
+  → JGE 1 < 2, not jumping
+[PC=04] [SP=08] RET n
+  → RET 1 → return to PC=9
+[PC=09] [SP=07] MOV _retval tmp3
+  → MOV tmp3 = 1 (register)
+[PC=10] [SP=07] MOV tmp3 a
+  → MOV a = 1 (memory)
+[PC=11] [SP=07] SUB n 2 tmp4
+  → SUB 2 - 2 = 0 → tmp4 (register)
+[PC=12] [SP=07] PUSH tmp4
+  → PUSH 0
+[PC=13] [SP=08] CALL fib
+  → CALL fib, arg=0, return addr = 14
+[PC=01] [SP=09] LABEL fib
+[PC=02] [SP=09] PARAM n
+  → PARAM n = 0
+[PC=03] [SP=08] JGE n 2 tmp1_end
+  → JGE 0 < 2, not jumping
+[PC=04] [SP=08] RET n
+  → RET 0 → return to PC=14
+[PC=14] [SP=07] MOV _retval tmp5
+  → MOV tmp5 = 0 (register)
+[PC=15] [SP=07] MOV tmp5 b
+  → MOV b = 0 (memory)
+[PC=16] [SP=07] ADD a b tmp6
+  → ADD 1 + 0 = 1 → tmp6 (register)
+[PC=17] [SP=07] RET tmp6
+  → RET 1 → return to PC=9
+[PC=09] [SP=06] MOV _retval tmp3
+  → MOV tmp3 = 1 (register)
+[PC=10] [SP=06] MOV tmp3 a
+  → MOV a = 1 (memory)
+[PC=11] [SP=06] SUB n 2 tmp4
+  → SUB 3 - 2 = 1 → tmp4 (register)
+[PC=12] [SP=06] PUSH tmp4
+  → PUSH 1
+[PC=13] [SP=07] CALL fib
+  → CALL fib, arg=1, return addr = 14
+[PC=01] [SP=08] LABEL fib
+[PC=02] [SP=08] PARAM n
+  → PARAM n = 1
+[PC=03] [SP=07] JGE n 2 tmp1_end
+  → JGE 1 < 2, not jumping
+[PC=04] [SP=07] RET n
+  → RET 1 → return to PC=14
+[PC=14] [SP=06] MOV _retval tmp5
+  → MOV tmp5 = 1 (register)
+[PC=15] [SP=06] MOV tmp5 b
+  → MOV b = 1 (memory)
+[PC=16] [SP=06] ADD a b tmp6
+  → ADD 1 + 1 = 2 → tmp6 (register)
+[PC=17] [SP=06] RET tmp6
+  → RET 2 → return to PC=9
+[PC=09] [SP=05] MOV _retval tmp3
+  → MOV tmp3 = 2 (register)
+[PC=10] [SP=05] MOV tmp3 a
+  → MOV a = 2 (memory)
+[PC=11] [SP=05] SUB n 2 tmp4
+  → SUB 4 - 2 = 2 → tmp4 (register)
+[PC=12] [SP=05] PUSH tmp4
+  → PUSH 2
+[PC=13] [SP=06] CALL fib
+  → CALL fib, arg=2, return addr = 14
+[PC=01] [SP=07] LABEL fib
+[PC=02] [SP=07] PARAM n
+  → PARAM n = 2
+[PC=03] [SP=06] JGE n 2 tmp1_end
+  → JGE 2 >= 2, jumping to tmp1_end
+[PC=05] [SP=06] LABEL tmp1_end
+[PC=06] [SP=06] SUB n 1 tmp2
+  → SUB 2 - 1 = 1 → tmp2 (register)
+[PC=07] [SP=06] PUSH tmp2
+  → PUSH 1
+[PC=08] [SP=07] CALL fib
+  → CALL fib, arg=1, return addr = 9
+[PC=01] [SP=08] LABEL fib
+[PC=02] [SP=08] PARAM n
+  → PARAM n = 1
+[PC=03] [SP=07] JGE n 2 tmp1_end
+  → JGE 1 < 2, not jumping
+[PC=04] [SP=07] RET n
+  → RET 1 → return to PC=9
+[PC=09] [SP=06] MOV _retval tmp3
+  → MOV tmp3 = 1 (register)
+[PC=10] [SP=06] MOV tmp3 a
+  → MOV a = 1 (memory)
+[PC=11] [SP=06] SUB n 2 tmp4
+  → SUB 2 - 2 = 0 → tmp4 (register)
+[PC=12] [SP=06] PUSH tmp4
+  → PUSH 0
+[PC=13] [SP=07] CALL fib
+  → CALL fib, arg=0, return addr = 14
+[PC=01] [SP=08] LABEL fib
+[PC=02] [SP=08] PARAM n
+  → PARAM n = 0
+[PC=03] [SP=07] JGE n 2 tmp1_end
+  → JGE 0 < 2, not jumping
+[PC=04] [SP=07] RET n
+  → RET 0 → return to PC=14
+[PC=14] [SP=06] MOV _retval tmp5
+  → MOV tmp5 = 0 (register)
+[PC=15] [SP=06] MOV tmp5 b
+  → MOV b = 0 (memory)
+[PC=16] [SP=06] ADD a b tmp6
+  → ADD 1 + 0 = 1 → tmp6 (register)
+[PC=17] [SP=06] RET tmp6
+  → RET 1 → return to PC=14
+[PC=14] [SP=05] MOV _retval tmp5
+  → MOV tmp5 = 1 (register)
+[PC=15] [SP=05] MOV tmp5 b
+  → MOV b = 1 (memory)
+[PC=16] [SP=05] ADD a b tmp6
+  → ADD 2 + 1 = 3 → tmp6 (register)
+[PC=17] [SP=05] RET tmp6
+  → RET 3 → return to PC=9
+[PC=09] [SP=04] MOV _retval tmp3
+  → MOV tmp3 = 3 (register)
+[PC=10] [SP=04] MOV tmp3 a
+  → MOV a = 3 (memory)
+[PC=11] [SP=04] SUB n 2 tmp4
+  → SUB 5 - 2 = 3 → tmp4 (register)
+[PC=12] [SP=04] PUSH tmp4
+  → PUSH 3
+[PC=13] [SP=05] CALL fib
+  → CALL fib, arg=3, return addr = 14
+[PC=01] [SP=06] LABEL fib
+[PC=02] [SP=06] PARAM n
+  → PARAM n = 3
+[PC=03] [SP=05] JGE n 2 tmp1_end
+  → JGE 3 >= 2, jumping to tmp1_end
+[PC=05] [SP=05] LABEL tmp1_end
+[PC=06] [SP=05] SUB n 1 tmp2
+  → SUB 3 - 1 = 2 → tmp2 (register)
+[PC=07] [SP=05] PUSH tmp2
+  → PUSH 2
+[PC=08] [SP=06] CALL fib
+  → CALL fib, arg=2, return addr = 9
+[PC=01] [SP=07] LABEL fib
+[PC=02] [SP=07] PARAM n
+  → PARAM n = 2
+[PC=03] [SP=06] JGE n 2 tmp1_end
+  → JGE 2 >= 2, jumping to tmp1_end
+[PC=05] [SP=06] LABEL tmp1_end
+[PC=06] [SP=06] SUB n 1 tmp2
+  → SUB 2 - 1 = 1 → tmp2 (register)
+[PC=07] [SP=06] PUSH tmp2
+  → PUSH 1
+[PC=08] [SP=07] CALL fib
+  → CALL fib, arg=1, return addr = 9
+[PC=01] [SP=08] LABEL fib
+[PC=02] [SP=08] PARAM n
+  → PARAM n = 1
+[PC=03] [SP=07] JGE n 2 tmp1_end
+  → JGE 1 < 2, not jumping
+[PC=04] [SP=07] RET n
+  → RET 1 → return to PC=9
+[PC=09] [SP=06] MOV _retval tmp3
+  → MOV tmp3 = 1 (register)
+[PC=10] [SP=06] MOV tmp3 a
+  → MOV a = 1 (memory)
+[PC=11] [SP=06] SUB n 2 tmp4
+  → SUB 2 - 2 = 0 → tmp4 (register)
+[PC=12] [SP=06] PUSH tmp4
+  → PUSH 0
+[PC=13] [SP=07] CALL fib
+  → CALL fib, arg=0, return addr = 14
+[PC=01] [SP=08] LABEL fib
+[PC=02] [SP=08] PARAM n
+  → PARAM n = 0
+[PC=03] [SP=07] JGE n 2 tmp1_end
+  → JGE 0 < 2, not jumping
+[PC=04] [SP=07] RET n
+  → RET 0 → return to PC=14
+[PC=14] [SP=06] MOV _retval tmp5
+  → MOV tmp5 = 0 (register)
+[PC=15] [SP=06] MOV tmp5 b
+  → MOV b = 0 (memory)
+[PC=16] [SP=06] ADD a b tmp6
+  → ADD 1 + 0 = 1 → tmp6 (register)
+[PC=17] [SP=06] RET tmp6
+  → RET 1 → return to PC=9
+[PC=09] [SP=05] MOV _retval tmp3
+  → MOV tmp3 = 1 (register)
+[PC=10] [SP=05] MOV tmp3 a
+  → MOV a = 1 (memory)
+[PC=11] [SP=05] SUB n 2 tmp4
+  → SUB 3 - 2 = 1 → tmp4 (register)
+[PC=12] [SP=05] PUSH tmp4
+  → PUSH 1
+[PC=13] [SP=06] CALL fib
+  → CALL fib, arg=1, return addr = 14
+[PC=01] [SP=07] LABEL fib
+[PC=02] [SP=07] PARAM n
+  → PARAM n = 1
+[PC=03] [SP=06] JGE n 2 tmp1_end
+  → JGE 1 < 2, not jumping
+[PC=04] [SP=06] RET n
+  → RET 1 → return to PC=14
+[PC=14] [SP=05] MOV _retval tmp5
+  → MOV tmp5 = 1 (register)
+[PC=15] [SP=05] MOV tmp5 b
+  → MOV b = 1 (memory)
+[PC=16] [SP=05] ADD a b tmp6
+  → ADD 1 + 1 = 2 → tmp6 (register)
+[PC=17] [SP=05] RET tmp6
+  → RET 2 → return to PC=14
+[PC=14] [SP=04] MOV _retval tmp5
+  → MOV tmp5 = 2 (register)
+[PC=15] [SP=04] MOV tmp5 b
+  → MOV b = 2 (memory)
+[PC=16] [SP=04] ADD a b tmp6
+  → ADD 3 + 2 = 5 → tmp6 (register)
+[PC=17] [SP=04] RET tmp6
+  → RET 5 → return to PC=14
+[PC=14] [SP=03] MOV _retval tmp5
+  → MOV tmp5 = 5 (register)
+[PC=15] [SP=03] MOV tmp5 b
+  → MOV b = 5 (memory)
+[PC=16] [SP=03] ADD a b tmp6
+  → ADD 8 + 5 = 13 → tmp6 (register)
+[PC=17] [SP=03] RET tmp6
+  → RET 13 → return to PC=9
+[PC=09] [SP=02] MOV _retval tmp3
+  → MOV tmp3 = 13 (register)
+[PC=10] [SP=02] MOV tmp3 a
+  → MOV a = 13 (memory)
+[PC=11] [SP=02] SUB n 2 tmp4
+  → SUB 8 - 2 = 6 → tmp4 (register)
+[PC=12] [SP=02] PUSH tmp4
+  → PUSH 6
+[PC=13] [SP=03] CALL fib
+  → CALL fib, arg=6, return addr = 14
+[PC=01] [SP=04] LABEL fib
+[PC=02] [SP=04] PARAM n
+  → PARAM n = 6
+[PC=03] [SP=03] JGE n 2 tmp1_end
+  → JGE 6 >= 2, jumping to tmp1_end
+[PC=05] [SP=03] LABEL tmp1_end
+[PC=06] [SP=03] SUB n 1 tmp2
+  → SUB 6 - 1 = 5 → tmp2 (register)
+[PC=07] [SP=03] PUSH tmp2
+  → PUSH 5
+[PC=08] [SP=04] CALL fib
+  → CALL fib, arg=5, return addr = 9
+[PC=01] [SP=05] LABEL fib
+[PC=02] [SP=05] PARAM n
+  → PARAM n = 5
+[PC=03] [SP=04] JGE n 2 tmp1_end
+  → JGE 5 >= 2, jumping to tmp1_end
+[PC=05] [SP=04] LABEL tmp1_end
+[PC=06] [SP=04] SUB n 1 tmp2
+  → SUB 5 - 1 = 4 → tmp2 (register)
+[PC=07] [SP=04] PUSH tmp2
+  → PUSH 4
+[PC=08] [SP=05] CALL fib
+  → CALL fib, arg=4, return addr = 9
+[PC=01] [SP=06] LABEL fib
+[PC=02] [SP=06] PARAM n
+  → PARAM n = 4
+[PC=03] [SP=05] JGE n 2 tmp1_end
+  → JGE 4 >= 2, jumping to tmp1_end
+[PC=05] [SP=05] LABEL tmp1_end
+[PC=06] [SP=05] SUB n 1 tmp2
+  → SUB 4 - 1 = 3 → tmp2 (register)
+[PC=07] [SP=05] PUSH tmp2
+  → PUSH 3
+[PC=08] [SP=06] CALL fib
+  → CALL fib, arg=3, return addr = 9
+[PC=01] [SP=07] LABEL fib
+[PC=02] [SP=07] PARAM n
+  → PARAM n = 3
+[PC=03] [SP=06] JGE n 2 tmp1_end
+  → JGE 3 >= 2, jumping to tmp1_end
+[PC=05] [SP=06] LABEL tmp1_end
+[PC=06] [SP=06] SUB n 1 tmp2
+  → SUB 3 - 1 = 2 → tmp2 (register)
+[PC=07] [SP=06] PUSH tmp2
+  → PUSH 2
+[PC=08] [SP=07] CALL fib
+  → CALL fib, arg=2, return addr = 9
+[PC=01] [SP=08] LABEL fib
+[PC=02] [SP=08] PARAM n
+  → PARAM n = 2
+[PC=03] [SP=07] JGE n 2 tmp1_end
+  → JGE 2 >= 2, jumping to tmp1_end
+[PC=05] [SP=07] LABEL tmp1_end
+[PC=06] [SP=07] SUB n 1 tmp2
+  → SUB 2 - 1 = 1 → tmp2 (register)
+[PC=07] [SP=07] PUSH tmp2
+  → PUSH 1
+[PC=08] [SP=08] CALL fib
+  → CALL fib, arg=1, return addr = 9
+[PC=01] [SP=09] LABEL fib
+[PC=02] [SP=09] PARAM n
+  → PARAM n = 1
+[PC=03] [SP=08] JGE n 2 tmp1_end
+  → JGE 1 < 2, not jumping
+[PC=04] [SP=08] RET n
+  → RET 1 → return to PC=9
+[PC=09] [SP=07] MOV _retval tmp3
+  → MOV tmp3 = 1 (register)
+[PC=10] [SP=07] MOV tmp3 a
+  → MOV a = 1 (memory)
+[PC=11] [SP=07] SUB n 2 tmp4
+  → SUB 2 - 2 = 0 → tmp4 (register)
+[PC=12] [SP=07] PUSH tmp4
+  → PUSH 0
+[PC=13] [SP=08] CALL fib
+  → CALL fib, arg=0, return addr = 14
+[PC=01] [SP=09] LABEL fib
+[PC=02] [SP=09] PARAM n
+  → PARAM n = 0
+[PC=03] [SP=08] JGE n 2 tmp1_end
+  → JGE 0 < 2, not jumping
+[PC=04] [SP=08] RET n
+  → RET 0 → return to PC=14
+[PC=14] [SP=07] MOV _retval tmp5
+  → MOV tmp5 = 0 (register)
+[PC=15] [SP=07] MOV tmp5 b
+  → MOV b = 0 (memory)
+[PC=16] [SP=07] ADD a b tmp6
+  → ADD 1 + 0 = 1 → tmp6 (register)
+[PC=17] [SP=07] RET tmp6
+  → RET 1 → return to PC=9
+[PC=09] [SP=06] MOV _retval tmp3
+  → MOV tmp3 = 1 (register)
+[PC=10] [SP=06] MOV tmp3 a
+  → MOV a = 1 (memory)
+[PC=11] [SP=06] SUB n 2 tmp4
+  → SUB 3 - 2 = 1 → tmp4 (register)
+[PC=12] [SP=06] PUSH tmp4
+  → PUSH 1
+[PC=13] [SP=07] CALL fib
+  → CALL fib, arg=1, return addr = 14
+[PC=01] [SP=08] LABEL fib
+[PC=02] [SP=08] PARAM n
+  → PARAM n = 1
+[PC=03] [SP=07] JGE n 2 tmp1_end
+  → JGE 1 < 2, not jumping
+[PC=04] [SP=07] RET n
+  → RET 1 → return to PC=14
+[PC=14] [SP=06] MOV _retval tmp5
+  → MOV tmp5 = 1 (register)
+[PC=15] [SP=06] MOV tmp5 b
+  → MOV b = 1 (memory)
+[PC=16] [SP=06] ADD a b tmp6
+  → ADD 1 + 1 = 2 → tmp6 (register)
+[PC=17] [SP=06] RET tmp6
+  → RET 2 → return to PC=9
+[PC=09] [SP=05] MOV _retval tmp3
+  → MOV tmp3 = 2 (register)
+[PC=10] [SP=05] MOV tmp3 a
+  → MOV a = 2 (memory)
+[PC=11] [SP=05] SUB n 2 tmp4
+  → SUB 4 - 2 = 2 → tmp4 (register)
+[PC=12] [SP=05] PUSH tmp4
+  → PUSH 2
+[PC=13] [SP=06] CALL fib
+  → CALL fib, arg=2, return addr = 14
+[PC=01] [SP=07] LABEL fib
+[PC=02] [SP=07] PARAM n
+  → PARAM n = 2
+[PC=03] [SP=06] JGE n 2 tmp1_end
+  → JGE 2 >= 2, jumping to tmp1_end
+[PC=05] [SP=06] LABEL tmp1_end
+[PC=06] [SP=06] SUB n 1 tmp2
+  → SUB 2 - 1 = 1 → tmp2 (register)
+[PC=07] [SP=06] PUSH tmp2
+  → PUSH 1
+[PC=08] [SP=07] CALL fib
+  → CALL fib, arg=1, return addr = 9
+[PC=01] [SP=08] LABEL fib
+[PC=02] [SP=08] PARAM n
+  → PARAM n = 1
+[PC=03] [SP=07] JGE n 2 tmp1_end
+  → JGE 1 < 2, not jumping
+[PC=04] [SP=07] RET n
+  → RET 1 → return to PC=9
+[PC=09] [SP=06] MOV _retval tmp3
+  → MOV tmp3 = 1 (register)
+[PC=10] [SP=06] MOV tmp3 a
+  → MOV a = 1 (memory)
+[PC=11] [SP=06] SUB n 2 tmp4
+  → SUB 2 - 2 = 0 → tmp4 (register)
+[PC=12] [SP=06] PUSH tmp4
+  → PUSH 0
+[PC=13] [SP=07] CALL fib
+  → CALL fib, arg=0, return addr = 14
+[PC=01] [SP=08] LABEL fib
+[PC=02] [SP=08] PARAM n
+  → PARAM n = 0
+[PC=03] [SP=07] JGE n 2 tmp1_end
+  → JGE 0 < 2, not jumping
+[PC=04] [SP=07] RET n
+  → RET 0 → return to PC=14
+[PC=14] [SP=06] MOV _retval tmp5
+  → MOV tmp5 = 0 (register)
+[PC=15] [SP=06] MOV tmp5 b
+  → MOV b = 0 (memory)
+[PC=16] [SP=06] ADD a b tmp6
+  → ADD 1 + 0 = 1 → tmp6 (register)
+[PC=17] [SP=06] RET tmp6
+  → RET 1 → return to PC=14
+[PC=14] [SP=05] MOV _retval tmp5
+  → MOV tmp5 = 1 (register)
+[PC=15] [SP=05] MOV tmp5 b
+  → MOV b = 1 (memory)
+[PC=16] [SP=05] ADD a b tmp6
+  → ADD 2 + 1 = 3 → tmp6 (register)
+[PC=17] [SP=05] RET tmp6
+  → RET 3 → return to PC=9
+[PC=09] [SP=04] MOV _retval tmp3
+  → MOV tmp3 = 3 (register)
+[PC=10] [SP=04] MOV tmp3 a
+  → MOV a = 3 (memory)
+[PC=11] [SP=04] SUB n 2 tmp4
+  → SUB 5 - 2 = 3 → tmp4 (register)
+[PC=12] [SP=04] PUSH tmp4
+  → PUSH 3
+[PC=13] [SP=05] CALL fib
+  → CALL fib, arg=3, return addr = 14
+[PC=01] [SP=06] LABEL fib
+[PC=02] [SP=06] PARAM n
+  → PARAM n = 3
+[PC=03] [SP=05] JGE n 2 tmp1_end
+  → JGE 3 >= 2, jumping to tmp1_end
+[PC=05] [SP=05] LABEL tmp1_end
+[PC=06] [SP=05] SUB n 1 tmp2
+  → SUB 3 - 1 = 2 → tmp2 (register)
+[PC=07] [SP=05] PUSH tmp2
+  → PUSH 2
+[PC=08] [SP=06] CALL fib
+  → CALL fib, arg=2, return addr = 9
+[PC=01] [SP=07] LABEL fib
+[PC=02] [SP=07] PARAM n
+  → PARAM n = 2
+[PC=03] [SP=06] JGE n 2 tmp1_end
+  → JGE 2 >= 2, jumping to tmp1_end
+[PC=05] [SP=06] LABEL tmp1_end
+[PC=06] [SP=06] SUB n 1 tmp2
+  → SUB 2 - 1 = 1 → tmp2 (register)
+[PC=07] [SP=06] PUSH tmp2
+  → PUSH 1
+[PC=08] [SP=07] CALL fib
+  → CALL fib, arg=1, return addr = 9
+[PC=01] [SP=08] LABEL fib
+[PC=02] [SP=08] PARAM n
+  → PARAM n = 1
+[PC=03] [SP=07] JGE n 2 tmp1_end
+  → JGE 1 < 2, not jumping
+[PC=04] [SP=07] RET n
+  → RET 1 → return to PC=9
+[PC=09] [SP=06] MOV _retval tmp3
+  → MOV tmp3 = 1 (register)
+[PC=10] [SP=06] MOV tmp3 a
+  → MOV a = 1 (memory)
+[PC=11] [SP=06] SUB n 2 tmp4
+  → SUB 2 - 2 = 0 → tmp4 (register)
+[PC=12] [SP=06] PUSH tmp4
+  → PUSH 0
+[PC=13] [SP=07] CALL fib
+  → CALL fib, arg=0, return addr = 14
+[PC=01] [SP=08] LABEL fib
+[PC=02] [SP=08] PARAM n
+  → PARAM n = 0
+[PC=03] [SP=07] JGE n 2 tmp1_end
+  → JGE 0 < 2, not jumping
+[PC=04] [SP=07] RET n
+  → RET 0 → return to PC=14
+[PC=14] [SP=06] MOV _retval tmp5
+  → MOV tmp5 = 0 (register)
+[PC=15] [SP=06] MOV tmp5 b
+  → MOV b = 0 (memory)
+[PC=16] [SP=06] ADD a b tmp6
+  → ADD 1 + 0 = 1 → tmp6 (register)
+[PC=17] [SP=06] RET tmp6
+  → RET 1 → return to PC=9
+[PC=09] [SP=05] MOV _retval tmp3
+  → MOV tmp3 = 1 (register)
+[PC=10] [SP=05] MOV tmp3 a
+  → MOV a = 1 (memory)
+[PC=11] [SP=05] SUB n 2 tmp4
+  → SUB 3 - 2 = 1 → tmp4 (register)
+[PC=12] [SP=05] PUSH tmp4
+  → PUSH 1
+[PC=13] [SP=06] CALL fib
+  → CALL fib, arg=1, return addr = 14
+[PC=01] [SP=07] LABEL fib
+[PC=02] [SP=07] PARAM n
+  → PARAM n = 1
+[PC=03] [SP=06] JGE n 2 tmp1_end
+  → JGE 1 < 2, not jumping
+[PC=04] [SP=06] RET n
+  → RET 1 → return to PC=14
+[PC=14] [SP=05] MOV _retval tmp5
+  → MOV tmp5 = 1 (register)
+[PC=15] [SP=05] MOV tmp5 b
+  → MOV b = 1 (memory)
+[PC=16] [SP=05] ADD a b tmp6
+  → ADD 1 + 1 = 2 → tmp6 (register)
+[PC=17] [SP=05] RET tmp6
+  → RET 2 → return to PC=14
+[PC=14] [SP=04] MOV _retval tmp5
+  → MOV tmp5 = 2 (register)
+[PC=15] [SP=04] MOV tmp5 b
+  → MOV b = 2 (memory)
+[PC=16] [SP=04] ADD a b tmp6
+  → ADD 3 + 2 = 5 → tmp6 (register)
+[PC=17] [SP=04] RET tmp6
+  → RET 5 → return to PC=9
+[PC=09] [SP=03] MOV _retval tmp3
+  → MOV tmp3 = 5 (register)
+[PC=10] [SP=03] MOV tmp3 a
+  → MOV a = 5 (memory)
+[PC=11] [SP=03] SUB n 2 tmp4
+  → SUB 6 - 2 = 4 → tmp4 (register)
+[PC=12] [SP=03] PUSH tmp4
+  → PUSH 4
+[PC=13] [SP=04] CALL fib
+  → CALL fib, arg=4, return addr = 14
+[PC=01] [SP=05] LABEL fib
+[PC=02] [SP=05] PARAM n
+  → PARAM n = 4
+[PC=03] [SP=04] JGE n 2 tmp1_end
+  → JGE 4 >= 2, jumping to tmp1_end
+[PC=05] [SP=04] LABEL tmp1_end
+[PC=06] [SP=04] SUB n 1 tmp2
+  → SUB 4 - 1 = 3 → tmp2 (register)
+[PC=07] [SP=04] PUSH tmp2
+  → PUSH 3
+[PC=08] [SP=05] CALL fib
+  → CALL fib, arg=3, return addr = 9
+[PC=01] [SP=06] LABEL fib
+[PC=02] [SP=06] PARAM n
+  → PARAM n = 3
+[PC=03] [SP=05] JGE n 2 tmp1_end
+  → JGE 3 >= 2, jumping to tmp1_end
+[PC=05] [SP=05] LABEL tmp1_end
+[PC=06] [SP=05] SUB n 1 tmp2
+  → SUB 3 - 1 = 2 → tmp2 (register)
+[PC=07] [SP=05] PUSH tmp2
+  → PUSH 2
+[PC=08] [SP=06] CALL fib
+  → CALL fib, arg=2, return addr = 9
+[PC=01] [SP=07] LABEL fib
+[PC=02] [SP=07] PARAM n
+  → PARAM n = 2
+[PC=03] [SP=06] JGE n 2 tmp1_end
+  → JGE 2 >= 2, jumping to tmp1_end
+[PC=05] [SP=06] LABEL tmp1_end
+[PC=06] [SP=06] SUB n 1 tmp2
+  → SUB 2 - 1 = 1 → tmp2 (register)
+[PC=07] [SP=06] PUSH tmp2
+  → PUSH 1
+[PC=08] [SP=07] CALL fib
+  → CALL fib, arg=1, return addr = 9
+[PC=01] [SP=08] LABEL fib
+[PC=02] [SP=08] PARAM n
+  → PARAM n = 1
+[PC=03] [SP=07] JGE n 2 tmp1_end
+  → JGE 1 < 2, not jumping
+[PC=04] [SP=07] RET n
+  → RET 1 → return to PC=9
+[PC=09] [SP=06] MOV _retval tmp3
+  → MOV tmp3 = 1 (register)
+[PC=10] [SP=06] MOV tmp3 a
+  → MOV a = 1 (memory)
+[PC=11] [SP=06] SUB n 2 tmp4
+  → SUB 2 - 2 = 0 → tmp4 (register)
+[PC=12] [SP=06] PUSH tmp4
+  → PUSH 0
+[PC=13] [SP=07] CALL fib
+  → CALL fib, arg=0, return addr = 14
+[PC=01] [SP=08] LABEL fib
+[PC=02] [SP=08] PARAM n
+  → PARAM n = 0
+[PC=03] [SP=07] JGE n 2 tmp1_end
+  → JGE 0 < 2, not jumping
+[PC=04] [SP=07] RET n
+  → RET 0 → return to PC=14
+[PC=14] [SP=06] MOV _retval tmp5
+  → MOV tmp5 = 0 (register)
+[PC=15] [SP=06] MOV tmp5 b
+  → MOV b = 0 (memory)
+[PC=16] [SP=06] ADD a b tmp6
+  → ADD 1 + 0 = 1 → tmp6 (register)
+[PC=17] [SP=06] RET tmp6
+  → RET 1 → return to PC=9
+[PC=09] [SP=05] MOV _retval tmp3
+  → MOV tmp3 = 1 (register)
+[PC=10] [SP=05] MOV tmp3 a
+  → MOV a = 1 (memory)
+[PC=11] [SP=05] SUB n 2 tmp4
+  → SUB 3 - 2 = 1 → tmp4 (register)
+[PC=12] [SP=05] PUSH tmp4
+  → PUSH 1
+[PC=13] [SP=06] CALL fib
+  → CALL fib, arg=1, return addr = 14
+[PC=01] [SP=07] LABEL fib
+[PC=02] [SP=07] PARAM n
+  → PARAM n = 1
+[PC=03] [SP=06] JGE n 2 tmp1_end
+  → JGE 1 < 2, not jumping
+[PC=04] [SP=06] RET n
+  → RET 1 → return to PC=14
+[PC=14] [SP=05] MOV _retval tmp5
+  → MOV tmp5 = 1 (register)
+[PC=15] [SP=05] MOV tmp5 b
+  → MOV b = 1 (memory)
+[PC=16] [SP=05] ADD a b tmp6
+  → ADD 1 + 1 = 2 → tmp6 (register)
+[PC=17] [SP=05] RET tmp6
+  → RET 2 → return to PC=9
+[PC=09] [SP=04] MOV _retval tmp3
+  → MOV tmp3 = 2 (register)
+[PC=10] [SP=04] MOV tmp3 a
+  → MOV a = 2 (memory)
+[PC=11] [SP=04] SUB n 2 tmp4
+  → SUB 4 - 2 = 2 → tmp4 (register)
+[PC=12] [SP=04] PUSH tmp4
+  → PUSH 2
+[PC=13] [SP=05] CALL fib
+  → CALL fib, arg=2, return addr = 14
+[PC=01] [SP=06] LABEL fib
+[PC=02] [SP=06] PARAM n
+  → PARAM n = 2
+[PC=03] [SP=05] JGE n 2 tmp1_end
+  → JGE 2 >= 2, jumping to tmp1_end
+[PC=05] [SP=05] LABEL tmp1_end
+[PC=06] [SP=05] SUB n 1 tmp2
+  → SUB 2 - 1 = 1 → tmp2 (register)
+[PC=07] [SP=05] PUSH tmp2
+  → PUSH 1
+[PC=08] [SP=06] CALL fib
+  → CALL fib, arg=1, return addr = 9
+[PC=01] [SP=07] LABEL fib
+[PC=02] [SP=07] PARAM n
+  → PARAM n = 1
+[PC=03] [SP=06] JGE n 2 tmp1_end
+  → JGE 1 < 2, not jumping
+[PC=04] [SP=06] RET n
+  → RET 1 → return to PC=9
+[PC=09] [SP=05] MOV _retval tmp3
+  → MOV tmp3 = 1 (register)
+[PC=10] [SP=05] MOV tmp3 a
+  → MOV a = 1 (memory)
+[PC=11] [SP=05] SUB n 2 tmp4
+  → SUB 2 - 2 = 0 → tmp4 (register)
+[PC=12] [SP=05] PUSH tmp4
+  → PUSH 0
+[PC=13] [SP=06] CALL fib
+  → CALL fib, arg=0, return addr = 14
+[PC=01] [SP=07] LABEL fib
+[PC=02] [SP=07] PARAM n
+  → PARAM n = 0
+[PC=03] [SP=06] JGE n 2 tmp1_end
+  → JGE 0 < 2, not jumping
+[PC=04] [SP=06] RET n
+  → RET 0 → return to PC=14
+[PC=14] [SP=05] MOV _retval tmp5
+  → MOV tmp5 = 0 (register)
+[PC=15] [SP=05] MOV tmp5 b
+  → MOV b = 0 (memory)
+[PC=16] [SP=05] ADD a b tmp6
+  → ADD 1 + 0 = 1 → tmp6 (register)
+[PC=17] [SP=05] RET tmp6
+  → RET 1 → return to PC=14
+[PC=14] [SP=04] MOV _retval tmp5
+  → MOV tmp5 = 1 (register)
+[PC=15] [SP=04] MOV tmp5 b
+  → MOV b = 1 (memory)
+[PC=16] [SP=04] ADD a b tmp6
+  → ADD 2 + 1 = 3 → tmp6 (register)
+[PC=17] [SP=04] RET tmp6
+  → RET 3 → return to PC=14
+[PC=14] [SP=03] MOV _retval tmp5
+  → MOV tmp5 = 3 (register)
+[PC=15] [SP=03] MOV tmp5 b
+  → MOV b = 3 (memory)
+[PC=16] [SP=03] ADD a b tmp6
+  → ADD 5 + 3 = 8 → tmp6 (register)
+[PC=17] [SP=03] RET tmp6
+  → RET 8 → return to PC=14
+[PC=14] [SP=02] MOV _retval tmp5
+  → MOV tmp5 = 8 (register)
+[PC=15] [SP=02] MOV tmp5 b
+  → MOV b = 8 (memory)
+[PC=16] [SP=02] ADD a b tmp6
+  → ADD 13 + 8 = 21 → tmp6 (register)
+[PC=17] [SP=02] RET tmp6
+  → RET 21 → return to PC=9
+[PC=09] [SP=01] MOV _retval tmp3
+  → MOV tmp3 = 21 (register)
+[PC=10] [SP=01] MOV tmp3 a
+  → MOV a = 21 (memory)
+[PC=11] [SP=01] SUB n 2 tmp4
+  → SUB 9 - 2 = 7 → tmp4 (register)
+[PC=12] [SP=01] PUSH tmp4
+  → PUSH 7
+[PC=13] [SP=02] CALL fib
+  → CALL fib, arg=7, return addr = 14
+[PC=01] [SP=03] LABEL fib
+[PC=02] [SP=03] PARAM n
+  → PARAM n = 7
+[PC=03] [SP=02] JGE n 2 tmp1_end
+  → JGE 7 >= 2, jumping to tmp1_end
+[PC=05] [SP=02] LABEL tmp1_end
+[PC=06] [SP=02] SUB n 1 tmp2
+  → SUB 7 - 1 = 6 → tmp2 (register)
+[PC=07] [SP=02] PUSH tmp2
+  → PUSH 6
+[PC=08] [SP=03] CALL fib
+  → CALL fib, arg=6, return addr = 9
+[PC=01] [SP=04] LABEL fib
+[PC=02] [SP=04] PARAM n
+  → PARAM n = 6
+[PC=03] [SP=03] JGE n 2 tmp1_end
+  → JGE 6 >= 2, jumping to tmp1_end
+[PC=05] [SP=03] LABEL tmp1_end
+[PC=06] [SP=03] SUB n 1 tmp2
+  → SUB 6 - 1 = 5 → tmp2 (register)
+[PC=07] [SP=03] PUSH tmp2
+  → PUSH 5
+[PC=08] [SP=04] CALL fib
+  → CALL fib, arg=5, return addr = 9
+[PC=01] [SP=05] LABEL fib
+[PC=02] [SP=05] PARAM n
+  → PARAM n = 5
+[PC=03] [SP=04] JGE n 2 tmp1_end
+  → JGE 5 >= 2, jumping to tmp1_end
+[PC=05] [SP=04] LABEL tmp1_end
+[PC=06] [SP=04] SUB n 1 tmp2
+  → SUB 5 - 1 = 4 → tmp2 (register)
+[PC=07] [SP=04] PUSH tmp2
+  → PUSH 4
+[PC=08] [SP=05] CALL fib
+  → CALL fib, arg=4, return addr = 9
+[PC=01] [SP=06] LABEL fib
+[PC=02] [SP=06] PARAM n
+  → PARAM n = 4
+[PC=03] [SP=05] JGE n 2 tmp1_end
+  → JGE 4 >= 2, jumping to tmp1_end
+[PC=05] [SP=05] LABEL tmp1_end
+[PC=06] [SP=05] SUB n 1 tmp2
+  → SUB 4 - 1 = 3 → tmp2 (register)
+[PC=07] [SP=05] PUSH tmp2
+  → PUSH 3
+[PC=08] [SP=06] CALL fib
+  → CALL fib, arg=3, return addr = 9
+[PC=01] [SP=07] LABEL fib
+[PC=02] [SP=07] PARAM n
+  → PARAM n = 3
+[PC=03] [SP=06] JGE n 2 tmp1_end
+  → JGE 3 >= 2, jumping to tmp1_end
+[PC=05] [SP=06] LABEL tmp1_end
+[PC=06] [SP=06] SUB n 1 tmp2
+  → SUB 3 - 1 = 2 → tmp2 (register)
+[PC=07] [SP=06] PUSH tmp2
+  → PUSH 2
+[PC=08] [SP=07] CALL fib
+  → CALL fib, arg=2, return addr = 9
+[PC=01] [SP=08] LABEL fib
+[PC=02] [SP=08] PARAM n
+  → PARAM n = 2
+[PC=03] [SP=07] JGE n 2 tmp1_end
+  → JGE 2 >= 2, jumping to tmp1_end
+[PC=05] [SP=07] LABEL tmp1_end
+[PC=06] [SP=07] SUB n 1 tmp2
+  → SUB 2 - 1 = 1 → tmp2 (register)
+[PC=07] [SP=07] PUSH tmp2
+  → PUSH 1
+[PC=08] [SP=08] CALL fib
+  → CALL fib, arg=1, return addr = 9
+[PC=01] [SP=09] LABEL fib
+[PC=02] [SP=09] PARAM n
+  → PARAM n = 1
+[PC=03] [SP=08] JGE n 2 tmp1_end
+  → JGE 1 < 2, not jumping
+[PC=04] [SP=08] RET n
+  → RET 1 → return to PC=9
+[PC=09] [SP=07] MOV _retval tmp3
+  → MOV tmp3 = 1 (register)
+[PC=10] [SP=07] MOV tmp3 a
+  → MOV a = 1 (memory)
+[PC=11] [SP=07] SUB n 2 tmp4
+  → SUB 2 - 2 = 0 → tmp4 (register)
+[PC=12] [SP=07] PUSH tmp4
+  → PUSH 0
+[PC=13] [SP=08] CALL fib
+  → CALL fib, arg=0, return addr = 14
+[PC=01] [SP=09] LABEL fib
+[PC=02] [SP=09] PARAM n
+  → PARAM n = 0
+[PC=03] [SP=08] JGE n 2 tmp1_end
+  → JGE 0 < 2, not jumping
+[PC=04] [SP=08] RET n
+  → RET 0 → return to PC=14
+[PC=14] [SP=07] MOV _retval tmp5
+  → MOV tmp5 = 0 (register)
+[PC=15] [SP=07] MOV tmp5 b
+  → MOV b = 0 (memory)
+[PC=16] [SP=07] ADD a b tmp6
+  → ADD 1 + 0 = 1 → tmp6 (register)
+[PC=17] [SP=07] RET tmp6
+  → RET 1 → return to PC=9
+[PC=09] [SP=06] MOV _retval tmp3
+  → MOV tmp3 = 1 (register)
+[PC=10] [SP=06] MOV tmp3 a
+  → MOV a = 1 (memory)
+[PC=11] [SP=06] SUB n 2 tmp4
+  → SUB 3 - 2 = 1 → tmp4 (register)
+[PC=12] [SP=06] PUSH tmp4
+  → PUSH 1
+[PC=13] [SP=07] CALL fib
+  → CALL fib, arg=1, return addr = 14
+[PC=01] [SP=08] LABEL fib
+[PC=02] [SP=08] PARAM n
+  → PARAM n = 1
+[PC=03] [SP=07] JGE n 2 tmp1_end
+  → JGE 1 < 2, not jumping
+[PC=04] [SP=07] RET n
+  → RET 1 → return to PC=14
+[PC=14] [SP=06] MOV _retval tmp5
+  → MOV tmp5 = 1 (register)
+[PC=15] [SP=06] MOV tmp5 b
+  → MOV b = 1 (memory)
+[PC=16] [SP=06] ADD a b tmp6
+  → ADD 1 + 1 = 2 → tmp6 (register)
+[PC=17] [SP=06] RET tmp6
+  → RET 2 → return to PC=9
+[PC=09] [SP=05] MOV _retval tmp3
+  → MOV tmp3 = 2 (register)
+[PC=10] [SP=05] MOV tmp3 a
+  → MOV a = 2 (memory)
+[PC=11] [SP=05] SUB n 2 tmp4
+  → SUB 4 - 2 = 2 → tmp4 (register)
+[PC=12] [SP=05] PUSH tmp4
+  → PUSH 2
+[PC=13] [SP=06] CALL fib
+  → CALL fib, arg=2, return addr = 14
+[PC=01] [SP=07] LABEL fib
+[PC=02] [SP=07] PARAM n
+  → PARAM n = 2
+[PC=03] [SP=06] JGE n 2 tmp1_end
+  → JGE 2 >= 2, jumping to tmp1_end
+[PC=05] [SP=06] LABEL tmp1_end
+[PC=06] [SP=06] SUB n 1 tmp2
+  → SUB 2 - 1 = 1 → tmp2 (register)
+[PC=07] [SP=06] PUSH tmp2
+  → PUSH 1
+[PC=08] [SP=07] CALL fib
+  → CALL fib, arg=1, return addr = 9
+[PC=01] [SP=08] LABEL fib
+[PC=02] [SP=08] PARAM n
+  → PARAM n = 1
+[PC=03] [SP=07] JGE n 2 tmp1_end
+  → JGE 1 < 2, not jumping
+[PC=04] [SP=07] RET n
+  → RET 1 → return to PC=9
+[PC=09] [SP=06] MOV _retval tmp3
+  → MOV tmp3 = 1 (register)
+[PC=10] [SP=06] MOV tmp3 a
+  → MOV a = 1 (memory)
+[PC=11] [SP=06] SUB n 2 tmp4
+  → SUB 2 - 2 = 0 → tmp4 (register)
+[PC=12] [SP=06] PUSH tmp4
+  → PUSH 0
+[PC=13] [SP=07] CALL fib
+  → CALL fib, arg=0, return addr = 14
+[PC=01] [SP=08] LABEL fib
+[PC=02] [SP=08] PARAM n
+  → PARAM n = 0
+[PC=03] [SP=07] JGE n 2 tmp1_end
+  → JGE 0 < 2, not jumping
+[PC=04] [SP=07] RET n
+  → RET 0 → return to PC=14
+[PC=14] [SP=06] MOV _retval tmp5
+  → MOV tmp5 = 0 (register)
+[PC=15] [SP=06] MOV tmp5 b
+  → MOV b = 0 (memory)
+[PC=16] [SP=06] ADD a b tmp6
+  → ADD 1 + 0 = 1 → tmp6 (register)
+[PC=17] [SP=06] RET tmp6
+  → RET 1 → return to PC=14
+[PC=14] [SP=05] MOV _retval tmp5
+  → MOV tmp5 = 1 (register)
+[PC=15] [SP=05] MOV tmp5 b
+  → MOV b = 1 (memory)
+[PC=16] [SP=05] ADD a b tmp6
+  → ADD 2 + 1 = 3 → tmp6 (register)
+[PC=17] [SP=05] RET tmp6
+  → RET 3 → return to PC=9
+[PC=09] [SP=04] MOV _retval tmp3
+  → MOV tmp3 = 3 (register)
+[PC=10] [SP=04] MOV tmp3 a
+  → MOV a = 3 (memory)
+[PC=11] [SP=04] SUB n 2 tmp4
+  → SUB 5 - 2 = 3 → tmp4 (register)
+[PC=12] [SP=04] PUSH tmp4
+  → PUSH 3
+[PC=13] [SP=05] CALL fib
+  → CALL fib, arg=3, return addr = 14
+[PC=01] [SP=06] LABEL fib
+[PC=02] [SP=06] PARAM n
+  → PARAM n = 3
+[PC=03] [SP=05] JGE n 2 tmp1_end
+  → JGE 3 >= 2, jumping to tmp1_end
+[PC=05] [SP=05] LABEL tmp1_end
+[PC=06] [SP=05] SUB n 1 tmp2
+  → SUB 3 - 1 = 2 → tmp2 (register)
+[PC=07] [SP=05] PUSH tmp2
+  → PUSH 2
+[PC=08] [SP=06] CALL fib
+  → CALL fib, arg=2, return addr = 9
+[PC=01] [SP=07] LABEL fib
+[PC=02] [SP=07] PARAM n
+  → PARAM n = 2
+[PC=03] [SP=06] JGE n 2 tmp1_end
+  → JGE 2 >= 2, jumping to tmp1_end
+[PC=05] [SP=06] LABEL tmp1_end
+[PC=06] [SP=06] SUB n 1 tmp2
+  → SUB 2 - 1 = 1 → tmp2 (register)
+[PC=07] [SP=06] PUSH tmp2
+  → PUSH 1
+[PC=08] [SP=07] CALL fib
+  → CALL fib, arg=1, return addr = 9
+[PC=01] [SP=08] LABEL fib
+[PC=02] [SP=08] PARAM n
+  → PARAM n = 1
+[PC=03] [SP=07] JGE n 2 tmp1_end
+  → JGE 1 < 2, not jumping
+[PC=04] [SP=07] RET n
+  → RET 1 → return to PC=9
+[PC=09] [SP=06] MOV _retval tmp3
+  → MOV tmp3 = 1 (register)
+[PC=10] [SP=06] MOV tmp3 a
+  → MOV a = 1 (memory)
+[PC=11] [SP=06] SUB n 2 tmp4
+  → SUB 2 - 2 = 0 → tmp4 (register)
+[PC=12] [SP=06] PUSH tmp4
+  → PUSH 0
+[PC=13] [SP=07] CALL fib
+  → CALL fib, arg=0, return addr = 14
+[PC=01] [SP=08] LABEL fib
+[PC=02] [SP=08] PARAM n
+  → PARAM n = 0
+[PC=03] [SP=07] JGE n 2 tmp1_end
+  → JGE 0 < 2, not jumping
+[PC=04] [SP=07] RET n
+  → RET 0 → return to PC=14
+[PC=14] [SP=06] MOV _retval tmp5
+  → MOV tmp5 = 0 (register)
+[PC=15] [SP=06] MOV tmp5 b
+  → MOV b = 0 (memory)
+[PC=16] [SP=06] ADD a b tmp6
+  → ADD 1 + 0 = 1 → tmp6 (register)
+[PC=17] [SP=06] RET tmp6
+  → RET 1 → return to PC=9
+[PC=09] [SP=05] MOV _retval tmp3
+  → MOV tmp3 = 1 (register)
+[PC=10] [SP=05] MOV tmp3 a
+  → MOV a = 1 (memory)
+[PC=11] [SP=05] SUB n 2 tmp4
+  → SUB 3 - 2 = 1 → tmp4 (register)
+[PC=12] [SP=05] PUSH tmp4
+  → PUSH 1
+[PC=13] [SP=06] CALL fib
+  → CALL fib, arg=1, return addr = 14
+[PC=01] [SP=07] LABEL fib
+[PC=02] [SP=07] PARAM n
+  → PARAM n = 1
+[PC=03] [SP=06] JGE n 2 tmp1_end
+  → JGE 1 < 2, not jumping
+[PC=04] [SP=06] RET n
+  → RET 1 → return to PC=14
+[PC=14] [SP=05] MOV _retval tmp5
+  → MOV tmp5 = 1 (register)
+[PC=15] [SP=05] MOV tmp5 b
+  → MOV b = 1 (memory)
+[PC=16] [SP=05] ADD a b tmp6
+  → ADD 1 + 1 = 2 → tmp6 (register)
+[PC=17] [SP=05] RET tmp6
+  → RET 2 → return to PC=14
+[PC=14] [SP=04] MOV _retval tmp5
+  → MOV tmp5 = 2 (register)
+[PC=15] [SP=04] MOV tmp5 b
+  → MOV b = 2 (memory)
+[PC=16] [SP=04] ADD a b tmp6
+  → ADD 3 + 2 = 5 → tmp6 (register)
+[PC=17] [SP=04] RET tmp6
+  → RET 5 → return to PC=9
+[PC=09] [SP=03] MOV _retval tmp3
+  → MOV tmp3 = 5 (register)
+[PC=10] [SP=03] MOV tmp3 a
+  → MOV a = 5 (memory)
+[PC=11] [SP=03] SUB n 2 tmp4
+  → SUB 6 - 2 = 4 → tmp4 (register)
+[PC=12] [SP=03] PUSH tmp4
+  → PUSH 4
+[PC=13] [SP=04] CALL fib
+  → CALL fib, arg=4, return addr = 14
+[PC=01] [SP=05] LABEL fib
+[PC=02] [SP=05] PARAM n
+  → PARAM n = 4
+[PC=03] [SP=04] JGE n 2 tmp1_end
+  → JGE 4 >= 2, jumping to tmp1_end
+[PC=05] [SP=04] LABEL tmp1_end
+[PC=06] [SP=04] SUB n 1 tmp2
+  → SUB 4 - 1 = 3 → tmp2 (register)
+[PC=07] [SP=04] PUSH tmp2
+  → PUSH 3
+[PC=08] [SP=05] CALL fib
+  → CALL fib, arg=3, return addr = 9
+[PC=01] [SP=06] LABEL fib
+[PC=02] [SP=06] PARAM n
+  → PARAM n = 3
+[PC=03] [SP=05] JGE n 2 tmp1_end
+  → JGE 3 >= 2, jumping to tmp1_end
+[PC=05] [SP=05] LABEL tmp1_end
+[PC=06] [SP=05] SUB n 1 tmp2
+  → SUB 3 - 1 = 2 → tmp2 (register)
+[PC=07] [SP=05] PUSH tmp2
+  → PUSH 2
+[PC=08] [SP=06] CALL fib
+  → CALL fib, arg=2, return addr = 9
+[PC=01] [SP=07] LABEL fib
+[PC=02] [SP=07] PARAM n
+  → PARAM n = 2
+[PC=03] [SP=06] JGE n 2 tmp1_end
+  → JGE 2 >= 2, jumping to tmp1_end
+[PC=05] [SP=06] LABEL tmp1_end
+[PC=06] [SP=06] SUB n 1 tmp2
+  → SUB 2 - 1 = 1 → tmp2 (register)
+[PC=07] [SP=06] PUSH tmp2
+  → PUSH 1
+[PC=08] [SP=07] CALL fib
+  → CALL fib, arg=1, return addr = 9
+[PC=01] [SP=08] LABEL fib
+[PC=02] [SP=08] PARAM n
+  → PARAM n = 1
+[PC=03] [SP=07] JGE n 2 tmp1_end
+  → JGE 1 < 2, not jumping
+[PC=04] [SP=07] RET n
+  → RET 1 → return to PC=9
+[PC=09] [SP=06] MOV _retval tmp3
+  → MOV tmp3 = 1 (register)
+[PC=10] [SP=06] MOV tmp3 a
+  → MOV a = 1 (memory)
+[PC=11] [SP=06] SUB n 2 tmp4
+  → SUB 2 - 2 = 0 → tmp4 (register)
+[PC=12] [SP=06] PUSH tmp4
+  → PUSH 0
+[PC=13] [SP=07] CALL fib
+  → CALL fib, arg=0, return addr = 14
+[PC=01] [SP=08] LABEL fib
+[PC=02] [SP=08] PARAM n
+  → PARAM n = 0
+[PC=03] [SP=07] JGE n 2 tmp1_end
+  → JGE 0 < 2, not jumping
+[PC=04] [SP=07] RET n
+  → RET 0 → return to PC=14
+[PC=14] [SP=06] MOV _retval tmp5
+  → MOV tmp5 = 0 (register)
+[PC=15] [SP=06] MOV tmp5 b
+  → MOV b = 0 (memory)
+[PC=16] [SP=06] ADD a b tmp6
+  → ADD 1 + 0 = 1 → tmp6 (register)
+[PC=17] [SP=06] RET tmp6
+  → RET 1 → return to PC=9
+[PC=09] [SP=05] MOV _retval tmp3
+  → MOV tmp3 = 1 (register)
+[PC=10] [SP=05] MOV tmp3 a
+  → MOV a = 1 (memory)
+[PC=11] [SP=05] SUB n 2 tmp4
+  → SUB 3 - 2 = 1 → tmp4 (register)
+[PC=12] [SP=05] PUSH tmp4
+  → PUSH 1
+[PC=13] [SP=06] CALL fib
+  → CALL fib, arg=1, return addr = 14
+[PC=01] [SP=07] LABEL fib
+[PC=02] [SP=07] PARAM n
+  → PARAM n = 1
+[PC=03] [SP=06] JGE n 2 tmp1_end
+  → JGE 1 < 2, not jumping
+[PC=04] [SP=06] RET n
+  → RET 1 → return to PC=14
+[PC=14] [SP=05] MOV _retval tmp5
+  → MOV tmp5 = 1 (register)
+[PC=15] [SP=05] MOV tmp5 b
+  → MOV b = 1 (memory)
+[PC=16] [SP=05] ADD a b tmp6
+  → ADD 1 + 1 = 2 → tmp6 (register)
+[PC=17] [SP=05] RET tmp6
+  → RET 2 → return to PC=9
+[PC=09] [SP=04] MOV _retval tmp3
+  → MOV tmp3 = 2 (register)
+[PC=10] [SP=04] MOV tmp3 a
+  → MOV a = 2 (memory)
+[PC=11] [SP=04] SUB n 2 tmp4
+  → SUB 4 - 2 = 2 → tmp4 (register)
+[PC=12] [SP=04] PUSH tmp4
+  → PUSH 2
+[PC=13] [SP=05] CALL fib
+  → CALL fib, arg=2, return addr = 14
+[PC=01] [SP=06] LABEL fib
+[PC=02] [SP=06] PARAM n
+  → PARAM n = 2
+[PC=03] [SP=05] JGE n 2 tmp1_end
+  → JGE 2 >= 2, jumping to tmp1_end
+[PC=05] [SP=05] LABEL tmp1_end
+[PC=06] [SP=05] SUB n 1 tmp2
+  → SUB 2 - 1 = 1 → tmp2 (register)
+[PC=07] [SP=05] PUSH tmp2
+  → PUSH 1
+[PC=08] [SP=06] CALL fib
+  → CALL fib, arg=1, return addr = 9
+[PC=01] [SP=07] LABEL fib
+[PC=02] [SP=07] PARAM n
+  → PARAM n = 1
+[PC=03] [SP=06] JGE n 2 tmp1_end
+  → JGE 1 < 2, not jumping
+[PC=04] [SP=06] RET n
+  → RET 1 → return to PC=9
+[PC=09] [SP=05] MOV _retval tmp3
+  → MOV tmp3 = 1 (register)
+[PC=10] [SP=05] MOV tmp3 a
+  → MOV a = 1 (memory)
+[PC=11] [SP=05] SUB n 2 tmp4
+  → SUB 2 - 2 = 0 → tmp4 (register)
+[PC=12] [SP=05] PUSH tmp4
+  → PUSH 0
+[PC=13] [SP=06] CALL fib
+  → CALL fib, arg=0, return addr = 14
+[PC=01] [SP=07] LABEL fib
+[PC=02] [SP=07] PARAM n
+  → PARAM n = 0
+[PC=03] [SP=06] JGE n 2 tmp1_end
+  → JGE 0 < 2, not jumping
+[PC=04] [SP=06] RET n
+  → RET 0 → return to PC=14
+[PC=14] [SP=05] MOV _retval tmp5
+  → MOV tmp5 = 0 (register)
+[PC=15] [SP=05] MOV tmp5 b
+  → MOV b = 0 (memory)
+[PC=16] [SP=05] ADD a b tmp6
+  → ADD 1 + 0 = 1 → tmp6 (register)
+[PC=17] [SP=05] RET tmp6
+  → RET 1 → return to PC=14
+[PC=14] [SP=04] MOV _retval tmp5
+  → MOV tmp5 = 1 (register)
+[PC=15] [SP=04] MOV tmp5 b
+  → MOV b = 1 (memory)
+[PC=16] [SP=04] ADD a b tmp6
+  → ADD 2 + 1 = 3 → tmp6 (register)
+[PC=17] [SP=04] RET tmp6
+  → RET 3 → return to PC=14
+[PC=14] [SP=03] MOV _retval tmp5
+  → MOV tmp5 = 3 (register)
+[PC=15] [SP=03] MOV tmp5 b
+  → MOV b = 3 (memory)
+[PC=16] [SP=03] ADD a b tmp6
+  → ADD 5 + 3 = 8 → tmp6 (register)
+[PC=17] [SP=03] RET tmp6
+  → RET 8 → return to PC=9
+[PC=09] [SP=02] MOV _retval tmp3
+  → MOV tmp3 = 8 (register)
+[PC=10] [SP=02] MOV tmp3 a
+  → MOV a = 8 (memory)
+[PC=11] [SP=02] SUB n 2 tmp4
+  → SUB 7 - 2 = 5 → tmp4 (register)
+[PC=12] [SP=02] PUSH tmp4
+  → PUSH 5
+[PC=13] [SP=03] CALL fib
+  → CALL fib, arg=5, return addr = 14
+[PC=01] [SP=04] LABEL fib
+[PC=02] [SP=04] PARAM n
+  → PARAM n = 5
+[PC=03] [SP=03] JGE n 2 tmp1_end
+  → JGE 5 >= 2, jumping to tmp1_end
+[PC=05] [SP=03] LABEL tmp1_end
+[PC=06] [SP=03] SUB n 1 tmp2
+  → SUB 5 - 1 = 4 → tmp2 (register)
+[PC=07] [SP=03] PUSH tmp2
+  → PUSH 4
+[PC=08] [SP=04] CALL fib
+  → CALL fib, arg=4, return addr = 9
+[PC=01] [SP=05] LABEL fib
+[PC=02] [SP=05] PARAM n
+  → PARAM n = 4
+[PC=03] [SP=04] JGE n 2 tmp1_end
+  → JGE 4 >= 2, jumping to tmp1_end
+[PC=05] [SP=04] LABEL tmp1_end
+[PC=06] [SP=04] SUB n 1 tmp2
+  → SUB 4 - 1 = 3 → tmp2 (register)
+[PC=07] [SP=04] PUSH tmp2
+  → PUSH 3
+[PC=08] [SP=05] CALL fib
+  → CALL fib, arg=3, return addr = 9
+[PC=01] [SP=06] LABEL fib
+[PC=02] [SP=06] PARAM n
+  → PARAM n = 3
+[PC=03] [SP=05] JGE n 2 tmp1_end
+  → JGE 3 >= 2, jumping to tmp1_end
+[PC=05] [SP=05] LABEL tmp1_end
+[PC=06] [SP=05] SUB n 1 tmp2
+  → SUB 3 - 1 = 2 → tmp2 (register)
+[PC=07] [SP=05] PUSH tmp2
+  → PUSH 2
+[PC=08] [SP=06] CALL fib
+  → CALL fib, arg=2, return addr = 9
+[PC=01] [SP=07] LABEL fib
+[PC=02] [SP=07] PARAM n
+  → PARAM n = 2
+[PC=03] [SP=06] JGE n 2 tmp1_end
+  → JGE 2 >= 2, jumping to tmp1_end
+[PC=05] [SP=06] LABEL tmp1_end
+[PC=06] [SP=06] SUB n 1 tmp2
+  → SUB 2 - 1 = 1 → tmp2 (register)
+[PC=07] [SP=06] PUSH tmp2
+  → PUSH 1
+[PC=08] [SP=07] CALL fib
+  → CALL fib, arg=1, return addr = 9
+[PC=01] [SP=08] LABEL fib
+[PC=02] [SP=08] PARAM n
+  → PARAM n = 1
+[PC=03] [SP=07] JGE n 2 tmp1_end
+  → JGE 1 < 2, not jumping
+[PC=04] [SP=07] RET n
+  → RET 1 → return to PC=9
+[PC=09] [SP=06] MOV _retval tmp3
+  → MOV tmp3 = 1 (register)
+[PC=10] [SP=06] MOV tmp3 a
+  → MOV a = 1 (memory)
+[PC=11] [SP=06] SUB n 2 tmp4
+  → SUB 2 - 2 = 0 → tmp4 (register)
+[PC=12] [SP=06] PUSH tmp4
+  → PUSH 0
+[PC=13] [SP=07] CALL fib
+  → CALL fib, arg=0, return addr = 14
+[PC=01] [SP=08] LABEL fib
+[PC=02] [SP=08] PARAM n
+  → PARAM n = 0
+[PC=03] [SP=07] JGE n 2 tmp1_end
+  → JGE 0 < 2, not jumping
+[PC=04] [SP=07] RET n
+  → RET 0 → return to PC=14
+[PC=14] [SP=06] MOV _retval tmp5
+  → MOV tmp5 = 0 (register)
+[PC=15] [SP=06] MOV tmp5 b
+  → MOV b = 0 (memory)
+[PC=16] [SP=06] ADD a b tmp6
+  → ADD 1 + 0 = 1 → tmp6 (register)
+[PC=17] [SP=06] RET tmp6
+  → RET 1 → return to PC=9
+[PC=09] [SP=05] MOV _retval tmp3
+  → MOV tmp3 = 1 (register)
+[PC=10] [SP=05] MOV tmp3 a
+  → MOV a = 1 (memory)
+[PC=11] [SP=05] SUB n 2 tmp4
+  → SUB 3 - 2 = 1 → tmp4 (register)
+[PC=12] [SP=05] PUSH tmp4
+  → PUSH 1
+[PC=13] [SP=06] CALL fib
+  → CALL fib, arg=1, return addr = 14
+[PC=01] [SP=07] LABEL fib
+[PC=02] [SP=07] PARAM n
+  → PARAM n = 1
+[PC=03] [SP=06] JGE n 2 tmp1_end
+  → JGE 1 < 2, not jumping
+[PC=04] [SP=06] RET n
+  → RET 1 → return to PC=14
+[PC=14] [SP=05] MOV _retval tmp5
+  → MOV tmp5 = 1 (register)
+[PC=15] [SP=05] MOV tmp5 b
+  → MOV b = 1 (memory)
+[PC=16] [SP=05] ADD a b tmp6
+  → ADD 1 + 1 = 2 → tmp6 (register)
+[PC=17] [SP=05] RET tmp6
+  → RET 2 → return to PC=9
+[PC=09] [SP=04] MOV _retval tmp3
+  → MOV tmp3 = 2 (register)
+[PC=10] [SP=04] MOV tmp3 a
+  → MOV a = 2 (memory)
+[PC=11] [SP=04] SUB n 2 tmp4
+  → SUB 4 - 2 = 2 → tmp4 (register)
+[PC=12] [SP=04] PUSH tmp4
+  → PUSH 2
+[PC=13] [SP=05] CALL fib
+  → CALL fib, arg=2, return addr = 14
+[PC=01] [SP=06] LABEL fib
+[PC=02] [SP=06] PARAM n
+  → PARAM n = 2
+[PC=03] [SP=05] JGE n 2 tmp1_end
+  → JGE 2 >= 2, jumping to tmp1_end
+[PC=05] [SP=05] LABEL tmp1_end
+[PC=06] [SP=05] SUB n 1 tmp2
+  → SUB 2 - 1 = 1 → tmp2 (register)
+[PC=07] [SP=05] PUSH tmp2
+  → PUSH 1
+[PC=08] [SP=06] CALL fib
+  → CALL fib, arg=1, return addr = 9
+[PC=01] [SP=07] LABEL fib
+[PC=02] [SP=07] PARAM n
+  → PARAM n = 1
+[PC=03] [SP=06] JGE n 2 tmp1_end
+  → JGE 1 < 2, not jumping
+[PC=04] [SP=06] RET n
+  → RET 1 → return to PC=9
+[PC=09] [SP=05] MOV _retval tmp3
+  → MOV tmp3 = 1 (register)
+[PC=10] [SP=05] MOV tmp3 a
+  → MOV a = 1 (memory)
+[PC=11] [SP=05] SUB n 2 tmp4
+  → SUB 2 - 2 = 0 → tmp4 (register)
+[PC=12] [SP=05] PUSH tmp4
+  → PUSH 0
+[PC=13] [SP=06] CALL fib
+  → CALL fib, arg=0, return addr = 14
+[PC=01] [SP=07] LABEL fib
+[PC=02] [SP=07] PARAM n
+  → PARAM n = 0
+[PC=03] [SP=06] JGE n 2 tmp1_end
+  → JGE 0 < 2, not jumping
+[PC=04] [SP=06] RET n
+  → RET 0 → return to PC=14
+[PC=14] [SP=05] MOV _retval tmp5
+  → MOV tmp5 = 0 (register)
+[PC=15] [SP=05] MOV tmp5 b
+  → MOV b = 0 (memory)
+[PC=16] [SP=05] ADD a b tmp6
+  → ADD 1 + 0 = 1 → tmp6 (register)
+[PC=17] [SP=05] RET tmp6
+  → RET 1 → return to PC=14
+[PC=14] [SP=04] MOV _retval tmp5
+  → MOV tmp5 = 1 (register)
+[PC=15] [SP=04] MOV tmp5 b
+  → MOV b = 1 (memory)
+[PC=16] [SP=04] ADD a b tmp6
+  → ADD 2 + 1 = 3 → tmp6 (register)
+[PC=17] [SP=04] RET tmp6
+  → RET 3 → return to PC=9
+[PC=09] [SP=03] MOV _retval tmp3
+  → MOV tmp3 = 3 (register)
+[PC=10] [SP=03] MOV tmp3 a
+  → MOV a = 3 (memory)
+[PC=11] [SP=03] SUB n 2 tmp4
+  → SUB 5 - 2 = 3 → tmp4 (register)
+[PC=12] [SP=03] PUSH tmp4
+  → PUSH 3
+[PC=13] [SP=04] CALL fib
+  → CALL fib, arg=3, return addr = 14
+[PC=01] [SP=05] LABEL fib
+[PC=02] [SP=05] PARAM n
+  → PARAM n = 3
+[PC=03] [SP=04] JGE n 2 tmp1_end
+  → JGE 3 >= 2, jumping to tmp1_end
+[PC=05] [SP=04] LABEL tmp1_end
+[PC=06] [SP=04] SUB n 1 tmp2
+  → SUB 3 - 1 = 2 → tmp2 (register)
+[PC=07] [SP=04] PUSH tmp2
+  → PUSH 2
+[PC=08] [SP=05] CALL fib
+  → CALL fib, arg=2, return addr = 9
+[PC=01] [SP=06] LABEL fib
+[PC=02] [SP=06] PARAM n
+  → PARAM n = 2
+[PC=03] [SP=05] JGE n 2 tmp1_end
+  → JGE 2 >= 2, jumping to tmp1_end
+[PC=05] [SP=05] LABEL tmp1_end
+[PC=06] [SP=05] SUB n 1 tmp2
+  → SUB 2 - 1 = 1 → tmp2 (register)
+[PC=07] [SP=05] PUSH tmp2
+  → PUSH 1
+[PC=08] [SP=06] CALL fib
+  → CALL fib, arg=1, return addr = 9
+[PC=01] [SP=07] LABEL fib
+[PC=02] [SP=07] PARAM n
+  → PARAM n = 1
+[PC=03] [SP=06] JGE n 2 tmp1_end
+  → JGE 1 < 2, not jumping
+[PC=04] [SP=06] RET n
+  → RET 1 → return to PC=9
+[PC=09] [SP=05] MOV _retval tmp3
+  → MOV tmp3 = 1 (register)
+[PC=10] [SP=05] MOV tmp3 a
+  → MOV a = 1 (memory)
+[PC=11] [SP=05] SUB n 2 tmp4
+  → SUB 2 - 2 = 0 → tmp4 (register)
+[PC=12] [SP=05] PUSH tmp4
+  → PUSH 0
+[PC=13] [SP=06] CALL fib
+  → CALL fib, arg=0, return addr = 14
+[PC=01] [SP=07] LABEL fib
+[PC=02] [SP=07] PARAM n
+  → PARAM n = 0
+[PC=03] [SP=06] JGE n 2 tmp1_end
+  → JGE 0 < 2, not jumping
+[PC=04] [SP=06] RET n
+  → RET 0 → return to PC=14
+[PC=14] [SP=05] MOV _retval tmp5
+  → MOV tmp5 = 0 (register)
+[PC=15] [SP=05] MOV tmp5 b
+  → MOV b = 0 (memory)
+[PC=16] [SP=05] ADD a b tmp6
+  → ADD 1 + 0 = 1 → tmp6 (register)
+[PC=17] [SP=05] RET tmp6
+  → RET 1 → return to PC=9
+[PC=09] [SP=04] MOV _retval tmp3
+  → MOV tmp3 = 1 (register)
+[PC=10] [SP=04] MOV tmp3 a
+  → MOV a = 1 (memory)
+[PC=11] [SP=04] SUB n 2 tmp4
+  → SUB 3 - 2 = 1 → tmp4 (register)
+[PC=12] [SP=04] PUSH tmp4
+  → PUSH 1
+[PC=13] [SP=05] CALL fib
+  → CALL fib, arg=1, return addr = 14
+[PC=01] [SP=06] LABEL fib
+[PC=02] [SP=06] PARAM n
+  → PARAM n = 1
+[PC=03] [SP=05] JGE n 2 tmp1_end
+  → JGE 1 < 2, not jumping
+[PC=04] [SP=05] RET n
+  → RET 1 → return to PC=14
+[PC=14] [SP=04] MOV _retval tmp5
+  → MOV tmp5 = 1 (register)
+[PC=15] [SP=04] MOV tmp5 b
+  → MOV b = 1 (memory)
+[PC=16] [SP=04] ADD a b tmp6
+  → ADD 1 + 1 = 2 → tmp6 (register)
+[PC=17] [SP=04] RET tmp6
+  → RET 2 → return to PC=14
+[PC=14] [SP=03] MOV _retval tmp5
+  → MOV tmp5 = 2 (register)
+[PC=15] [SP=03] MOV tmp5 b
+  → MOV b = 2 (memory)
+[PC=16] [SP=03] ADD a b tmp6
+  → ADD 3 + 2 = 5 → tmp6 (register)
+[PC=17] [SP=03] RET tmp6
+  → RET 5 → return to PC=14
+[PC=14] [SP=02] MOV _retval tmp5
+  → MOV tmp5 = 5 (register)
+[PC=15] [SP=02] MOV tmp5 b
+  → MOV b = 5 (memory)
+[PC=16] [SP=02] ADD a b tmp6
+  → ADD 8 + 5 = 13 → tmp6 (register)
+[PC=17] [SP=02] RET tmp6
+  → RET 13 → return to PC=14
+[PC=14] [SP=01] MOV _retval tmp5
+  → MOV tmp5 = 13 (register)
+[PC=15] [SP=01] MOV tmp5 b
+  → MOV b = 13 (memory)
+[PC=16] [SP=01] ADD a b tmp6
+  → ADD 21 + 13 = 34 → tmp6 (register)
+[PC=17] [SP=01] RET tmp6
+  → RET 34 → return to PC=21
+[PC=21] [SP=00] MOV _retval tmp7
+  → MOV tmp7 = 34 (register)
+[PC=22] [SP=00] MOV tmp7 main
+  → MOV main = 34 (memory)
+[PC=23] [SP=00] PRINT main
+  → PRINT 34
+[PC=24] [SP=00] HALT
+  → HALT
+Program output:
+34
+test:/users/test$ 
