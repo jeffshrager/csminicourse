@@ -2,6 +2,16 @@ import random
 import os
 from typing import Dict, List, Optional, Tuple
 
+# Import the IRONY language compiler and executor
+try:
+    from irony import compile as irony_compile, execute as irony_execute
+except ImportError:
+    # Fallback if irony module not available
+    def irony_compile(source):
+        return ["# IRONY compiler not available"]
+    def irony_execute(code, debug=False):
+        return ["IRONY executor not available"]
+
 class User:
     def __init__(self, userid: str, password: str, home_dir: str):
         self.userid = userid
@@ -33,10 +43,69 @@ class FileSystem:
         self.mkdir_abs("/etc")
         self.mkdir_abs("/users")
         self.mkdir_abs("/users/root")
+        self.mkdir_abs("/users/test")
         
-        # Create initial /etc/passwd with root user
-        passwd_content = ["root secret /users/root"]
+        # Create initial /etc/passwd with root and test users
+        passwd_content = [
+            "root secret /users/root",
+            "test test /users/test"
+        ]
         self.create_file_abs("/etc/passwd", passwd_content)
+        
+        # Create sample IRONY programs for test user
+        # Fibonacci program
+        fib_source = [
+            "def fib n",
+            "if n < 2",
+            "return n",
+            "end",
+            "a = fib n - 1",
+            "b = fib n - 2",
+            "return a + b",
+            "end",
+            "",
+            "main = fib 9",
+            "print main"
+        ]
+        self.create_file_abs("/users/test/fibonacci.s", fib_source)
+        
+        # For loop program
+        for_loop_source = [
+            "sum = 0",
+            "for i from 1 to 5",
+            "sum = sum + i",
+            "print i",
+            "end",
+            "print sum",
+            "",
+            "for j from 10 to 12", 
+            "print j",
+            "end"
+        ]
+        self.create_file_abs("/users/test/loops.s", for_loop_source)
+        
+        # Even/odd mutual recursion program
+        even_odd_source = [
+            "def is_even n",
+            "if n < 1",
+            "return 1",
+            "end", 
+            "return is_odd n - 1",
+            "end",
+            "",
+            "def is_odd n", 
+            "if n < 1",
+            "return 0",
+            "end",
+            "return is_even n - 1", 
+            "end",
+            "",
+            "result = is_even 6",
+            "print result",
+            "result = is_even 5",
+            "print result"
+        ]
+        self.create_file_abs("/users/test/evenodd.s", even_odd_source)
     
     def get_next_disk_location(self) -> int:
         """Generate a random disk location"""
@@ -345,6 +414,65 @@ class Shell:
             return f"LOGOUT:{username}"  # Special return code for logout
         return "No user logged in"
     
+    def cmd_comp(self, args: List[str]) -> str:
+        """Compile IRONY source file to assembly"""
+        if len(args) < 2:
+            return "Usage: comp <source_file> <assembly_file>"
+        
+        source_file = args[0]
+        assembly_file = args[1]
+        
+        # Check if source file exists
+        if source_file not in self.fs.current_dir.files:
+            return f"Source file not found: {source_file}"
+        
+        # Check if assembly file already exists
+        if assembly_file in self.fs.current_dir.files:
+            return f"Assembly file already exists: {assembly_file}"
+        
+        # Get source code
+        source_content = self.fs.current_dir.files[source_file].content
+        
+        try:
+            # Compile using IRONY compiler
+            assembly_code = irony_compile(source_content)
+            
+            # Create assembly file
+            disk_loc = self.fs.get_next_disk_location()
+            self.fs.current_dir.files[assembly_file] = File(assembly_file, assembly_code, disk_loc)
+            
+            return f"Compiled {source_file} -> {assembly_file} (disk: {disk_loc})"
+            
+        except Exception as e:
+            return f"Compilation error: {str(e)}"
+    
+    def cmd_exec(self, args: List[str]) -> str:
+        """Execute IRONY assembly file"""
+        if not args:
+            return "Usage: exec <assembly_file> [debug]"
+        
+        assembly_file = args[0]
+        debug_mode = len(args) > 1 and args[1].lower() == "debug"
+        
+        # Check if assembly file exists
+        if assembly_file not in self.fs.current_dir.files:
+            return f"Assembly file not found: {assembly_file}"
+        
+        # Get assembly code
+        assembly_content = self.fs.current_dir.files[assembly_file].content
+        
+        try:
+            # Execute using IRONY virtual machine
+            output = irony_execute(assembly_content, debug=debug_mode)
+            
+            if output:
+                return "Program output:\n" + "\n".join(output)
+            else:
+                return "Program executed (no output)"
+                
+        except Exception as e:
+            return f"Execution error: {str(e)}"
+    
     def execute_command(self, command_line: str) -> str:
         """Execute a command"""
         if not command_line.strip():
@@ -364,6 +492,8 @@ class Shell:
             'change': self.cmd_change,
             'mkuser': self.cmd_mkuser,
             'logout': self.cmd_logout,
+            'comp': self.cmd_comp,
+            'exec': self.cmd_exec,
         }
         
         if cmd in commands:
