@@ -13,7 +13,7 @@ actual hardware.
 These are designed to go with an exercise where the student add FOR
 LOOP capability. Given the well-designed base, this is extremely
 simple, but requires understanding each step of the
-stack. ("compiler_for" and "virtual_hardware_for" and solutions; The
+stack. ("compiler_for" and "virtual_hardware_for" are the solutions; The
 idea, of course, is not to give these to the student!)
 
 (You'd think that it ought be the other way round: Start with for
