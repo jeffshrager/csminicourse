@@ -1,26 +1,28 @@
 This is a simple code-to-bytecode-to-hardware stack for a languge
 called "Irony", and a very simple OS, called "PathOS".
 
-The top level is "pathos.py", which imports "irony.py". PathOS can
-create, edit, compile, and run programs written in Irony. The "comp"
-and "exec" commands in pathos compile the sources (.s) to assembly
-(.a) and then execute the reuslting assembly on the emulated
-hardware. (See "pathos_demo.log".) There's no pure (numerical) machine
-langage phase; The virtual hardware treats the byte codes produced by
-the compiler as op codes. However, it does have a stack, memory, and
-registers.
+The top level is "pathos.py", which imports "irony.py". (Irony.py 
+can be run separately. See the "main" call at the end of the module.) 
 
-Everything here was written in about 5 total hours using a combination
-of claude and chatgpt (mostly Claude). As many of us who use LLMs to
+PathOS can create, edit, compile, and run programs written in Irony. 
+The "comp" and "exec" commands in pathos compile the sources (.s) to 
+assembly (byte code, .a files) and then execute the reuslting assembly 
+on the emulated hardware. (See "pathos_demo.log".) There's no pure 
+(numerical) machine langage phase; The virtual hardware treats 
+the byte codes produced by the compiler as op codes.  However, it does 
+have a stack, memory, and registers.
+
+Everything here was written in about 5 total hours with the help of
+claude and chatgpt (mostly Claude). As many of us who use LLMs to
 assist in coding quickly discover, they are bad at keeping track of
 even margianlly complex or large projects, and don't deal well with
-conceptually twisty programming concepts. They were basically
+conceptually intricate programming concepts. They were basically
 incapable of implementing recursion correctly, or generalizing to the
 correct level, and they kept losing their place in the series of
 steps. (IMHO, the attention model is the wrong model of working and
 short term memory!) Eventually they would just lose track entirely and
-be unable to do even simple tasks, at which point I had to clear the
-decks entirely, reload the latest versions of the code base we were
+be unable to do even simple tasks, at which point I had to reset the
+session entirely, reload the latest versions of the code base we were
 working on, and then re-explain the project, where we were in it, and
 what to do next. In the end I had to give them nearly step-by-step
 guidance to get it right, and the way I wanted it to be, and to be
