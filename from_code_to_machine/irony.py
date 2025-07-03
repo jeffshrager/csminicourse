@@ -2,7 +2,7 @@ import re
 
 sources = [
 
-    ["fib_source",
+    ["fib",
      ["def fib n",
       "if n < 2",
       "return n",
@@ -15,7 +15,7 @@ sources = [
       "main = fib 9",
       "print main"]],
 
-    ["exp2_source",
+    ["exp2",
      ["def exp2 c",
       "if c < 1",
       "return 1",
@@ -27,7 +27,7 @@ sources = [
       "result = exp2 10",
       "print result"]],
 
-    ["square_source",
+    ["square",
      ["def square c",
       "if c < 2",
       "return 1",
@@ -41,7 +41,7 @@ sources = [
       "result = square 8",
       "print result"]],
 
-    ["even_odd_source",
+    ["even_odd",
      ["def is_even n",
       "if n < 1",
       "return 1",
@@ -69,7 +69,7 @@ sources = [
       "result = is_even 6",
       "print result"]],
 
-    ["for_loop_source",
+    ["for_loop",
      ["sum = 0",
       "for i from 1 to 5",
       "sum = sum + i",
@@ -81,7 +81,7 @@ sources = [
       "print j",
       "end"]],
 
-    ["deep_source",
+    ["deep",
      ["def deep a",
       "sum = 0",
       "for i from 1 to a",

@@ -248,10 +248,44 @@ class Shell:
         
         return print_tree(self.fs.root)
 
-    def cmd_del(self, args: List[str]) -> str:
-        """Delete file"""
+    def cmd_run(self, args: List[str]) -> str:
+        """Compile and execute IRONY source file"""
         if not args:
-            return "Usage: del <filename>"
+            return "Usage: run <source_file>"
+        
+        source_name = args[0]
+        
+        # Handle filename - ensure we have the .s version
+        if source_name.endswith('.s'):
+            source_file = source_name
+            base_name = source_name[:-2]  # Remove .s extension
+        else:
+            source_file = source_name + '.s'
+            base_name = source_name
+        
+        assembly_file = base_name + '.a'
+        
+        # Check if source file exists
+        if source_file not in self.fs.current_dir.files:
+            return f"Source file not found: {source_file}"
+        
+        # First, compile the source file
+        compile_result = self.cmd_comp([source_file, assembly_file])
+        
+        # Check if compilation was successful
+        if compile_result.startswith("Compilation error"):
+            return compile_result
+        
+        # If compilation succeeded, execute the assembly file
+        exec_result = self.cmd_exec([assembly_file])
+        
+        # Return combined results
+        return f"{compile_result}\n{exec_result}"
+
+    def cmd_rm(self, args: List[str]) -> str:
+        """Remove (delete) file"""
+        if not args:
+            return "Usage: rm <filename>"
         
         filename = args[0]
         if filename in self.fs.current_dir.files:
@@ -405,18 +439,19 @@ class Shell:
         """Show available commands"""
         help_text = [
             "Available commands:",
-            "cd [dir]",
+            "==================:",
+            "cd [dir]                               # cd, ls, mkdir, rm, and cat are similar to unix",
             "listdir / ls",
             "mkdir <dirname>",
-            "del <filename>",
+            "rm <filename>",
             "print <filename> / cat <filename>",
+            "cfs                                    # Display the file system structure as a tree",
             "create <filename>",
-            "change <filename>",
-            "comp <source_file> <assembly_file>",
+            "change <filename>                      # Runs the line editor to make simple changes to files",
+            "comp <source_file> <assembly_file>     # By convention sources are .s and assembly (byte code) files are .a",
             "exec <assembly_file> [debug]",
+            "run <source_file>                      # Combines comp and exec",
             "mkuser <userid> <password>",
-            "run <source_file>",
-            "cfs #see file system",
             "logout",
             "help / ?",
             "exit / quit"
@@ -503,7 +538,7 @@ class Shell:
             'listdir': self.cmd_listdir,
             'ls': self.cmd_listdir,  # Alternative command
             'mkdir': self.cmd_mkdir,
-            'del': self.cmd_del,
+            'rm': self.cmd_rm,
             'print': self.cmd_print,
             'cat': self.cmd_print,  # Alternative command
             'create': self.cmd_create,
@@ -513,7 +548,7 @@ class Shell:
             'comp': self.cmd_comp,
             'exec': self.cmd_exec,
             'cfs': self.cmd_cfs,
-            #'run': self.cmd_run,
+            'run': self.cmd_run,
             'help': self.cmd_help,
             '?': self.cmd_help,  # Alternative command
         }
@@ -525,8 +560,9 @@ class Shell:
     
     def run(self):
         """Main shell loop"""
-        print("PATHOS Operating System")
-        print("======================")
+        print("Welcome to PATHOS -- The Pitiable Operating System")
+        print("==================================================")
+        print("(Login as 'test' with pwd 'test' to try out Irony programs)")
         
         while True:  # Main system loop
             # Login loop
