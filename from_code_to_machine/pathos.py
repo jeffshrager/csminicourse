@@ -214,6 +214,40 @@ class Shell:
         self.fs.current_dir.subdirs[dirname] = new_dir
         return f"Directory created: {dirname}"
     
+    def cmd_cfs(self, args: List[str]) -> str:
+        """Display file system tree from root"""
+        def print_tree(directory: Directory, prefix: str = "") -> str:
+            result = []
+
+            # Print current directory
+            if directory == self.fs.root:
+                result.append("/")
+            else:
+                result.append(f"{prefix}{directory.name}/")
+        
+            # Get all items (subdirs and files)
+            items = []
+            for subdir_name in sorted(directory.subdirs.keys()):
+                items.append(('dir', subdir_name, directory.subdirs[subdir_name]))
+            for file_name in sorted(directory.files.keys()):
+                items.append(('file', file_name, directory.files[file_name]))
+        
+            # Print items
+            for i, (item_type, name, obj) in enumerate(items):
+                is_last = (i == len(items) - 1)
+                connector = "└── " if is_last else "├── "
+                
+                if item_type == 'dir':
+                    result.append(f"{prefix}{connector}{name}/")
+                    extension = "    " if is_last else "│   "
+                    result.append(print_tree(obj, prefix + extension))
+                else:
+                    result.append(f"{prefix}{connector}{name}")
+            
+            return "\n".join(result)
+        
+        return print_tree(self.fs.root)
+
     def cmd_del(self, args: List[str]) -> str:
         """Delete file"""
         if not args:
@@ -381,6 +415,8 @@ class Shell:
             "comp <source_file> <assembly_file>",
             "exec <assembly_file> [debug]",
             "mkuser <userid> <password>",
+            "run <source_file>",
+            "cfs #see file system",
             "logout",
             "help / ?",
             "exit / quit"
@@ -476,6 +512,8 @@ class Shell:
             'logout': self.cmd_logout,
             'comp': self.cmd_comp,
             'exec': self.cmd_exec,
+            'cfs': self.cmd_cfs,
+            #'run': self.cmd_run,
             'help': self.cmd_help,
             '?': self.cmd_help,  # Alternative command
         }
