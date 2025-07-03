@@ -1,14 +1,7 @@
 # Smiley! Lambda Calculus with Emoticons
 
-**Created:** 7/3/2025 15:10  
-**Updated:** 7/3/2025 15:31  
-**Exported:** 7/3/2025 15:33  
-**Link:** [https://claude.ai/chat/1a7a4e0b-92c5-4b5b-bd64-a5d794a411c3](https://claude.ai/chat/1a7a4e0b-92c5-4b5b-bd64-a5d794a411c3)  
-
 ## Prompt:
-I want to create a turing complete programming language called "Smiley" that uses ascii emoticons to implement the lambda calculus.
-
-
+Create a turing complete programming language called "Smiley" that uses ascii emoticons to implement the lambda calculus.
 
 ## Response:
 I'll help you design Smiley, a lambda calculus-based programming language using ASCII emoticons! This is a fascinating project that combines theoretical computer science with expressive syntax.
@@ -1596,9 +1589,3 @@ This will:
 
 The `8)` emoticon (happy face with sunglasses) is perfect for the print function - it "shows off" the result! 😎
 
-
-
-
-
----
-Powered by [Claude Exporter](https://www.claudexporter.com)
