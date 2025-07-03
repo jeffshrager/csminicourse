@@ -52,112 +52,11 @@ class FileSystem:
         ]
         self.create_file_abs("/etc/passwd", passwd_content)
         
-        # Create sample IRONY programs for test user
-        # Fibonacci program
-        fib_source = [
-            "def fib n",
-            "if n < 2",
-            "return n",
-            "end",
-            "a = fib n - 1",
-            "b = fib n - 2",
-            "return a + b",
-            "end",
-            "",
-            "main = fib 9",
-            "print main"
-        ]
-        self.create_file_abs("/users/test/fibonacci.s", fib_source)
-        
-        # For loop program
-        for_loop_source = [
-            "sum = 0",
-            "for i from 1 to 5",
-            "sum = sum + i",
-            "print i",
-            "end",
-            "print sum",
-            "",
-            "for j from 10 to 12", 
-            "print j",
-            "end"
-        ]
-        self.create_file_abs("/users/test/loops.s", for_loop_source)
-        
-        # Even/odd mutual recursion program
-        even_odd_source = [
-            "def is_even n",
-            "if n < 1",
-            "return 1",
-            "end", 
-            "return is_odd n - 1",
-            "end",
-            "",
-            "def is_odd n", 
-            "if n < 1",
-            "return 0",
-            "end",
-            "return is_even n - 1", 
-            "end",
-            "",
-            "result = is_even 6",
-            "print result",
-            "result = is_even 5",
-            "print result"
-        ]
-        self.create_file_abs("/users/test/evenodd.s", even_odd_source)
-    
-        # Even/odd mutual recursion program
-        deep_source = [
-            "def deep a",
-            "sum = 0",
-            "for i from 1 to a",
-            "print i",
-            "for j from a to 1",
-            "print j",
-            "if i < j",
-            "diff = j - i",
-            "print diff",
-            "sum = sum + diff",
-            "end",
-            "end",
-            "end",
-            "return sum",
-            "end",
-            "r = deep 10",
-            "print r"
-        ]
-        self.create_file_abs("/users/test/deep.s", deep_source)
-    
-        exp2_source = [
-            "def exp2 c",
-            "if c < 1",
-            "return 1",
-            "end",
-            "d = c - 1",
-            "e = exp2 d",
-            "return e + e",
-            "end",
-            "result = exp2 10",
-            "print result"
-        ]
-        self.create_file_abs("/users/test/exp2.s", exp2_source)
+        from irony import sources
 
-        square_source = [
-            "def square c",
-            "if c < 2",
-            "return 1",
-            "end",
-            "b = c - 1",
-            "f = square b",
-            "d = c + c",
-            "e = d - 1",
-            "return f + e",
-            "end",
-            "result = square 8",
-            "print result"
-        ]
-        self.create_file_abs("/users/test/square.s", square_source)
+        # Create sample IRONY programs for test user
+        for name,source in sources:
+            self.create_file_abs(f'/users/test/{name}.s', source)
 
     def get_next_disk_location(self) -> int:
         """Generate a random disk location"""
