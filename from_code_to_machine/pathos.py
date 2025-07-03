@@ -129,6 +129,36 @@ class FileSystem:
         ]
         self.create_file_abs("/users/test/deep.s", deep_source)
     
+        exp2_source = [
+            "def exp2 c",
+            "if c < 1",
+            "return 1",
+            "end",
+            "d = c - 1",
+            "e = exp2 d",
+            "return e + e",
+            "end",
+            "result = exp2 10",
+            "print result"
+        ]
+        self.create_file_abs("/users/test/exp2.s", exp2_source)
+
+        square_source = [
+            "def square c",
+            "if c < 2",
+            "return 1",
+            "end",
+            "b = c - 1",
+            "f = square b",
+            "d = c + c",
+            "e = d - 1",
+            "return f + e",
+            "end",
+            "result = square 8",
+            "print result"
+        ]
+        self.create_file_abs("/users/test/square.s", square_source)
+
     def get_next_disk_location(self) -> int:
         """Generate a random disk location"""
         location = random.randint(10000, 99999)

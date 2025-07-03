@@ -14,6 +14,34 @@ fib_source = ["def fib n",
           "print main",
           ]
 
+exp2_source = [
+    "def exp2 c",
+    "if c < 1",
+    "return 1",
+    "end",
+    "d = c - 1",
+    "e = exp2 d",
+    "return e + e",
+    "end",
+    "result = exp2 10",
+    "print result"
+    ]
+
+square_source = [
+    "def square c",
+    "if c < 2",
+    "return 1",
+    "end",
+    "b = c - 1",
+    "f = square b",
+    "d = c + c",
+    "e = d - 1",
+    "return f + e",
+    "end",
+    "result = square 8",
+    "print result"
+]
+
 even_odd_source = [
     "def is_even n",
     "if n < 1",
@@ -517,11 +545,10 @@ def test_full(source):
     
     execute(code)
 
-# print("Testing for loops:")
-# test_full(for_loop_source)
-# print("Testing mutual recursion:")
-# test_full(even_odd_source)
-# print("Testing recursion:")
-# test_full(fib_source)
-# print("Testing block nesting:")
-# test_full(deep_source)
+if __name__ == "__main__":
+    test_full(for_loop_source)
+    test_full(even_odd_source)
+    test_full(fib_source)
+    test_full(deep_source)
+    test_full(square_source)
+    test_full(exp2_source)
