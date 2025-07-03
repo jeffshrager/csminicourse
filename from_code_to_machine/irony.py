@@ -121,9 +121,29 @@ def temp():
     return f"tmp{counter}"
 
 def parse(lines):
-    lines = [l.strip() for l in lines if l.strip() and not l.strip().startswith("#")]
-    pos = [0]
+    filtered_lines = []
+    for line in lines:
+        stripped = line.strip()
+        if stripped and not stripped.startswith("#"):
+            filtered_lines.append(stripped)
+    lines = filtered_lines
+
+    pos = [0] # This obscure thing is a python idiom for call by reference.
     
+    '''The parser has multiple nested functions (parse_block,
+    parse_statement) that all need to advance through the lines
+    array. When parse_statement() processes a line, it needs to
+    increment the position so that when control returns to
+    parse_block(), it knows to continue from the next line.  In
+    languages like C++, you'd pass int& pos (reference) or int* pos
+    (pointer). In Python, integers are immutable, so you can't modify
+    them in-place across function boundaries. Using a list [0] creates
+    a mutable container that acts like a reference - all functions
+    share the same list object and can modify its contents.  This is a
+    common Python idiom for simulating pass-by-reference when you need
+    multiple functions to share and modify the same counter/position
+    variable.'''
+
     def parse_block():
         body = []
         while pos[0] < len(lines):
@@ -544,4 +564,3 @@ def test_full(source):
 
 if __name__ == "__main__":
     [test_full(source[1]) for source in sources]
-
