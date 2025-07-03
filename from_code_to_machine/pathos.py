@@ -107,6 +107,28 @@ class FileSystem:
         ]
         self.create_file_abs("/users/test/evenodd.s", even_odd_source)
     
+        # Even/odd mutual recursion program
+        deep_source = [
+            "def deep a",
+            "sum = 0",
+            "for i from 1 to a",
+            "print i",
+            "for j from a to 1",
+            "print j",
+            "if i < j",
+            "diff = j - i",
+            "print diff",
+            "sum = sum + diff",
+            "end",
+            "end",
+            "end",
+            "return sum",
+            "end",
+            "r = deep 10",
+            "print r"
+        ]
+        self.create_file_abs("/users/test/deep.s", deep_source)
+    
     def get_next_disk_location(self) -> int:
         """Generate a random disk location"""
         location = random.randint(10000, 99999)
