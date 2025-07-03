@@ -4,7 +4,7 @@ from typing import Dict, List, Optional, Tuple
 
 # Import the IRONY language compiler and executor
 try:
-    from irony import compile as irony_compile, execute as irony_execute
+    from irony import parse, compile_all, execute, test_full
 except ImportError:
     # Fallback if irony module not available
     def irony_compile(source):
@@ -457,7 +457,10 @@ class Shell:
         
         try:
             # Compile using IRONY compiler
-            assembly_code = irony_compile(source_content)
+            ast = parse(source_content)
+            assembly_code = compile_all(ast)
+            # Convert tuples to strings for storage
+            assembly_code = [str(instr) for instr in assembly_code]
             
             # Create assembly file
             disk_loc = self.fs.get_next_disk_location()
@@ -485,7 +488,11 @@ class Shell:
         
         try:
             # Execute using IRONY virtual machine
-            output = irony_execute(assembly_content, debug=debug_mode)
+            code = [eval(line) for line in assembly_content]
+            execute(code)
+            # The execute function prints directly and stores output in the global 'output' variable
+            from irony import output
+            result_output = output.copy()
             
             if output:
                 return "Program output:\n" + "\n".join(output)
