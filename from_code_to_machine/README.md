@@ -4,6 +4,8 @@ called "Irony", and a very simple OS, called "PathOS".
 The top level is "pathos.py", which imports "irony.py". (Irony.py 
 can be run separately. See the "main" call at the end of the module.) 
 
+Irony programs can be mutually recursive. There are several examples. 
+
 PathOS can create, edit, compile, and run programs written in Irony. 
 The "comp" and "exec" commands in pathos compile the sources (.s) to 
 assembly (byte code, .a files) and then execute the reuslting assembly 
@@ -11,6 +13,14 @@ on the emulated hardware. (See "pathos_demo.log".) There's no pure
 (numerical) machine langage phase; The virtual hardware treats 
 the byte codes produced by the compiler as op codes.  However, it does 
 have a stack, memory, and registers.
+
+There is also a version of irony called "preirony" that is missing the
+"for" construct. The idea is that students would work with the preirony
+langauge for a while and understand the compiler and execution stack, 
+and then would be tasked with adding a "for" loop to the language. You
+might think that it would make more sense to have loops already, and 
+be tasked with impementing recursion, but that's much harder. Adding
+loops is a plausible-sized project for high schoolers.
 
 Everything here was written in about 5 total hours with the help of
 claude and chatgpt (mostly Claude). As many of us who use LLMs to
