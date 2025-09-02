@@ -1,0 +1,65 @@
+digraph G {
+  FRIEND -> QUILT [label="0.74"];
+
+  BEER -> PILSNER [label="0.91999996"];
+
+  FLOWER -> PEONY [label="1.04"];
+
+  LIFE -> MIRROR [label="1.0799999"];
+
+  LIFE -> BOOK [label="1.14"];
+
+  LIFE -> BICYCLE [label="1.38"];
+
+  LIFE -> GARDEN [label="1.4200001"];
+
+  PHONE -> BLACKBERRY [label="0.74"];
+
+  PHONE -> CELL [label="1.36"];
+
+  CHURCH -> HOSPITAL [label="0.5"];
+
+  HOSPITAL -> BIRDCAGE [label="1.3199999"];
+
+  WOMAN -> SHADOW [label="0.56"];
+
+  WOMAN -> BEER [label="1.12"];
+
+  WOMAN -> CAR [label="1.48"];
+
+  WOMAN -> ROSE [label="1.36"];
+
+  WOMAN -> FLOWER [label="0.94"];
+
+  CAR -> WOMAN [label="0.82"];
+
+  CELL -> MALL [label="1.1"];
+
+  CELL -> PHONE [label="1.1600001"];
+
+  CELL -> CIRCUS [label="0.96000004"];
+
+  CELL -> RESTAURANT [label="1.0799999"];
+
+  CELL -> HOSPITAL [label="0.5"];
+
+  CELL -> PRISON [label="0.84000003"];
+
+  CELL -> HOUSE [label="1.44"];
+
+  CELL -> COMPUTER [label="1.24"];
+
+  CELL -> CITY [label="0.52"];
+
+  CELL -> FACTORY [label="0.74"];
+
+  CELL -> CAR [label="0.96000004"];
+
+  SCHOOL -> CELL [label="0.74"];
+
+  CELL -> SCHOOL [label="1.4200001"];
+
+  CAR -> CELL [label="1.14"];
+
+
+}

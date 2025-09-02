@@ -1,0 +1,25 @@
+digraph BTree {
+  node [shape=record];
+
+  // Graph direction (top to bottom)
+  rankdir=TB;
+
+  // Define the B-tree nodes with keys and child pointers
+"does it fly" -> "is it a bird" [label="yes"];
+"is it a bird" -> "does it have a long neck" [label="yes"];
+"does it have a long neck" -> HERON [label="yes"];
+"does it have a long neck" -> "does it have a red breast" [label="no"];
+"does it have a red breast" -> ROBIN [label="yes"];
+"does it have a red breast" -> HAWK [label="no"];
+"is it a bird" -> BAT [label="no"];
+"does it fly" -> "does it have a stripped tail" [label="no"];
+"does it have a stripped tail" -> RACOON [label="yes"];
+"does it have a stripped tail" -> "does it squeak" [label="no"];
+"does it squeak" -> MOUSE [label="yes"];
+"does it squeak" -> "does it program computers" [label="no"];
+"does it program computers" -> HUMAN [label="yes"];
+"does it program computers" -> "does it live in africa" [label="no"];
+"does it live in africa" -> GIRAFFE [label="yes"];
+"does it live in africa" -> CAT [label="no"];
+
+}

@@ -1,0 +1,165 @@
+digraph G {
+  CAT -> CAT [label="0"];
+
+  CAT -> GIRAFFE [label="-2"];
+
+  CAT -> HUMAN [label="-3"];
+
+  CAT -> MOUSE [label="-4"];
+
+  CAT -> RACOON [label="-5"];
+
+  CAT -> BAT [label="-7"];
+
+  CAT -> HAWK [label="-9"];
+
+  CAT -> ROBIN [label="-9"];
+
+  CAT -> HERON [label="-8"];
+
+  GIRAFFE -> CAT [label="-2"];
+
+  GIRAFFE -> GIRAFFE [label="0"];
+
+  GIRAFFE -> HUMAN [label="-3"];
+
+  GIRAFFE -> MOUSE [label="-4"];
+
+  GIRAFFE -> RACOON [label="-5"];
+
+  GIRAFFE -> BAT [label="-7"];
+
+  GIRAFFE -> HAWK [label="-9"];
+
+  GIRAFFE -> ROBIN [label="-9"];
+
+  GIRAFFE -> HERON [label="-8"];
+
+  HUMAN -> CAT [label="-3"];
+
+  HUMAN -> GIRAFFE [label="-3"];
+
+  HUMAN -> HUMAN [label="0"];
+
+  HUMAN -> MOUSE [label="-3"];
+
+  HUMAN -> RACOON [label="-4"];
+
+  HUMAN -> BAT [label="-6"];
+
+  HUMAN -> HAWK [label="-8"];
+
+  HUMAN -> ROBIN [label="-8"];
+
+  HUMAN -> HERON [label="-7"];
+
+  MOUSE -> CAT [label="-4"];
+
+  MOUSE -> GIRAFFE [label="-4"];
+
+  MOUSE -> HUMAN [label="-3"];
+
+  MOUSE -> MOUSE [label="0"];
+
+  MOUSE -> RACOON [label="-3"];
+
+  MOUSE -> BAT [label="-5"];
+
+  MOUSE -> HAWK [label="-7"];
+
+  MOUSE -> ROBIN [label="-7"];
+
+  MOUSE -> HERON [label="-6"];
+
+  RACOON -> CAT [label="-5"];
+
+  RACOON -> GIRAFFE [label="-5"];
+
+  RACOON -> HUMAN [label="-4"];
+
+  RACOON -> MOUSE [label="-3"];
+
+  RACOON -> RACOON [label="0"];
+
+  RACOON -> BAT [label="-4"];
+
+  RACOON -> HAWK [label="-6"];
+
+  RACOON -> ROBIN [label="-6"];
+
+  RACOON -> HERON [label="-5"];
+
+  BAT -> CAT [label="-7"];
+
+  BAT -> GIRAFFE [label="-7"];
+
+  BAT -> HUMAN [label="-6"];
+
+  BAT -> MOUSE [label="-5"];
+
+  BAT -> RACOON [label="-4"];
+
+  BAT -> BAT [label="0"];
+
+  BAT -> HAWK [label="-4"];
+
+  BAT -> ROBIN [label="-4"];
+
+  BAT -> HERON [label="-3"];
+
+  HAWK -> CAT [label="-9"];
+
+  HAWK -> GIRAFFE [label="-9"];
+
+  HAWK -> HUMAN [label="-8"];
+
+  HAWK -> MOUSE [label="-7"];
+
+  HAWK -> RACOON [label="-6"];
+
+  HAWK -> BAT [label="-4"];
+
+  HAWK -> HAWK [label="0"];
+
+  HAWK -> ROBIN [label="-2"];
+
+  HAWK -> HERON [label="-3"];
+
+  ROBIN -> CAT [label="-9"];
+
+  ROBIN -> GIRAFFE [label="-9"];
+
+  ROBIN -> HUMAN [label="-8"];
+
+  ROBIN -> MOUSE [label="-7"];
+
+  ROBIN -> RACOON [label="-6"];
+
+  ROBIN -> BAT [label="-4"];
+
+  ROBIN -> HAWK [label="-2"];
+
+  ROBIN -> ROBIN [label="0"];
+
+  ROBIN -> HERON [label="-3"];
+
+  HERON -> CAT [label="-8"];
+
+  HERON -> GIRAFFE [label="-8"];
+
+  HERON -> HUMAN [label="-7"];
+
+  HERON -> MOUSE [label="-6"];
+
+  HERON -> RACOON [label="-5"];
+
+  HERON -> BAT [label="-3"];
+
+  HERON -> HAWK [label="-3"];
+
+  HERON -> ROBIN [label="-3"];
+
+  HERON -> HERON [label="0"];
+
+
+}

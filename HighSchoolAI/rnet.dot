@@ -1,0 +1,187 @@
+digraph G {
+  CAR -> BUS [label="1.0"];
+
+  CAR -> FAST [label="0.53"];
+
+  CAR -> SCHOOL [label="0.42"];
+
+  CAR -> GLASS [label="0.28"];
+
+  BUS -> SCHOOL [label="1.0"];
+
+  BUS -> CAR [label="0.85"];
+
+  BUS -> DROWN [label="0.8"];
+
+  BUS -> BRAKE [label="0.45"];
+
+  BUS -> SLOW [label="0.36"];
+
+  SCHOOL -> AMBULANCE [label="1.0"];
+
+  SCHOOL -> CAR [label="0.5"];
+
+  SCHOOL -> GLASS [label="0.53"];
+
+  SCHOOL -> DROWN [label="0.0"];
+
+  SCHOOL -> EAT [label="0.88"];
+
+  SCHOOL -> BUS [label="0.53"];
+
+  AMBULANCE -> STOP [label="0.18"];
+
+  AMBULANCE -> FAST [label="0.38"];
+
+  AMBULANCE -> TEEN [label="0.72"];
+
+  AMBULANCE -> SWIM [label="0.35"];
+
+  STOP -> FIRE [label="1.0"];
+
+  STOP -> WATER [label="0.03"];
+
+  STOP -> EAT [label="0.61"];
+
+  STOP -> BUS [label="0.37"];
+
+  STOP -> GLASS [label="0.86"];
+
+  STOP -> SLOW [label="0.45"];
+
+  FIRE -> SLOW [label="1.0"];
+
+  FIRE -> SWIM [label="0.53"];
+
+  FIRE -> SCHOOL [label="0.9"];
+
+  FIRE -> FIRE [label="0.38"];
+
+  FIRE -> ACCELERATOR [label="0.01"];
+
+  SLOW -> SLOW [label="0.04"];
+
+  SLOW -> WATER [label="0.79"];
+
+  SLOW -> BRAKE [label="0.43"];
+
+  SLOW -> AMBULANCE [label="0.96"];
+
+  SLOW -> SCHOOL [label="0.67"];
+
+  SLOW -> FAST [label="0.64"];
+
+  SLOW -> STOP [label="0.58"];
+
+  SLOW -> TEEN [label="0.9"];
+
+  FAST -> BRAKE [label="0.27"];
+
+  FAST -> AMBULANCE [label="0.41"];
+
+  FAST -> FIRE [label="0.24"];
+
+  FAST -> SLOW [label="0.12"];
+
+  BRAKE -> ACCELERATOR [label="0.22"];
+
+  BRAKE -> SCHOOL [label="0.98"];
+
+  BRAKE -> SLOW [label="0.59"];
+
+  BRAKE -> BRAKE [label="0.56"];
+
+  BRAKE -> FIRE [label="0.58"];
+
+  ACCELERATOR -> BRAKE [label="0.58"];
+
+  ACCELERATOR -> FAST [label="0.69"];
+
+  ACCELERATOR -> SLOW [label="0.57"];
+
+  ACCELERATOR -> SWIM [label="0.07"];
+
+  BRAKE -> GLASS [label="1.0"];
+
+  BRAKE -> CAR [label="0.43"];
+
+  BRAKE -> DROWN [label="0.53"];
+
+  BRAKE -> TEEN [label="0.94"];
+
+  GLASS -> WATER [label="1.0"];
+
+  GLASS -> FAST [label="0.62"];
+
+  GLASS -> SCHOOL [label="0.15"];
+
+  GLASS -> CAR [label="0.92"];
+
+  GLASS -> BRAKE [label="0.33"];
+
+  WATER -> DRINK [label="1.0"];
+
+  WATER -> HOSPITAL [label="0.94"];
+
+  WATER -> AMBULANCE [label="0.04"];
+
+  WATER -> ACCELERATOR [label="0.01"];
+
+  WATER -> BUS [label="0.77"];
+
+  WATER -> WATER [label="0.31"];
+
+  DRINK -> TEEN [label="1.0"];
+
+  DRINK -> BRAKE [label="0.01"];
+
+  DRINK -> WATER [label="0.68"];
+
+  DRINK -> SLOW [label="0.94"];
+
+  DRINK -> SCHOOL [label="0.76"];
+
+  TEEN -> EAT [label="1.0"];
+
+  TEEN -> TEEN [label="0.94"];
+
+  TEEN -> STOP [label="0.37"];
+
+  TEEN -> GLASS [label="0.31"];
+
+  TEEN -> SWIM [label="0.11"];
+
+  TEEN -> ACCELERATOR [label="0.69"];
+
+  EAT -> SWIM [label="1.0"];
+
+  EAT -> SCHOOL [label="0.5"];
+
+  EAT -> FAST [label="0.94"];
+
+  EAT -> BUS [label="0.06"];
+
+  EAT -> SLOW [label="0.83"];
+
+  EAT -> EAT [label="0.95"];
+
+  SWIM -> DROWN [label="1.0"];
+
+  SWIM -> BUS [label="0.22"];
+
+  SWIM -> CAR [label="0.42"];
+
+  SWIM -> EAT [label="0.52"];
+
+  SWIM -> AMBULANCE [label="0.48"];
+
+  DROWN -> HOSPITAL [label="0.76"];
+
+  DROWN -> DRINK [label="0.52"];
+
+  DROWN -> BUS [label="0.44"];
+
+  DROWN -> WATER [label="0.95"];
+
+
+}
