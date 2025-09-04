@@ -1109,6 +1109,3 @@ And my soul from out that shadow that lies floating on the floor
 (compose-poem-using-context)
 |#
 
-
-
-

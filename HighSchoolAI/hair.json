@@ -1,0 +1,3256 @@
+Market_of_Shadows_1
+{'average_branching': 1.6, 'max_branching': 23, 'branching_words': 5, 'branching_fraction': 0.1}
+Market_of_Shadows_2
+{'average_branching': 1.5102, 'max_branching': 11, 'branching_words': 9, 'branching_fraction': 0.1837}
+raven_stanza_1
+{'average_branching': 1.2683, 'max_branching': 3, 'branching_words': 8, 'branching_fraction': 0.1951}
+raven_stanza_2
+{'average_branching': 1.2444, 'max_branching': 6, 'branching_words': 6, 'branching_fraction': 0.1333}
+raven_stanza_3
+{'average_branching': 1.1628, 'max_branching': 2, 'branching_words': 7, 'branching_fraction': 0.1628}
+raven_stanza_4
+{'average_branching': 1.3111, 'max_branching': 6, 'branching_words': 10, 'branching_fraction': 0.2222}
+raven_stanza_5
+{'average_branching': 1.3333, 'max_branching': 5, 'branching_words': 10, 'branching_fraction': 0.2381}
+raven_stanza_6
+{'average_branching': 1.2444, 'max_branching': 3, 'branching_words': 10, 'branching_fraction': 0.2222}
+raven_stanza_7
+{'average_branching': 1.3478, 'max_branching': 4, 'branching_words': 9, 'branching_fraction': 0.1957}
+raven_stanza_8
+{'average_branching': 1.1731, 'max_branching': 5, 'branching_words': 5, 'branching_fraction': 0.0962}
+raven_stanza_9
+{'average_branching': 1.0833, 'max_branching': 2, 'branching_words': 4, 'branching_fraction': 0.0833}
+raven_stanza_10
+{'average_branching': 1.2083, 'max_branching': 4, 'branching_words': 6, 'branching_fraction': 0.125}
+raven_stanza_11
+{'average_branching': 1.1556, 'max_branching': 2, 'branching_words': 7, 'branching_fraction': 0.1556}
+raven_stanza_12
+{'average_branching': 1.2558, 'max_branching': 3, 'branching_words': 9, 'branching_fraction': 0.2093}
+raven_stanza_13
+{'average_branching': 1.2826, 'max_branching': 3, 'branching_words': 12, 'branching_fraction': 0.2609}
+raven_stanza_14
+{'average_branching': 1.2766, 'max_branching': 3, 'branching_words': 12, 'branching_fraction': 0.2553}
+raven_stanza_15
+{'average_branching': 1.2045, 'max_branching': 3, 'branching_words': 8, 'branching_fraction': 0.1818}
+raven_stanza_16
+{'average_branching': 1.1739, 'max_branching': 3, 'branching_words': 6, 'branching_fraction': 0.1304}
+raven_stanza_17
+{'average_branching': 1.25, 'max_branching': 4, 'branching_words': 9, 'branching_fraction': 0.1731}
+raven_stanza_18
+{'average_branching': 1.3409, 'max_branching': 5, 'branching_words': 10, 'branching_fraction': 0.2273}
+{
+  "Market_of_Shadows_1": {
+    "hairiness": {
+      "average_branching": 1.6,
+      "max_branching": 23,
+      "branching_words": 5,
+      "branching_fraction": 0.1
+    },
+    "followers": {
+      "the": [
+        "alley",
+        "cat",
+        "child",
+        "dog",
+        "doorway",
+        "fire",
+        "fountain",
+        "gong",
+        "market",
+        "moon",
+        "music",
+        "night",
+        "pilgrim",
+        "river",
+        "rooftop",
+        "square",
+        "stair",
+        "stranger",
+        "temple",
+        "thief",
+        "traveler",
+        "wind",
+        "wire"
+      ],
+      "cat": [
+        "walks"
+      ],
+      "walks": [
+        "to"
+      ],
+      "to": [
+        "the"
+      ],
+      "market": [
+        "to"
+      ],
+      "music": [
+        "to"
+      ],
+      "fire": [
+        "and"
+      ],
+      "and": [
+        "the",
+        "with"
+      ],
+      "dog": [
+        "waits"
+      ],
+      "waits": [
+        "by"
+      ],
+      "by": [
+        "the"
+      ],
+      "fountain": [
+        "by"
+      ],
+      "doorway": [
+        "by"
+      ],
+      "wire": [
+        "the"
+      ],
+      "child": [
+        "dreams"
+      ],
+      "dreams": [
+        "of"
+      ],
+      "of": [
+        "a"
+      ],
+      "a": [
+        "gong",
+        "hammer",
+        "ladder",
+        "lantern",
+        "song"
+      ],
+      "lantern": [
+        "of"
+      ],
+      "ladder": [
+        "of"
+      ],
+      "song": [
+        "and"
+      ],
+      "stranger": [
+        "speaks"
+      ],
+      "speaks": [
+        "in"
+      ],
+      "in": [
+        "silence"
+      ],
+      "silence": [
+        "with"
+      ],
+      "with": [
+        "a"
+      ],
+      "hammer": [
+        "and"
+      ],
+      "gong": [
+        "rings",
+        "the"
+      ],
+      "wind": [
+        "runs"
+      ],
+      "runs": [
+        "through"
+      ],
+      "through": [
+        "the"
+      ],
+      "alley": [
+        "through"
+      ],
+      "river": [
+        "through"
+      ],
+      "square": [
+        "and"
+      ],
+      "moon": [
+        "beams"
+      ],
+      "beams": [
+        "on"
+      ],
+      "on": [
+        "the"
+      ],
+      "rooftop": [
+        "on"
+      ],
+      "temple": [
+        "on"
+      ],
+      "stair": [
+        "the"
+      ],
+      "rings": [
+        "for"
+      ],
+      "for": [
+        "the"
+      ],
+      "traveler": [
+        "for"
+      ],
+      "pilgrim": [
+        "for"
+      ],
+      "thief": [
+        "and"
+      ],
+      "night": [
+        "turns"
+      ],
+      "turns": [
+        "into"
+      ],
+      "into": [
+        "grief",
+        "paper",
+        "thunder"
+      ],
+      "paper": [
+        "into"
+      ],
+      "thunder": [
+        "into"
+      ]
+    }
+  },
+  "Market_of_Shadows_2": {
+    "hairiness": {
+      "average_branching": 1.5102,
+      "max_branching": 11,
+      "branching_words": 9,
+      "branching_fraction": 0.1837
+    },
+    "followers": {
+      "the": [
+        "band",
+        "beggars",
+        "bell",
+        "cat",
+        "child",
+        "dog",
+        "fire",
+        "moon",
+        "night",
+        "pilgrims",
+        "wind"
+      ],
+      "cat": [
+        "runs"
+      ],
+      "runs": [
+        "through"
+      ],
+      "through": [
+        "alleys",
+        "lanterns",
+        "storms"
+      ],
+      "alleys": [
+        "runs"
+      ],
+      "lanterns": [
+        "runs"
+      ],
+      "storms": [
+        "the"
+      ],
+      "dog": [
+        "sleeps"
+      ],
+      "sleeps": [
+        "beside"
+      ],
+      "beside": [
+        "candles",
+        "rivers",
+        "thorns"
+      ],
+      "candles": [
+        "beside"
+      ],
+      "rivers": [
+        "beside"
+      ],
+      "thorns": [
+        "the"
+      ],
+      "child": [
+        "dreams"
+      ],
+      "dreams": [
+        "under"
+      ],
+      "under": [
+        "banners",
+        "drums",
+        "windows"
+      ],
+      "banners": [
+        "under"
+      ],
+      "windows": [
+        "under"
+      ],
+      "drums": [
+        "the"
+      ],
+      "wind": [
+        "cries"
+      ],
+      "cries": [
+        "with"
+      ],
+      "with": [
+        "ashes",
+        "laughter",
+        "sums"
+      ],
+      "laughter": [
+        "and"
+      ],
+      "and": [
+        "on",
+        "with"
+      ],
+      "ashes": [
+        "and"
+      ],
+      "sums": [
+        "the"
+      ],
+      "moon": [
+        "shines"
+      ],
+      "shines": [
+        "over"
+      ],
+      "over": [
+        "gardens",
+        "seas",
+        "towers"
+      ],
+      "gardens": [
+        "over"
+      ],
+      "towers": [
+        "over"
+      ],
+      "seas": [
+        "the"
+      ],
+      "night": [
+        "folds"
+      ],
+      "folds": [
+        "into"
+      ],
+      "into": [
+        "silence",
+        "thunder",
+        "trees"
+      ],
+      "thunder": [
+        "into"
+      ],
+      "silence": [
+        "into"
+      ],
+      "trees": [
+        "the"
+      ],
+      "fire": [
+        "breaks"
+      ],
+      "breaks": [
+        "on"
+      ],
+      "on": [
+        "sand",
+        "statues",
+        "tables"
+      ],
+      "tables": [
+        "and"
+      ],
+      "statues": [
+        "and"
+      ],
+      "sand": [
+        "the"
+      ],
+      "bell": [
+        "calls"
+      ],
+      "calls": [
+        "for"
+      ],
+      "for": [
+        "the"
+      ],
+      "pilgrims": [
+        "for"
+      ],
+      "beggars": [
+        "for"
+      ]
+    }
+  },
+  "raven_stanza_1": {
+    "hairiness": {
+      "average_branching": 1.2683,
+      "max_branching": 3,
+      "branching_words": 8,
+      "branching_fraction": 0.1951
+    },
+    "followers": {
+      "once": [
+        "upon"
+      ],
+      "upon": [
+        "a"
+      ],
+      "a": [
+        "midnight",
+        "quaint",
+        "tapping"
+      ],
+      "midnight": [
+        "dreary"
+      ],
+      "dreary": [
+        "while"
+      ],
+      "while": [
+        "i"
+      ],
+      "i": [
+        "muttered",
+        "nodded",
+        "pondered"
+      ],
+      "pondered": [
+        "weak"
+      ],
+      "weak": [
+        "and"
+      ],
+      "and": [
+        "curious",
+        "nothing",
+        "weary"
+      ],
+      "weary": [
+        "over"
+      ],
+      "over": [
+        "many"
+      ],
+      "many": [
+        "a"
+      ],
+      "quaint": [
+        "and"
+      ],
+      "curious": [
+        "volume"
+      ],
+      "volume": [
+        "of"
+      ],
+      "of": [
+        "forgotten",
+        "some"
+      ],
+      "forgotten": [
+        "lore"
+      ],
+      "lore": [
+        "while"
+      ],
+      "nodded": [
+        "nearly"
+      ],
+      "nearly": [
+        "napping"
+      ],
+      "napping": [
+        "suddenly"
+      ],
+      "suddenly": [
+        "there"
+      ],
+      "there": [
+        "came"
+      ],
+      "came": [
+        "a"
+      ],
+      "tapping": [
+        "as",
+        "at"
+      ],
+      "as": [
+        "of"
+      ],
+      "some": [
+        "one",
+        "visitor"
+      ],
+      "one": [
+        "gently"
+      ],
+      "gently": [
+        "rapping"
+      ],
+      "rapping": [
+        "at",
+        "rapping"
+      ],
+      "at": [
+        "my"
+      ],
+      "my": [
+        "chamber"
+      ],
+      "chamber": [
+        "door"
+      ],
+      "door": [
+        "only",
+        "tis"
+      ],
+      "tis": [
+        "some"
+      ],
+      "visitor": [
+        "i"
+      ],
+      "muttered": [
+        "tapping"
+      ],
+      "only": [
+        "this"
+      ],
+      "this": [
+        "and"
+      ],
+      "nothing": [
+        "more"
+      ]
+    }
+  },
+  "raven_stanza_2": {
+    "hairiness": {
+      "average_branching": 1.2444,
+      "max_branching": 6,
+      "branching_words": 6,
+      "branching_fraction": 0.1333
+    },
+    "followers": {
+      "ah": [
+        "distinctly"
+      ],
+      "distinctly": [
+        "i"
+      ],
+      "i": [
+        "had",
+        "remember",
+        "wished"
+      ],
+      "remember": [
+        "it"
+      ],
+      "it": [
+        "was"
+      ],
+      "was": [
+        "in"
+      ],
+      "in": [
+        "the"
+      ],
+      "the": [
+        "angels",
+        "bleak",
+        "floor",
+        "lost",
+        "morrow",
+        "rare"
+      ],
+      "bleak": [
+        "december"
+      ],
+      "december": [
+        "and"
+      ],
+      "and": [
+        "each",
+        "radiant"
+      ],
+      "each": [
+        "separate"
+      ],
+      "separate": [
+        "dying"
+      ],
+      "dying": [
+        "ember"
+      ],
+      "ember": [
+        "wrought"
+      ],
+      "wrought": [
+        "its"
+      ],
+      "its": [
+        "ghost"
+      ],
+      "ghost": [
+        "upon"
+      ],
+      "upon": [
+        "the"
+      ],
+      "floor": [
+        "eagerly"
+      ],
+      "eagerly": [
+        "i"
+      ],
+      "wished": [
+        "the"
+      ],
+      "morrow": [
+        "vainly"
+      ],
+      "vainly": [
+        "i"
+      ],
+      "had": [
+        "sought"
+      ],
+      "sought": [
+        "to"
+      ],
+      "to": [
+        "borrow"
+      ],
+      "borrow": [
+        "from"
+      ],
+      "from": [
+        "my"
+      ],
+      "my": [
+        "books"
+      ],
+      "books": [
+        "surcease"
+      ],
+      "surcease": [
+        "of"
+      ],
+      "of": [
+        "sorrow"
+      ],
+      "sorrow": [
+        "for",
+        "sorrow"
+      ],
+      "for": [
+        "evermore",
+        "the"
+      ],
+      "lost": [
+        "lenore"
+      ],
+      "lenore": [
+        "for",
+        "nameless"
+      ],
+      "rare": [
+        "and"
+      ],
+      "radiant": [
+        "maiden"
+      ],
+      "maiden": [
+        "whom"
+      ],
+      "whom": [
+        "the"
+      ],
+      "angels": [
+        "name"
+      ],
+      "name": [
+        "lenore"
+      ],
+      "nameless": [
+        "here"
+      ],
+      "here": [
+        "for"
+      ]
+    }
+  },
+  "raven_stanza_3": {
+    "hairiness": {
+      "average_branching": 1.1628,
+      "max_branching": 2,
+      "branching_words": 7,
+      "branching_fraction": 0.1628
+    },
+    "followers": {
+      "and": [
+        "nothing",
+        "the"
+      ],
+      "the": [
+        "beating",
+        "silken"
+      ],
+      "silken": [
+        "sad"
+      ],
+      "sad": [
+        "uncertain"
+      ],
+      "uncertain": [
+        "rustling"
+      ],
+      "rustling": [
+        "of"
+      ],
+      "of": [
+        "each",
+        "my"
+      ],
+      "each": [
+        "purple"
+      ],
+      "purple": [
+        "curtain"
+      ],
+      "curtain": [
+        "thrilled"
+      ],
+      "thrilled": [
+        "me"
+      ],
+      "me": [
+        "filled",
+        "with"
+      ],
+      "filled": [
+        "me"
+      ],
+      "with": [
+        "fantastic"
+      ],
+      "fantastic": [
+        "terrors"
+      ],
+      "terrors": [
+        "never"
+      ],
+      "never": [
+        "felt"
+      ],
+      "felt": [
+        "before"
+      ],
+      "before": [
+        "so"
+      ],
+      "so": [
+        "that"
+      ],
+      "that": [
+        "now"
+      ],
+      "now": [
+        "to"
+      ],
+      "to": [
+        "still"
+      ],
+      "still": [
+        "the"
+      ],
+      "beating": [
+        "of"
+      ],
+      "my": [
+        "chamber",
+        "heart"
+      ],
+      "heart": [
+        "i"
+      ],
+      "i": [
+        "stood"
+      ],
+      "stood": [
+        "repeating"
+      ],
+      "repeating": [
+        "tis"
+      ],
+      "tis": [
+        "some"
+      ],
+      "some": [
+        "late",
+        "visitor"
+      ],
+      "visitor": [
+        "entreating"
+      ],
+      "entreating": [
+        "entrance"
+      ],
+      "entrance": [
+        "at"
+      ],
+      "at": [
+        "my"
+      ],
+      "chamber": [
+        "door"
+      ],
+      "door": [
+        "some",
+        "this"
+      ],
+      "late": [
+        "visitor"
+      ],
+      "this": [
+        "it"
+      ],
+      "it": [
+        "is"
+      ],
+      "is": [
+        "and"
+      ],
+      "nothing": [
+        "more"
+      ]
+    }
+  },
+  "raven_stanza_4": {
+    "hairiness": {
+      "average_branching": 1.3111,
+      "max_branching": 6,
+      "branching_words": 10,
+      "branching_fraction": 0.2222
+    },
+    "followers": {
+      "presently": [
+        "my"
+      ],
+      "my": [
+        "chamber",
+        "soul"
+      ],
+      "soul": [
+        "grew"
+      ],
+      "grew": [
+        "stronger"
+      ],
+      "stronger": [
+        "hesitating"
+      ],
+      "hesitating": [
+        "then"
+      ],
+      "then": [
+        "no"
+      ],
+      "no": [
+        "longer"
+      ],
+      "longer": [
+        "sir"
+      ],
+      "sir": [
+        "said"
+      ],
+      "said": [
+        "i"
+      ],
+      "i": [
+        "heard",
+        "implore",
+        "opened",
+        "or",
+        "scarce",
+        "was"
+      ],
+      "or": [
+        "madam"
+      ],
+      "madam": [
+        "truly"
+      ],
+      "truly": [
+        "your"
+      ],
+      "your": [
+        "forgiveness"
+      ],
+      "forgiveness": [
+        "i"
+      ],
+      "implore": [
+        "but"
+      ],
+      "but": [
+        "the"
+      ],
+      "the": [
+        "door",
+        "fact"
+      ],
+      "fact": [
+        "is"
+      ],
+      "is": [
+        "i"
+      ],
+      "was": [
+        "napping",
+        "sure"
+      ],
+      "napping": [
+        "and"
+      ],
+      "and": [
+        "nothing",
+        "so"
+      ],
+      "so": [
+        "faintly",
+        "gently"
+      ],
+      "gently": [
+        "you"
+      ],
+      "you": [
+        "came",
+        "here"
+      ],
+      "came": [
+        "rapping",
+        "tapping"
+      ],
+      "rapping": [
+        "and"
+      ],
+      "faintly": [
+        "you"
+      ],
+      "tapping": [
+        "at",
+        "tapping"
+      ],
+      "at": [
+        "my"
+      ],
+      "chamber": [
+        "door"
+      ],
+      "door": [
+        "darkness",
+        "that"
+      ],
+      "that": [
+        "i"
+      ],
+      "scarce": [
+        "was"
+      ],
+      "sure": [
+        "i"
+      ],
+      "heard": [
+        "you"
+      ],
+      "here": [
+        "i"
+      ],
+      "opened": [
+        "wide"
+      ],
+      "wide": [
+        "the"
+      ],
+      "darkness": [
+        "there"
+      ],
+      "there": [
+        "and"
+      ],
+      "nothing": [
+        "more"
+      ]
+    }
+  },
+  "raven_stanza_5": {
+    "hairiness": {
+      "average_branching": 1.3333,
+      "max_branching": 5,
+      "branching_words": 10,
+      "branching_fraction": 0.2381
+    },
+    "followers": {
+      "deep": [
+        "into"
+      ],
+      "into": [
+        "that"
+      ],
+      "that": [
+        "darkness"
+      ],
+      "darkness": [
+        "peering"
+      ],
+      "peering": [
+        "long"
+      ],
+      "long": [
+        "i"
+      ],
+      "i": [
+        "stood",
+        "whispered"
+      ],
+      "stood": [
+        "there"
+      ],
+      "there": [
+        "spoken",
+        "wondering"
+      ],
+      "wondering": [
+        "fearing"
+      ],
+      "fearing": [
+        "doubting"
+      ],
+      "doubting": [
+        "dreaming"
+      ],
+      "dreaming": [
+        "dreams"
+      ],
+      "dreams": [
+        "no"
+      ],
+      "no": [
+        "mortal",
+        "token"
+      ],
+      "mortal": [
+        "ever"
+      ],
+      "ever": [
+        "dared"
+      ],
+      "dared": [
+        "to"
+      ],
+      "to": [
+        "dream"
+      ],
+      "dream": [
+        "before"
+      ],
+      "before": [
+        "but"
+      ],
+      "but": [
+        "the"
+      ],
+      "the": [
+        "only",
+        "silence",
+        "stillness",
+        "whispered",
+        "word"
+      ],
+      "silence": [
+        "was"
+      ],
+      "was": [
+        "the",
+        "unbroken"
+      ],
+      "unbroken": [
+        "and"
+      ],
+      "and": [
+        "an",
+        "nothing",
+        "the"
+      ],
+      "stillness": [
+        "gave"
+      ],
+      "gave": [
+        "no"
+      ],
+      "token": [
+        "and"
+      ],
+      "only": [
+        "word"
+      ],
+      "word": [
+        "lenore",
+        "there"
+      ],
+      "spoken": [
+        "was"
+      ],
+      "whispered": [
+        "and",
+        "word"
+      ],
+      "lenore": [
+        "merely",
+        "this"
+      ],
+      "this": [
+        "and",
+        "i"
+      ],
+      "an": [
+        "echo"
+      ],
+      "echo": [
+        "murmured"
+      ],
+      "murmured": [
+        "back"
+      ],
+      "back": [
+        "the"
+      ],
+      "merely": [
+        "this"
+      ],
+      "nothing": [
+        "more"
+      ]
+    }
+  },
+  "raven_stanza_6": {
+    "hairiness": {
+      "average_branching": 1.2444,
+      "max_branching": 3,
+      "branching_words": 10,
+      "branching_fraction": 0.2222
+    },
+    "followers": {
+      "back": [
+        "into"
+      ],
+      "into": [
+        "the"
+      ],
+      "the": [
+        "chamber",
+        "wind"
+      ],
+      "chamber": [
+        "turning"
+      ],
+      "turning": [
+        "all"
+      ],
+      "all": [
+        "my"
+      ],
+      "my": [
+        "heart",
+        "soul",
+        "window"
+      ],
+      "soul": [
+        "within"
+      ],
+      "within": [
+        "me"
+      ],
+      "me": [
+        "burning",
+        "see"
+      ],
+      "burning": [
+        "soon"
+      ],
+      "soon": [
+        "again"
+      ],
+      "again": [
+        "i"
+      ],
+      "i": [
+        "heard",
+        "surely"
+      ],
+      "heard": [
+        "a"
+      ],
+      "a": [
+        "moment",
+        "tapping"
+      ],
+      "tapping": [
+        "somewhat"
+      ],
+      "somewhat": [
+        "louder"
+      ],
+      "louder": [
+        "than"
+      ],
+      "than": [
+        "before"
+      ],
+      "before": [
+        "surely"
+      ],
+      "surely": [
+        "said",
+        "that"
+      ],
+      "said": [
+        "i"
+      ],
+      "that": [
+        "is"
+      ],
+      "is": [
+        "and",
+        "something"
+      ],
+      "something": [
+        "at"
+      ],
+      "at": [
+        "my"
+      ],
+      "window": [
+        "lattice"
+      ],
+      "lattice": [
+        "let"
+      ],
+      "let": [
+        "me",
+        "my"
+      ],
+      "see": [
+        "then"
+      ],
+      "then": [
+        "what"
+      ],
+      "what": [
+        "thereat"
+      ],
+      "thereat": [
+        "is"
+      ],
+      "and": [
+        "nothing",
+        "this"
+      ],
+      "this": [
+        "mystery"
+      ],
+      "mystery": [
+        "explore"
+      ],
+      "explore": [
+        "let",
+        "tis"
+      ],
+      "heart": [
+        "be"
+      ],
+      "be": [
+        "still"
+      ],
+      "still": [
+        "a"
+      ],
+      "moment": [
+        "and"
+      ],
+      "tis": [
+        "the"
+      ],
+      "wind": [
+        "and"
+      ],
+      "nothing": [
+        "more"
+      ]
+    }
+  },
+  "raven_stanza_7": {
+    "hairiness": {
+      "average_branching": 1.3478,
+      "max_branching": 4,
+      "branching_words": 9,
+      "branching_fraction": 0.1957
+    },
+    "followers": {
+      "open": [
+        "here"
+      ],
+      "here": [
+        "i"
+      ],
+      "i": [
+        "flung"
+      ],
+      "flung": [
+        "the"
+      ],
+      "the": [
+        "least",
+        "saintly",
+        "shutter"
+      ],
+      "shutter": [
+        "when"
+      ],
+      "when": [
+        "with"
+      ],
+      "with": [
+        "many",
+        "mien"
+      ],
+      "many": [
+        "a"
+      ],
+      "a": [
+        "bust",
+        "flirt",
+        "minute",
+        "stately"
+      ],
+      "flirt": [
+        "and"
+      ],
+      "and": [
+        "flutter",
+        "nothing",
+        "sat"
+      ],
+      "flutter": [
+        "in"
+      ],
+      "in": [
+        "there"
+      ],
+      "there": [
+        "stepped"
+      ],
+      "stepped": [
+        "a"
+      ],
+      "stately": [
+        "raven"
+      ],
+      "raven": [
+        "of"
+      ],
+      "of": [
+        "lord",
+        "pallas",
+        "the",
+        "yore"
+      ],
+      "saintly": [
+        "days"
+      ],
+      "days": [
+        "of"
+      ],
+      "yore": [
+        "not"
+      ],
+      "not": [
+        "a",
+        "the"
+      ],
+      "least": [
+        "obeisance"
+      ],
+      "obeisance": [
+        "made"
+      ],
+      "made": [
+        "he"
+      ],
+      "he": [
+        "but",
+        "not"
+      ],
+      "minute": [
+        "stopped"
+      ],
+      "stopped": [
+        "or"
+      ],
+      "or": [
+        "lady",
+        "stayed"
+      ],
+      "stayed": [
+        "he"
+      ],
+      "but": [
+        "with"
+      ],
+      "mien": [
+        "of"
+      ],
+      "lord": [
+        "or"
+      ],
+      "lady": [
+        "perched"
+      ],
+      "perched": [
+        "above",
+        "and",
+        "upon"
+      ],
+      "above": [
+        "my"
+      ],
+      "my": [
+        "chamber"
+      ],
+      "chamber": [
+        "door"
+      ],
+      "door": [
+        "perched"
+      ],
+      "upon": [
+        "a"
+      ],
+      "bust": [
+        "of"
+      ],
+      "pallas": [
+        "just"
+      ],
+      "just": [
+        "above"
+      ],
+      "sat": [
+        "and"
+      ],
+      "nothing": [
+        "more"
+      ]
+    }
+  },
+  "raven_stanza_8": {
+    "hairiness": {
+      "average_branching": 1.1731,
+      "max_branching": 5,
+      "branching_words": 5,
+      "branching_fraction": 0.0962
+    },
+    "followers": {
+      "then": [
+        "this"
+      ],
+      "this": [
+        "ebony"
+      ],
+      "ebony": [
+        "bird"
+      ],
+      "bird": [
+        "beguiling"
+      ],
+      "beguiling": [
+        "my"
+      ],
+      "my": [
+        "sad"
+      ],
+      "sad": [
+        "fancy"
+      ],
+      "fancy": [
+        "into"
+      ],
+      "into": [
+        "smiling"
+      ],
+      "smiling": [
+        "by"
+      ],
+      "by": [
+        "the"
+      ],
+      "the": [
+        "countenance",
+        "grave",
+        "night",
+        "nightly",
+        "raven"
+      ],
+      "grave": [
+        "and"
+      ],
+      "and": [
+        "ancient",
+        "shaven",
+        "stern"
+      ],
+      "stern": [
+        "decorum"
+      ],
+      "decorum": [
+        "of"
+      ],
+      "of": [
+        "the"
+      ],
+      "countenance": [
+        "it"
+      ],
+      "it": [
+        "wore"
+      ],
+      "wore": [
+        "though"
+      ],
+      "though": [
+        "thy"
+      ],
+      "thy": [
+        "crest",
+        "lordly"
+      ],
+      "crest": [
+        "be"
+      ],
+      "be": [
+        "shorn"
+      ],
+      "shorn": [
+        "and"
+      ],
+      "shaven": [
+        "thou"
+      ],
+      "thou": [
+        "i"
+      ],
+      "i": [
+        "said"
+      ],
+      "said": [
+        "art"
+      ],
+      "art": [
+        "sure"
+      ],
+      "sure": [
+        "no"
+      ],
+      "no": [
+        "craven"
+      ],
+      "craven": [
+        "ghastly"
+      ],
+      "ghastly": [
+        "grim"
+      ],
+      "grim": [
+        "and"
+      ],
+      "ancient": [
+        "raven"
+      ],
+      "raven": [
+        "nevermore",
+        "wandering"
+      ],
+      "wandering": [
+        "from"
+      ],
+      "from": [
+        "the"
+      ],
+      "nightly": [
+        "shore"
+      ],
+      "shore": [
+        "quoth",
+        "tell"
+      ],
+      "tell": [
+        "me"
+      ],
+      "me": [
+        "what"
+      ],
+      "what": [
+        "thy"
+      ],
+      "lordly": [
+        "name"
+      ],
+      "name": [
+        "is"
+      ],
+      "is": [
+        "on"
+      ],
+      "on": [
+        "the"
+      ],
+      "night": [
+        "s"
+      ],
+      "s": [
+        "plutonian"
+      ],
+      "plutonian": [
+        "shore"
+      ],
+      "quoth": [
+        "the"
+      ]
+    }
+  },
+  "raven_stanza_9": {
+    "hairiness": {
+      "average_branching": 1.0833,
+      "max_branching": 2,
+      "branching_words": 4,
+      "branching_fraction": 0.0833
+    },
+    "followers": {
+      "much": [
+        "i"
+      ],
+      "i": [
+        "marvelled"
+      ],
+      "marvelled": [
+        "this"
+      ],
+      "this": [
+        "ungainly"
+      ],
+      "ungainly": [
+        "fowl"
+      ],
+      "fowl": [
+        "to"
+      ],
+      "to": [
+        "hear"
+      ],
+      "hear": [
+        "discourse"
+      ],
+      "discourse": [
+        "so"
+      ],
+      "so": [
+        "plainly"
+      ],
+      "plainly": [
+        "though"
+      ],
+      "though": [
+        "its"
+      ],
+      "its": [
+        "answer"
+      ],
+      "answer": [
+        "little"
+      ],
+      "little": [
+        "meaning",
+        "relevancy"
+      ],
+      "meaning": [
+        "little"
+      ],
+      "relevancy": [
+        "bore"
+      ],
+      "bore": [
+        "for"
+      ],
+      "for": [
+        "we"
+      ],
+      "we": [
+        "cannot"
+      ],
+      "cannot": [
+        "help"
+      ],
+      "help": [
+        "agreeing"
+      ],
+      "agreeing": [
+        "that"
+      ],
+      "that": [
+        "no"
+      ],
+      "no": [
+        "living"
+      ],
+      "living": [
+        "human"
+      ],
+      "human": [
+        "being"
+      ],
+      "being": [
+        "ever"
+      ],
+      "ever": [
+        "yet"
+      ],
+      "yet": [
+        "was"
+      ],
+      "was": [
+        "blest"
+      ],
+      "blest": [
+        "with"
+      ],
+      "with": [
+        "seeing",
+        "such"
+      ],
+      "seeing": [
+        "bird"
+      ],
+      "bird": [
+        "above",
+        "or"
+      ],
+      "above": [
+        "his"
+      ],
+      "his": [
+        "chamber"
+      ],
+      "chamber": [
+        "door"
+      ],
+      "door": [
+        "bird",
+        "with"
+      ],
+      "or": [
+        "beast"
+      ],
+      "beast": [
+        "upon"
+      ],
+      "upon": [
+        "the"
+      ],
+      "the": [
+        "sculptured"
+      ],
+      "sculptured": [
+        "bust"
+      ],
+      "bust": [
+        "above"
+      ],
+      "such": [
+        "name"
+      ],
+      "name": [
+        "as"
+      ],
+      "as": [
+        "nevermore"
+      ]
+    }
+  },
+  "raven_stanza_10": {
+    "hairiness": {
+      "average_branching": 1.2083,
+      "max_branching": 4,
+      "branching_words": 6,
+      "branching_fraction": 0.125
+    },
+    "followers": {
+      "but": [
+        "the"
+      ],
+      "the": [
+        "bird",
+        "morrow",
+        "placid",
+        "raven"
+      ],
+      "raven": [
+        "sitting"
+      ],
+      "sitting": [
+        "lonely"
+      ],
+      "lonely": [
+        "on"
+      ],
+      "on": [
+        "the"
+      ],
+      "placid": [
+        "bust"
+      ],
+      "bust": [
+        "spoke"
+      ],
+      "spoke": [
+        "only"
+      ],
+      "only": [
+        "that"
+      ],
+      "that": [
+        "one"
+      ],
+      "one": [
+        "word"
+      ],
+      "word": [
+        "as",
+        "he"
+      ],
+      "as": [
+        "if",
+        "my"
+      ],
+      "if": [
+        "his"
+      ],
+      "his": [
+        "soul"
+      ],
+      "soul": [
+        "in"
+      ],
+      "in": [
+        "that"
+      ],
+      "he": [
+        "did",
+        "fluttered",
+        "uttered",
+        "will"
+      ],
+      "did": [
+        "outpour"
+      ],
+      "outpour": [
+        "nothing"
+      ],
+      "nothing": [
+        "further"
+      ],
+      "further": [
+        "then"
+      ],
+      "then": [
+        "he",
+        "the"
+      ],
+      "uttered": [
+        "not"
+      ],
+      "not": [
+        "a"
+      ],
+      "a": [
+        "feather"
+      ],
+      "feather": [
+        "then"
+      ],
+      "fluttered": [
+        "till"
+      ],
+      "till": [
+        "i"
+      ],
+      "i": [
+        "scarcely"
+      ],
+      "scarcely": [
+        "more"
+      ],
+      "more": [
+        "than"
+      ],
+      "than": [
+        "muttered"
+      ],
+      "muttered": [
+        "other"
+      ],
+      "other": [
+        "friends"
+      ],
+      "friends": [
+        "have"
+      ],
+      "have": [
+        "flown"
+      ],
+      "flown": [
+        "before"
+      ],
+      "before": [
+        "on",
+        "then"
+      ],
+      "morrow": [
+        "he"
+      ],
+      "will": [
+        "leave"
+      ],
+      "leave": [
+        "me"
+      ],
+      "me": [
+        "as"
+      ],
+      "my": [
+        "hopes"
+      ],
+      "hopes": [
+        "have"
+      ],
+      "bird": [
+        "said"
+      ],
+      "said": [
+        "nevermore"
+      ]
+    }
+  },
+  "raven_stanza_11": {
+    "hairiness": {
+      "average_branching": 1.1556,
+      "max_branching": 2,
+      "branching_words": 7,
+      "branching_fraction": 0.1556
+    },
+    "followers": {
+      "startled": [
+        "at"
+      ],
+      "at": [
+        "the"
+      ],
+      "the": [
+        "dirges",
+        "stillness"
+      ],
+      "stillness": [
+        "broken"
+      ],
+      "broken": [
+        "by"
+      ],
+      "by": [
+        "reply"
+      ],
+      "reply": [
+        "so"
+      ],
+      "so": [
+        "aptly"
+      ],
+      "aptly": [
+        "spoken"
+      ],
+      "spoken": [
+        "doubtless"
+      ],
+      "doubtless": [
+        "said"
+      ],
+      "said": [
+        "i"
+      ],
+      "i": [
+        "what"
+      ],
+      "what": [
+        "it"
+      ],
+      "it": [
+        "utters"
+      ],
+      "utters": [
+        "is"
+      ],
+      "is": [
+        "its"
+      ],
+      "its": [
+        "only"
+      ],
+      "only": [
+        "stock"
+      ],
+      "stock": [
+        "and"
+      ],
+      "and": [
+        "followed",
+        "store"
+      ],
+      "store": [
+        "caught"
+      ],
+      "caught": [
+        "from"
+      ],
+      "from": [
+        "some"
+      ],
+      "some": [
+        "unhappy"
+      ],
+      "unhappy": [
+        "master"
+      ],
+      "master": [
+        "whom"
+      ],
+      "whom": [
+        "unmerciful"
+      ],
+      "unmerciful": [
+        "disaster"
+      ],
+      "disaster": [
+        "followed"
+      ],
+      "followed": [
+        "fast",
+        "faster"
+      ],
+      "fast": [
+        "and"
+      ],
+      "faster": [
+        "till"
+      ],
+      "till": [
+        "his",
+        "the"
+      ],
+      "his": [
+        "hope",
+        "songs"
+      ],
+      "songs": [
+        "one"
+      ],
+      "one": [
+        "burden"
+      ],
+      "burden": [
+        "bore"
+      ],
+      "bore": [
+        "of",
+        "till"
+      ],
+      "dirges": [
+        "of"
+      ],
+      "of": [
+        "his",
+        "never"
+      ],
+      "hope": [
+        "that"
+      ],
+      "that": [
+        "melancholy"
+      ],
+      "melancholy": [
+        "burden"
+      ],
+      "never": [
+        "nevermore"
+      ]
+    }
+  },
+  "raven_stanza_12": {
+    "hairiness": {
+      "average_branching": 1.2558,
+      "max_branching": 3,
+      "branching_words": 9,
+      "branching_fraction": 0.2093
+    },
+    "followers": {
+      "but": [
+        "the"
+      ],
+      "the": [
+        "raven",
+        "velvet"
+      ],
+      "raven": [
+        "still"
+      ],
+      "still": [
+        "beguiling"
+      ],
+      "beguiling": [
+        "all"
+      ],
+      "all": [
+        "my"
+      ],
+      "my": [
+        "fancy"
+      ],
+      "fancy": [
+        "into",
+        "thinking",
+        "unto"
+      ],
+      "into": [
+        "smiling"
+      ],
+      "smiling": [
+        "straight"
+      ],
+      "straight": [
+        "i"
+      ],
+      "i": [
+        "betook",
+        "wheeled"
+      ],
+      "wheeled": [
+        "a"
+      ],
+      "a": [
+        "cushioned"
+      ],
+      "cushioned": [
+        "seat"
+      ],
+      "seat": [
+        "in"
+      ],
+      "in": [
+        "croaking",
+        "front"
+      ],
+      "front": [
+        "of"
+      ],
+      "of": [
+        "bird",
+        "yore"
+      ],
+      "bird": [
+        "and",
+        "of"
+      ],
+      "and": [
+        "bust",
+        "door",
+        "ominous"
+      ],
+      "bust": [
+        "and"
+      ],
+      "door": [
+        "then"
+      ],
+      "then": [
+        "upon"
+      ],
+      "upon": [
+        "the"
+      ],
+      "velvet": [
+        "sinking"
+      ],
+      "sinking": [
+        "i"
+      ],
+      "betook": [
+        "myself"
+      ],
+      "myself": [
+        "to"
+      ],
+      "to": [
+        "linking"
+      ],
+      "linking": [
+        "fancy"
+      ],
+      "unto": [
+        "fancy"
+      ],
+      "thinking": [
+        "what"
+      ],
+      "what": [
+        "this"
+      ],
+      "this": [
+        "grim",
+        "ominous"
+      ],
+      "ominous": [
+        "bird"
+      ],
+      "yore": [
+        "meant",
+        "what"
+      ],
+      "grim": [
+        "ungainly"
+      ],
+      "ungainly": [
+        "ghastly"
+      ],
+      "ghastly": [
+        "gaunt"
+      ],
+      "gaunt": [
+        "and"
+      ],
+      "meant": [
+        "in"
+      ],
+      "croaking": [
+        "nevermore"
+      ]
+    }
+  },
+  "raven_stanza_13": {
+    "hairiness": {
+      "average_branching": 1.2826,
+      "max_branching": 3,
+      "branching_words": 12,
+      "branching_fraction": 0.2609
+    },
+    "followers": {
+      "this": [
+        "and",
+        "i"
+      ],
+      "i": [
+        "sat"
+      ],
+      "sat": [
+        "divining",
+        "engaged"
+      ],
+      "engaged": [
+        "in"
+      ],
+      "in": [
+        "guessing"
+      ],
+      "guessing": [
+        "but"
+      ],
+      "but": [
+        "no",
+        "whose"
+      ],
+      "no": [
+        "syllable"
+      ],
+      "syllable": [
+        "expressing"
+      ],
+      "expressing": [
+        "to"
+      ],
+      "to": [
+        "the"
+      ],
+      "the": [
+        "cushion",
+        "fowl",
+        "lamplight"
+      ],
+      "fowl": [
+        "whose"
+      ],
+      "whose": [
+        "fiery",
+        "velvet"
+      ],
+      "fiery": [
+        "eyes"
+      ],
+      "eyes": [
+        "now"
+      ],
+      "now": [
+        "burned"
+      ],
+      "burned": [
+        "into"
+      ],
+      "into": [
+        "my"
+      ],
+      "my": [
+        "bosom",
+        "head"
+      ],
+      "bosom": [
+        "s"
+      ],
+      "s": [
+        "core",
+        "velvet"
+      ],
+      "core": [
+        "this"
+      ],
+      "and": [
+        "more"
+      ],
+      "more": [
+        "i"
+      ],
+      "divining": [
+        "with"
+      ],
+      "with": [
+        "my",
+        "the"
+      ],
+      "head": [
+        "at"
+      ],
+      "at": [
+        "ease"
+      ],
+      "ease": [
+        "reclining"
+      ],
+      "reclining": [
+        "on"
+      ],
+      "on": [
+        "the"
+      ],
+      "cushion": [
+        "s"
+      ],
+      "velvet": [
+        "lining",
+        "violet"
+      ],
+      "lining": [
+        "that",
+        "with"
+      ],
+      "that": [
+        "the"
+      ],
+      "lamplight": [
+        "gloated",
+        "gloating"
+      ],
+      "gloated": [
+        "o"
+      ],
+      "o": [
+        "er"
+      ],
+      "er": [
+        "but",
+        "she"
+      ],
+      "violet": [
+        "lining"
+      ],
+      "gloating": [
+        "o"
+      ],
+      "she": [
+        "shall"
+      ],
+      "shall": [
+        "press"
+      ],
+      "press": [
+        "ah"
+      ],
+      "ah": [
+        "nevermore"
+      ]
+    }
+  },
+  "raven_stanza_14": {
+    "hairiness": {
+      "average_branching": 1.2766,
+      "max_branching": 3,
+      "branching_words": 12,
+      "branching_fraction": 0.2553
+    },
+    "followers": {
+      "then": [
+        "methought"
+      ],
+      "methought": [
+        "the"
+      ],
+      "the": [
+        "air",
+        "raven",
+        "tufted"
+      ],
+      "air": [
+        "grew"
+      ],
+      "grew": [
+        "denser"
+      ],
+      "denser": [
+        "perfumed"
+      ],
+      "perfumed": [
+        "from"
+      ],
+      "from": [
+        "an",
+        "thy"
+      ],
+      "an": [
+        "unseen"
+      ],
+      "unseen": [
+        "censer"
+      ],
+      "censer": [
+        "swung"
+      ],
+      "swung": [
+        "by"
+      ],
+      "by": [
+        "seraphim",
+        "these"
+      ],
+      "seraphim": [
+        "whose"
+      ],
+      "whose": [
+        "foot"
+      ],
+      "foot": [
+        "falls"
+      ],
+      "falls": [
+        "tinkled"
+      ],
+      "tinkled": [
+        "on"
+      ],
+      "on": [
+        "the"
+      ],
+      "tufted": [
+        "floor"
+      ],
+      "floor": [
+        "wretch"
+      ],
+      "wretch": [
+        "i"
+      ],
+      "i": [
+        "cried"
+      ],
+      "cried": [
+        "thy"
+      ],
+      "thy": [
+        "god",
+        "memories"
+      ],
+      "god": [
+        "hath"
+      ],
+      "hath": [
+        "lent",
+        "sent"
+      ],
+      "lent": [
+        "thee"
+      ],
+      "thee": [
+        "by",
+        "respite"
+      ],
+      "these": [
+        "angels"
+      ],
+      "angels": [
+        "he"
+      ],
+      "he": [
+        "hath"
+      ],
+      "sent": [
+        "thee"
+      ],
+      "respite": [
+        "and",
+        "respite"
+      ],
+      "and": [
+        "forget",
+        "nepenthe"
+      ],
+      "nepenthe": [
+        "and",
+        "from"
+      ],
+      "memories": [
+        "of"
+      ],
+      "of": [
+        "lenore"
+      ],
+      "lenore": [
+        "quaff",
+        "quoth"
+      ],
+      "quaff": [
+        "oh",
+        "this"
+      ],
+      "oh": [
+        "quaff"
+      ],
+      "this": [
+        "kind",
+        "lost"
+      ],
+      "kind": [
+        "nepenthe"
+      ],
+      "forget": [
+        "this"
+      ],
+      "lost": [
+        "lenore"
+      ],
+      "quoth": [
+        "the"
+      ],
+      "raven": [
+        "nevermore"
+      ]
+    }
+  },
+  "raven_stanza_15": {
+    "hairiness": {
+      "average_branching": 1.2045,
+      "max_branching": 3,
+      "branching_words": 8,
+      "branching_fraction": 0.1818
+    },
+    "followers": {
+      "prophet": [
+        "said",
+        "still"
+      ],
+      "said": [
+        "i"
+      ],
+      "i": [
+        "implore",
+        "thing"
+      ],
+      "thing": [
+        "of"
+      ],
+      "of": [
+        "evil"
+      ],
+      "evil": [
+        "prophet"
+      ],
+      "still": [
+        "if"
+      ],
+      "if": [
+        "bird"
+      ],
+      "bird": [
+        "or"
+      ],
+      "or": [
+        "devil",
+        "whether"
+      ],
+      "devil": [
+        "whether"
+      ],
+      "whether": [
+        "tempest",
+        "tempter"
+      ],
+      "tempter": [
+        "sent"
+      ],
+      "sent": [
+        "or"
+      ],
+      "tempest": [
+        "tossed"
+      ],
+      "tossed": [
+        "thee"
+      ],
+      "thee": [
+        "here"
+      ],
+      "here": [
+        "ashore"
+      ],
+      "ashore": [
+        "desolate"
+      ],
+      "desolate": [
+        "yet"
+      ],
+      "yet": [
+        "all"
+      ],
+      "all": [
+        "undaunted"
+      ],
+      "undaunted": [
+        "on"
+      ],
+      "on": [
+        "this"
+      ],
+      "this": [
+        "desert",
+        "home"
+      ],
+      "desert": [
+        "land"
+      ],
+      "land": [
+        "enchanted"
+      ],
+      "enchanted": [
+        "on"
+      ],
+      "home": [
+        "by"
+      ],
+      "by": [
+        "horror"
+      ],
+      "horror": [
+        "haunted"
+      ],
+      "haunted": [
+        "tell"
+      ],
+      "tell": [
+        "me"
+      ],
+      "me": [
+        "i",
+        "tell",
+        "truly"
+      ],
+      "truly": [
+        "i"
+      ],
+      "implore": [
+        "is",
+        "quoth"
+      ],
+      "is": [
+        "there"
+      ],
+      "there": [
+        "balm",
+        "is"
+      ],
+      "balm": [
+        "in"
+      ],
+      "in": [
+        "gilead"
+      ],
+      "gilead": [
+        "tell"
+      ],
+      "quoth": [
+        "the"
+      ],
+      "the": [
+        "raven"
+      ],
+      "raven": [
+        "nevermore"
+      ]
+    }
+  },
+  "raven_stanza_16": {
+    "hairiness": {
+      "average_branching": 1.1739,
+      "max_branching": 3,
+      "branching_words": 6,
+      "branching_fraction": 0.1304
+    },
+    "followers": {
+      "prophet": [
+        "said",
+        "still"
+      ],
+      "said": [
+        "i"
+      ],
+      "i": [
+        "thing"
+      ],
+      "thing": [
+        "of"
+      ],
+      "of": [
+        "evil"
+      ],
+      "evil": [
+        "prophet"
+      ],
+      "still": [
+        "if"
+      ],
+      "if": [
+        "bird",
+        "within"
+      ],
+      "bird": [
+        "or"
+      ],
+      "or": [
+        "devil"
+      ],
+      "devil": [
+        "by"
+      ],
+      "by": [
+        "that"
+      ],
+      "that": [
+        "bends",
+        "god",
+        "heaven"
+      ],
+      "heaven": [
+        "that"
+      ],
+      "bends": [
+        "above"
+      ],
+      "above": [
+        "us"
+      ],
+      "us": [
+        "by"
+      ],
+      "god": [
+        "we"
+      ],
+      "we": [
+        "both"
+      ],
+      "both": [
+        "adore"
+      ],
+      "adore": [
+        "tell"
+      ],
+      "tell": [
+        "this"
+      ],
+      "this": [
+        "soul"
+      ],
+      "soul": [
+        "with"
+      ],
+      "with": [
+        "sorrow"
+      ],
+      "sorrow": [
+        "laden"
+      ],
+      "laden": [
+        "if"
+      ],
+      "within": [
+        "the"
+      ],
+      "the": [
+        "angels",
+        "distant",
+        "raven"
+      ],
+      "distant": [
+        "aidenn"
+      ],
+      "aidenn": [
+        "it"
+      ],
+      "it": [
+        "shall"
+      ],
+      "shall": [
+        "clasp"
+      ],
+      "clasp": [
+        "a"
+      ],
+      "a": [
+        "rare",
+        "sainted"
+      ],
+      "sainted": [
+        "maiden"
+      ],
+      "maiden": [
+        "whom"
+      ],
+      "whom": [
+        "the"
+      ],
+      "angels": [
+        "name"
+      ],
+      "name": [
+        "lenore"
+      ],
+      "lenore": [
+        "clasp",
+        "quoth"
+      ],
+      "rare": [
+        "and"
+      ],
+      "and": [
+        "radiant"
+      ],
+      "radiant": [
+        "maiden"
+      ],
+      "quoth": [
+        "the"
+      ],
+      "raven": [
+        "nevermore"
+      ]
+    }
+  },
+  "raven_stanza_17": {
+    "hairiness": {
+      "average_branching": 1.25,
+      "max_branching": 4,
+      "branching_words": 9,
+      "branching_fraction": 0.1731
+    },
+    "followers": {
+      "be": [
+        "that"
+      ],
+      "that": [
+        "lie",
+        "word"
+      ],
+      "word": [
+        "our"
+      ],
+      "our": [
+        "sign"
+      ],
+      "sign": [
+        "of"
+      ],
+      "of": [
+        "parting",
+        "that"
+      ],
+      "parting": [
+        "bird"
+      ],
+      "bird": [
+        "or"
+      ],
+      "or": [
+        "fiend"
+      ],
+      "fiend": [
+        "i"
+      ],
+      "i": [
+        "shrieked"
+      ],
+      "shrieked": [
+        "upstarting"
+      ],
+      "upstarting": [
+        "get"
+      ],
+      "get": [
+        "thee"
+      ],
+      "thee": [
+        "back"
+      ],
+      "back": [
+        "into"
+      ],
+      "into": [
+        "the"
+      ],
+      "the": [
+        "bust",
+        "night",
+        "raven",
+        "tempest"
+      ],
+      "tempest": [
+        "and"
+      ],
+      "and": [
+        "take",
+        "the"
+      ],
+      "night": [
+        "s"
+      ],
+      "s": [
+        "plutonian"
+      ],
+      "plutonian": [
+        "shore"
+      ],
+      "shore": [
+        "leave"
+      ],
+      "leave": [
+        "my",
+        "no"
+      ],
+      "no": [
+        "black"
+      ],
+      "black": [
+        "plume"
+      ],
+      "plume": [
+        "as"
+      ],
+      "as": [
+        "a"
+      ],
+      "a": [
+        "token"
+      ],
+      "token": [
+        "of"
+      ],
+      "lie": [
+        "thy"
+      ],
+      "thy": [
+        "beak",
+        "form",
+        "soul"
+      ],
+      "soul": [
+        "hath"
+      ],
+      "hath": [
+        "spoken"
+      ],
+      "spoken": [
+        "leave"
+      ],
+      "my": [
+        "door",
+        "heart",
+        "loneliness"
+      ],
+      "loneliness": [
+        "unbroken"
+      ],
+      "unbroken": [
+        "quit"
+      ],
+      "quit": [
+        "the"
+      ],
+      "bust": [
+        "above"
+      ],
+      "above": [
+        "my"
+      ],
+      "door": [
+        "quoth",
+        "take"
+      ],
+      "take": [
+        "thy"
+      ],
+      "beak": [
+        "from"
+      ],
+      "from": [
+        "off",
+        "out"
+      ],
+      "out": [
+        "my"
+      ],
+      "heart": [
+        "and"
+      ],
+      "form": [
+        "from"
+      ],
+      "off": [
+        "my"
+      ],
+      "quoth": [
+        "the"
+      ],
+      "raven": [
+        "nevermore"
+      ]
+    }
+  },
+  "raven_stanza_18": {
+    "hairiness": {
+      "average_branching": 1.3409,
+      "max_branching": 5,
+      "branching_words": 10,
+      "branching_fraction": 0.2273
+    },
+    "followers": {
+      "and": [
+        "his",
+        "my",
+        "the"
+      ],
+      "the": [
+        "floor",
+        "lamplight",
+        "pallid",
+        "raven",
+        "seeming"
+      ],
+      "raven": [
+        "never"
+      ],
+      "never": [
+        "flitting"
+      ],
+      "flitting": [
+        "still"
+      ],
+      "still": [
+        "is"
+      ],
+      "is": [
+        "dreaming",
+        "sitting"
+      ],
+      "sitting": [
+        "on",
+        "still"
+      ],
+      "on": [
+        "the"
+      ],
+      "pallid": [
+        "bust"
+      ],
+      "bust": [
+        "of"
+      ],
+      "of": [
+        "a",
+        "pallas"
+      ],
+      "pallas": [
+        "just"
+      ],
+      "just": [
+        "above"
+      ],
+      "above": [
+        "my"
+      ],
+      "my": [
+        "chamber",
+        "soul"
+      ],
+      "chamber": [
+        "door"
+      ],
+      "door": [
+        "and"
+      ],
+      "his": [
+        "eyes",
+        "shadow"
+      ],
+      "eyes": [
+        "have"
+      ],
+      "have": [
+        "all"
+      ],
+      "all": [
+        "the"
+      ],
+      "seeming": [
+        "of"
+      ],
+      "a": [
+        "demon"
+      ],
+      "demon": [
+        "s"
+      ],
+      "s": [
+        "that"
+      ],
+      "that": [
+        "is",
+        "lies",
+        "shadow"
+      ],
+      "dreaming": [
+        "and"
+      ],
+      "lamplight": [
+        "o"
+      ],
+      "o": [
+        "er"
+      ],
+      "er": [
+        "him"
+      ],
+      "him": [
+        "streaming"
+      ],
+      "streaming": [
+        "throws"
+      ],
+      "throws": [
+        "his"
+      ],
+      "shadow": [
+        "on",
+        "that"
+      ],
+      "floor": [
+        "and",
+        "shall"
+      ],
+      "soul": [
+        "from"
+      ],
+      "from": [
+        "out"
+      ],
+      "out": [
+        "that"
+      ],
+      "lies": [
+        "floating"
+      ],
+      "floating": [
+        "on"
+      ],
+      "shall": [
+        "be"
+      ],
+      "be": [
+        "lifted"
+      ],
+      "lifted": [
+        "nevermore"
+      ]
+    }
+  }
+}
